@@ -1,0 +1,81 @@
+@startuml
+Nota "2"--"1" Intervalo 
+Triade "1" -- "2" Intervalo
+
+class Nota {
+    int oitava;     
+    int grau;       
+    int acidente;   
+.. Constructors ..
+    Nota(); 
+    Nota(int, int, int ); 
+.. Sets ..
+    void setOitava(int);
+    void setGrau(int);
+    void setAcidente(int);
+    void setNota( int, int, int ); 
+.. Gets ..
+    int getOitava();
+    int getGrau();
+    int getAcidente();
+.. Padrao ..
+    void Randomizar();
+    string GerarDescricao();
+    void ImprimirEmTela();
+.. Externo ..
+    Nota qualRelativa(int);
+}
+
+class Intervalo {
+    Nota n1;
+    Nota n2;
+.. Constructos ..
+    Intervalo();
+    Intervalo(Nota);
+    Intervalo(Nota,Nota);
+.. Sets ..
+    void setN1(Nota);
+    void setN2(Nota);
+    void setN2(string);
+    void SetIntervalo(Nota,Nota);
+.. Gets ..
+    Nota getN1();
+    Nota getN2();
+.. Padrao ..
+    void Randomizar();
+    string GerarDescricao();
+    void ImprimirEmTela();
+.. Externo ..
+    void RandomizarSegundaNota();
+    string RandomizarDescricao();
+    int CalcularQtdNotas();
+    int CalcularSemiTons();
+    int CalcularOrientacao();
+}
+
+class Triade{
+    Intervalo i1;
+    Intervalo i2;
+.. Constructors ..
+    Triade();
+    Triade(Intervalo);
+    Triade(Intervalo, Intervalo);
+.. Sets ..
+    void setInt1(Intervalo);
+    void setInt2(Intervalo);
+    void setTriade(Intervalo, Intervalo);
+.. Gets ..
+    Intervalo getInt1();
+    Intervalo getInt2();
+    Nota getFundamental();
+    Nota getTerca();
+    Nota getQuinta();
+.. Padrao ..
+    void Randomizar();
+    string GerarDescricao();
+    void ImprimirEmTela();
+.. Externo ..
+    void ImprimirFundamentalEmTela();
+    string RandomizarTipoTriade();
+}
+@enduml

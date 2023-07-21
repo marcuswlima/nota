@@ -1,0 +1,18 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class ATM {
+
+}
+
+class Withdrawal {
+
+}
+note left: currentTransaction
+
+ATM "1" -- "0..1" Withdrawal : Executa >
+
+
+
+@enduml
