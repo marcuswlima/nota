@@ -1,8 +1,8 @@
 #include <gtkmm.h>
 #include <iostream>
+#include "../../core/src/Triade.h"
 
 using namespace Gtk;
-
 
 class GTKNotas
 {
@@ -12,7 +12,9 @@ public:
 	~GTKNotas();
 private:
 	Window * pWindow;
-	Entry * num_1, * num_2;
+	Entry * e_num_1, * e_num_2;
 	Button * btn_soma;
+//-------------------
+	void on_btn_soma_clicked(); 
 };
 

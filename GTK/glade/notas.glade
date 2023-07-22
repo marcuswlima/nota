@@ -27,8 +27,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="num_1">
-            <property name="name">num_1</property>
+          <object class="GtkEntry" id="e_num_1">
+            <property name="name">e_num_1</property>
             <property name="width-request">50</property>
             <property name="height-request">20</property>
             <property name="visible">True</property>
@@ -61,8 +61,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="num_2">
-            <property name="name">num_2</property>
+          <object class="GtkEntry" id="e_num_2">
+            <property name="name">e_num_2</property>
             <property name="width-request">50</property>
             <property name="height-request">34</property>
             <property name="visible">True</property>
@@ -92,8 +92,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="result">
-            <property name="name">result</property>
+          <object class="GtkEntry" id="e_result">
+            <property name="name">e_result</property>
             <property name="width-request">80</property>
             <property name="height-request">34</property>
             <property name="visible">True</property>
@@ -116,6 +116,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="on_btn_soma_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="x">103</property>
