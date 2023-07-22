@@ -7,6 +7,7 @@ public:
 	NcursesNotas();
 	NcursesNotas(int);
 	~NcursesNotas();
+	void Splash();
 private:
 	Janela jUp;
 	Janela jResultado;

@@ -1,4 +1,5 @@
 #include <string>
+#include <cstring>
 #include <ncurses.h>
 using namespace std;
 

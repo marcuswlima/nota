@@ -1,4 +1,4 @@
-#include "ncurses-notas.h"
+#include "Tetrade.h"
 
 /////////////////////////////////////////
 // Prototipações
@@ -35,27 +35,12 @@ int main(int argc, char *argv[] ){
     srand( time(0) );
 	ToShowParameters(argc, argv);
 
-	NcursesNotas nc(0);
-//	TodosIntervalos();
+	TodosIntervalos();
 
 	cout << endl;
 	return 0; //indica o fim do programa2
 
 }//main
-
-void Splash(){
-	char mesg[]="Gerados de execícios";
-	int row,col;
-
-	initscr();
-	noecho();
-	getmaxyx(stdscr,row,col);
-	mvprintw(row/2,(col-strlen(mesg))/2,"%s",mesg);
-
-	refresh();
-	getch();
-	endwin();
-};
 
 void ToShowParameters(int argc, char *argv[]){
 	if (argc > 1){

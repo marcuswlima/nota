@@ -61,3 +61,19 @@
 
 https://sourceforge.net/projects/plantuml/
 
+
+# Pré-instalaçãoes
+
+## ncurses
+
+- https://en.wikipedia.org/wiki/Ncurses  
+- `$ sudo apt install libncurses6-dev`
+
+## gtkmm
+- https://gtkmm.org
+- `$ sudo apt install libgtkmm-3.0-dev`
+- `$ sudo apt install libgtkmm-3.0-doc`
+
+## glade
+- https://github.com/GNOME/glade
+- `$ sudo apt install glade`

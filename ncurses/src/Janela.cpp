@@ -69,4 +69,18 @@ void Moldurar(WINDOW *janela){
 	wrefresh(janela);
 }
 
+void Splash(){
+	char mesg[]="Gerados de execícios";
+	int row,col;
+
+	initscr();
+	noecho();
+	getmaxyx(stdscr,row,col);
+	mvprintw(row/2,(col-strlen(mesg))/2,"%s",mesg);
+
+	refresh();
+	getch();
+	endwin();
+};
+
 

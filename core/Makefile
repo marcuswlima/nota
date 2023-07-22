@@ -1,6 +1,6 @@
 OBJ=obj/
 SRC=src/
-LIB=../lib-cplusplus/src/
+LIB=../../lib-cplusplus/src/
 TARGET=$(OBJ)notas.sh
 CC=g++
 DEBUG=-g
@@ -13,12 +13,10 @@ NCURSES=-lncurses
 OBJS=$(OBJ)Mathematics.o                  \
      $(OBJ)Nota.o   $(OBJ)Intervalo.o     \
 	 $(OBJ)Triade.o $(OBJ)Tetrade.o       \
-	 $(OBJ)Janela.o $(OBJ)ncurses-notas.o \
-	 $(OBJ)GTKNotas.o                     \
-     $(OBJ)main.o
+	 $(OBJ)main.o
 
 all: $(OBJS)
-	$(LD) -o $(TARGET) $(OBJS) $(NCURSES) $(GTK)
+	$(LD) -o $(TARGET) $(OBJS) $(NCURSES)
  
 $(OBJ)Mathematics.o: $(SRC)Mathematics.cpp $(SRC)Mathematics.h  
 	cp -v $(LIB)Mathematics* $(SRC)
@@ -36,17 +34,8 @@ $(OBJ)Triade.o: $(SRC)Triade.cpp $(SRC)Triade.h
 $(OBJ)Tetrade.o: $(SRC)Tetrade.cpp $(SRC)Tetrade.h 
 	$(CC) -c $(CCFLAGS) $(SRC)Tetrade.cpp -o $(OBJ)Tetrade.o
 
-$(OBJ)Janela.o: $(SRC)Janela.cpp $(SRC)Janela.h 
-	$(CC) -c $(CCFLAGS) $(SRC)Janela.cpp -o $(OBJ)Janela.o
-
-$(OBJ)ncurses-notas.o: $(SRC)ncurses-notas.cpp $(SRC)ncurses-notas.h $(SRC)Janela.h $(SRC)Tetrade.h
-	$(CC) -c $(CCFLAGS) $(SRC)ncurses-notas.cpp -o $(OBJ)ncurses-notas.o
-
-$(OBJ)GTKNotas.o: $(SRC)GTKNotas.cpp $(SRC)GTKNotas.h
-	$(CC) -c $(CCFLAGS) $(SRC)GTKNotas.cpp -o $(OBJ)GTKNotas.o $(GTK)
-
-$(OBJ)main.o: $(SRC)main.cpp $(SRC)ncurses-notas.h
-	$(CC) -c $(CCFLAGS) $(SRC)main.cpp -o $(OBJ)main.o $(GTK)
+$(OBJ)main.o: $(SRC)main.cpp 
+	$(CC) -c $(CCFLAGS) $(SRC)main.cpp -o $(OBJ)main.o 
 
 debug:all
 	gdb $(TARGET)
