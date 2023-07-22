@@ -1,6 +1,6 @@
 #include <vector>
 #include "Janela.h"
-#include "Tetrade.h"
+#include "../../core/src/Tetrade.h"
 
 class NcursesNotas{
 public:

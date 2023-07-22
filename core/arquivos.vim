@@ -1,6 +1,6 @@
 :edit Makefile
 :tabedit src/Nota.cpp
-:47vsplit src/Nota.h
+:57vsplit src/Nota.h
 :tabedit src/Intervalo.cpp
 :65vsplit src/Intervalo.h
 :tabedit src/Triade.cpp

@@ -1,12 +1,12 @@
 #include <regex>
-#include "Mathematics.h"
+#include "../../../lib-cplusplus/src/Mathematics.h"
 
 #ifndef NOTA_H
 #define NOTA_H
 class Nota {
 public:
 // Constructors
-	Nota(); 
+	Nota() ; 
 	Nota(int); 
 	Nota(int, int, int ); 
 // Sets
