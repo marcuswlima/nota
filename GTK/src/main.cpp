@@ -1,5 +1,6 @@
 #include <gtkmm.h>
 #include <iostream>
+#include <regex>
 using namespace Gtk;
 
 /////////////////////////////////////////
@@ -16,18 +17,33 @@ int main(int argc, char *argv[] ){
 Window * pWindow;
 Entry * e_num_1, * e_num_2, * e_result;
 Button * btn_soma;
+Label * lb_title;
+
+bool eh_numero( std::string str){
+	std::regex re("^[0-9]+$"); //apenas numeros são permito
+	std::smatch match;
+	return std::regex_search( str, match, re);
+}
+
+
 
 void on_btn_soma_clicked(){
 	std::string a = e_num_1->get_text();
 	std::string b = e_num_2->get_text();
 
-	int num1=std::stoi(a);
-	int num2=std::stoi(b);
+	lb_title->set_text("Calculadora basica");
+	if (eh_numero(a) && eh_numero(b)){ 
+		int num1=std::stoi(a);
+		int num2=std::stoi(b);
 
-	e_result->set_text( std::to_string(num1+num2));
+		e_result->set_text( std::to_string(num1+num2));
 
-	e_num_1->set_text("");
-	e_num_2->set_text("");
+		e_num_1->set_text("");
+		e_num_2->set_text("");
+	}else{
+		lb_title->set_text("apenas numeros");
+	}
+
 
 }
 
@@ -44,6 +60,7 @@ int main (int argc, char** argv){
 		refBuilder->get_widget( "e_num_2", e_num_2 );
 		refBuilder->get_widget( "btn_soma", btn_soma );
 		refBuilder->get_widget( "e_result", e_result );
+		refBuilder->get_widget( "lb_title", lb_title );
 	}
 
 	if ( btn_soma ){
