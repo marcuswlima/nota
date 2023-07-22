@@ -1,5 +1,5 @@
 #include <regex>
-#include "../../../lib-cplusplus/src/Mathematics.h"
+#include "Mathematics.h"
 
 #ifndef NOTA_H
 #define NOTA_H

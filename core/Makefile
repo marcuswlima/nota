@@ -17,9 +17,10 @@ OBJS=$(OBJ)Mathematics.o                  \
 
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS) $(NCURSES)
+	rm $(SRC)Mathematics*
  
 $(OBJ)Mathematics.o: $(LIB)Mathematics.cpp $(LIB)Mathematics.h  
-#	cp -v $(LIB)Mathematics* $(SRC)
+	cp -v $(LIB)Mathematics* $(SRC)
 	$(CC) -c $(CCFLAGS) $(LIB)Mathematics.cpp -o $(OBJ)Mathematics.o
 
 $(OBJ)Nota.o: $(SRC)Nota.cpp $(SRC)Nota.h 

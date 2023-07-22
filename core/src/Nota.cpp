@@ -211,9 +211,7 @@ string Nota::Descricao(){
 }
 
 void Nota::ImprimirEmTela(){
-
     cout << this->Descricao()<< " ";
-
 }
 
 /////////////////////////////////////////
@@ -310,6 +308,7 @@ void Nota::up1Tom(){
     this->up1SemiTom();
     this->up1SemiTom();
 }
+
 void Nota::down1Tom(){
     this->down1SemiTom();
     this->down1SemiTom();
@@ -321,8 +320,6 @@ bool Nota::strEhNota(string nota){
 	transform(nota.begin(), nota.end(), nota.begin(), ::toupper);//toUpperCase
 	return regex_search(nota, match, regra);
 }
-
-
 
 /////////////////////////////////////////
 // Implementações privates
@@ -340,7 +337,6 @@ bool Nota::EhNota(string nota){
 
 	return resposta;
 }
-
 
 /////////////////////////////////////////
 // Implementações internas
@@ -368,7 +364,6 @@ bool notaValida( int o, int g, int a ){
 
     return bValido;
 }
-
 
 string iDescricao( int o, int g, int a ){
     string strNota;
@@ -428,9 +423,9 @@ bool PrimeiraMaior(int o1, int g1, int a1, int o2, int g2, int a2){
     return resposta;
 }
 
-
 bool SegundaMaior(int o1, int g1, int a1, int o2, int g2, int a2){
 
 	return !NotaIgual(o1, g1, a1, o2, g2, a2) && !PrimeiraMaior(o1, g1, a1, o2, g2, a2);
 
 }
+
