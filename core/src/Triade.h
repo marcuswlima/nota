@@ -29,11 +29,12 @@ public:
 private:
 	Intervalo i1;
 	Intervalo i2;
-	char tiposTriade[4]={'M','m','d','A'};
+	char tiposTriade[4];
 // ------------------------------------
 	void ImprimirFundamentalEmTela();
 	char RandomizarTipoTriade();
 	string DeduzirTipoTriade();
 	void getTiposTriade(const char *);
+	void popularTipoTriade();
 };
 #endif

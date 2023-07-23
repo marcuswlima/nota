@@ -34,27 +34,7 @@ private:
 		int qtdNotasNaturais;
 		int qtdSemiTons;
 	};
-
-	tRecDadosIntervalo DadosIntervalo[16]={  //0-15
-                                        {"1J",1, 1},
-                                        {"2m",2, 2},
-                                        {"2M",2, 3},
-                                        {"3m",3, 4},
-                                        {"3M",3, 5},
-                                        {"4d",4, 5},
-                                        {"4J",4, 6},
-                                        {"4A",4, 7},
-                                        {"5d",5, 7},
-                                        {"5J",5, 8},
-                                        {"5A",5, 9},
-                                        {"6m",6, 9},
-                                        {"6M",6,10},
-                                        {"7m",7,11},
-                                        {"7M",7,12},
-                                        {"8J",8,13}
-                                    };
-
-
+	tRecDadosIntervalo DadosIntervalo[16];
 // ---------------------------------------
     int DeduzirQdtTons();
     int DeduzirQtdSemiTons();
@@ -64,5 +44,7 @@ private:
 	void ImprimirOrientacaoEmTela();
     void ImprimirTipoIntervaloEmTela();
 	void QuantidadesIntervalo(string, int &, int &);
+	void popularDadosIntervalo();
+	void popularDadosIntervalo(int, string , int , int);
 };
 #endif

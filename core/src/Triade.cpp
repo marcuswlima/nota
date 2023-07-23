@@ -11,18 +11,22 @@ void MontarTriade(Nota, char, Intervalo &, Intervalo &);
 /////////////////////////////////////////
 
 Triade::Triade(){
+	this->popularTipoTriade();
 }
 
 Triade::Triade(int dificuldade){
+	this->popularTipoTriade();
 	this->Randomizar(dificuldade);
 }
 
 Triade::Triade(Nota n,int tipoTriade){
+	this->popularTipoTriade();
 	this->setTriade(n,tipoTriade);
 }
 
 
 Triade::Triade(Intervalo i1, Intervalo i2){
+	this->popularTipoTriade();
     this->setInt1(i1);
     this->setInt2(i2);
 }
@@ -133,7 +137,6 @@ char Triade::RandomizarTipoTriade(){
 	return this->tiposTriade[aleatorio];
 }
 
-
 string Triade::DeduzirTipoTriade(){
 	string resp="";
 
@@ -148,6 +151,12 @@ string Triade::DeduzirTipoTriade(){
 	return resp;
 }
 
+void Triade::popularTipoTriade(){
+	this->tiposTriade[0]='M';
+	this->tiposTriade[1]='m';
+	this->tiposTriade[2]='d';
+	this->tiposTriade[3]='A';
+}
 
 /////////////////////////////////////////
 // Implementações Internas
@@ -157,35 +166,19 @@ void MontarTriade(Nota n, char tipoTriade, Intervalo &i1, Intervalo &i2){
 	Nota temp;
 
 	i1.setN1(n);
-	if (tipoTriade=='M'){
+	
+	if (tipoTriade=='M' || tipoTriade=='A')
 		i1.setN2("3M");
-		temp.setOitava(i1.getN2().getOitava());
-		temp.setGrau(i1.getN2().getGrau());
-		temp.setAcidente(i1.getN2().getAcidente());
-		i2.setN1(temp);
-		i2.setN2("3m");
-	}else if (tipoTriade=='m'){
+	else if (tipoTriade=='m' || tipoTriade=='d')
 		i1.setN2("3m");
-		temp.setOitava(i1.getN2().getOitava());
-		temp.setGrau(i1.getN2().getGrau());
-		temp.setAcidente(i1.getN2().getAcidente());
-		i2.setN1(temp);
+	
+	temp = i1.getN2();//Default Memberwise assignment
+	i2.setN1(temp);
+
+	if (tipoTriade=='m' || tipoTriade=='A')
 		i2.setN2("3M");
-	}else if (tipoTriade=='A'){
-		i1.setN2("3M");
-		temp.setOitava(i1.getN2().getOitava());
-		temp.setGrau(i1.getN2().getGrau());
-		temp.setAcidente(i1.getN2().getAcidente());
-		i2.setN1(temp);
-		i2.setN2("3M");
-	}else if (tipoTriade=='d'){
-		i1.setN2("3m");
-		temp.setOitava(i1.getN2().getOitava());
-		temp.setGrau(i1.getN2().getGrau());
-		temp.setAcidente(i1.getN2().getAcidente());
-		i2.setN1(temp);
+	else if (tipoTriade=='M' || tipoTriade=='d')
 		i2.setN2("3m");
-	}
 
 }
 

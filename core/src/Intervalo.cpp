@@ -11,14 +11,17 @@ void SimplificarIntervalo(Nota, Nota &);
 /////////////////////////////////////////
 Intervalo::Intervalo()
 {
+	this->popularDadosIntervalo();
 }
 
 Intervalo::Intervalo(int dificuldade){
+	this->popularDadosIntervalo();
 	this->Randomizar(dificuldade);
 }
 
 Intervalo::Intervalo(Nota n1, Nota n2)
 {
+	this->popularDadosIntervalo();
     this->setN1(n1);
     this->setN2(n2);
 }
@@ -232,6 +235,31 @@ void Intervalo::QuantidadesIntervalo(string descricao, int &qdtNotasNaturais, in
             break; 
         }
     }
+}
+
+void Intervalo::popularDadosIntervalo(int i, string ti, int qnn, int qst){
+	this->DadosIntervalo[i].tipoIntervalo=ti;
+	this->DadosIntervalo[i].qtdNotasNaturais=qnn;
+	this->DadosIntervalo[i].qtdSemiTons=qst;
+}
+
+void Intervalo::popularDadosIntervalo(){
+	popularDadosIntervalo( 0,"1J",1, 1);
+	popularDadosIntervalo( 1,"2m",2, 2);
+	popularDadosIntervalo( 2,"2M",2, 3);
+	popularDadosIntervalo( 3,"3m",3, 4);
+	popularDadosIntervalo( 4,"3M",3, 5);
+	popularDadosIntervalo( 5,"4d",4, 5);
+	popularDadosIntervalo( 6,"4J",4, 6);
+	popularDadosIntervalo( 7,"4A",4, 7);
+	popularDadosIntervalo( 8,"5d",5, 7);
+	popularDadosIntervalo( 9,"5J",5, 8);
+	popularDadosIntervalo(10,"5A",5, 9);
+	popularDadosIntervalo(11,"6m",6, 9);
+	popularDadosIntervalo(12,"6M",6,10);
+	popularDadosIntervalo(13,"7m",7,11);
+	popularDadosIntervalo(14,"7M",7,12);
+	popularDadosIntervalo(15,"8J",8,13);
 }
 
 /////////////////////////////////
