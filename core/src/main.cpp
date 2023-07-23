@@ -33,11 +33,12 @@ struct tIntervaloResposta {
 /////////////////////////////////////////
 int main(int argc, char *argv[] ){
     srand( time(0) );
-	ToShowParameters(argc, argv);
-
-	TodosIntervalos();
-
-	cout << endl;
+	Nota n1;
+	Nota n2(0);
+	Nota n3(4,1,0);
+//	ToShowParameters(argc, argv);
+//	TodosIntervalos();
+//	cout << endl;
 	return 0; //indica o fim do programa2
 
 }//main

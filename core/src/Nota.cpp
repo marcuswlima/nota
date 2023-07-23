@@ -15,16 +15,20 @@ bool SegundaMaior(int, int , int , int , int , int );
 /////////////////////////////////////////
 Nota::Nota()
 {
+	this->popularDescNota();
+	this->setNota( 4, 1, 0 );
 } 
 
 Nota::Nota(int dificauldade)
 {
-    this->Randomizar(dificauldade);
+	this->popularDescNota();
+	this->Randomizar(dificauldade);
 } 
 
 Nota::Nota(int o, int g, int a)
 {
-    this->setNota( o, g, a );
+	this->popularDescNota();
+	this->setNota( o, g, a );
 } 
 
 /////////////////////////////////////////
@@ -336,6 +340,16 @@ bool Nota::EhNota(string nota){
 	}
 
 	return resposta;
+}
+
+void Nota::popularDescNota(){
+    this->DescNota[0]="DO";
+    this->DescNota[1]="RE";
+    this->DescNota[2]="MI";
+    this->DescNota[3]="FA";
+    this->DescNota[4]="SOL";
+    this->DescNota[5]="LA";
+    this->DescNota[6]="SI";
 }
 
 /////////////////////////////////////////

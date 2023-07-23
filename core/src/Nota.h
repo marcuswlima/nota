@@ -40,11 +40,9 @@ private:
 	int grau;     // 1--7 
 	int acidente; // [-2,0,2] [bb,b,0,#,*]
 	int clave;    // [5-sol,4-fa]
-    string DescNota[7]={"DO","RE",
-		                "MI","FA",
-						"SOL","LA",
-						"SI"};
+	string DescNota[7];
 //----------------------------------
+	void popularDescNota();
 	bool EhNota(string nota);	
 }; 
 #endif
