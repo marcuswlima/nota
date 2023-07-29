@@ -7,13 +7,13 @@ class Nota {
 public:
 // Constructors
 	Nota() ; 
-	Nota(int); 
-	Nota(int, int, int ); 
+	Nota(const int); 
+	Nota(const int, const int, const int ); 
 // Sets
-	void setOitava(int o);
-	void setGrau(int);
-	void setAcidente(int);
-	void setNota(int, int, int);
+	void setOitava(const int);
+	void setGrau(const int);
+	void setAcidente(const int);
+	void setNota(const int, const int, const int);
 	void setNota(string);
 //Gets
 	int getOitava() const;
@@ -25,11 +25,11 @@ public:
 	bool operator>(Nota const&);
 	bool operator<(Nota const&);
 // Padrão
-	void Randomizar(int =1);
+	void Randomizar(const int =1);
 	string Descricao() const;
 	void ImprimirEmTela() const;
-// ---------------------------------
-	Nota qualRelativa(int, int =1);
+// Public
+	Nota qualRelativa(const int, const int =1);
 	void up1SemiTom();
 	void up1Tom();
 	void down1SemiTom();
@@ -42,7 +42,7 @@ private:
 	int clave;    // [5-sol,4-fa]
 	string DescNota[7];
 //----------------------------------
+	bool EhNota(const string nota) const;	
 	void popularDescNota();
-	bool EhNota(string nota) const;	
 }; 
 #endif

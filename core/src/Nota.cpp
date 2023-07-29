@@ -19,13 +19,13 @@ Nota::Nota()
 	this->setNota( 4, 1, 0 );
 } 
 
-Nota::Nota(int dificauldade)
+Nota::Nota(const int dificuldade)
 {
 	this->popularDescNota();
-	this->Randomizar(dificauldade);
+	this->Randomizar(dificuldade);
 } 
 
-Nota::Nota(int o, int g, int a)
+Nota::Nota(const int o, const int g, const int a)
 {
 	this->popularDescNota();
 	this->setNota( o, g, a );
@@ -34,19 +34,19 @@ Nota::Nota(int o, int g, int a)
 //---------------------------------------
 // Sets
 //---------------------------------------
-void Nota::setOitava(int o){
+void Nota::setOitava(const int o){
     oitava = o;
 }
 
-void Nota::setGrau(int g){
+void Nota::setGrau(const int g){
     grau = g;
 }
 
-void Nota::setAcidente(int a){
+void Nota::setAcidente(const int a){
     acidente = a;
 }
 
-void Nota::setNota( int o, int g, int a )
+void Nota::setNota(const int o, const int g, const int a )
 {
     if (notaValida(o,g,a)){
         setOitava(o);
@@ -171,7 +171,7 @@ bool Nota::operator<(Nota const& other){
 //---------------------------------------
 // Padrao
 //---------------------------------------
-void Nota::Randomizar(int in_dificuldade){
+void Nota::Randomizar(const int in_dificuldade){
 
 	int oitava, grau, acidente=0;
 
@@ -216,7 +216,7 @@ void Nota::ImprimirEmTela() const{
 //---------------------------------------
 // Publics
 //---------------------------------------
-Nota Nota::qualRelativa(int relativa, int orientacao){
+Nota Nota::qualRelativa(const int relativa, const int orientacao){
     Nota resposta;
 
     int o=this->getOitava()
@@ -320,7 +320,7 @@ bool Nota::strEhNota(string nota){
 //---------------------------------------
 // Privates
 //---------------------------------------
-bool Nota::EhNota(string nota) const{	
+bool Nota::EhNota(const string nota) const{	
 	bool resposta = false;
 	for (int i=0; i<=7; i++){
 		if ( this->DescNota[i] == nota){
