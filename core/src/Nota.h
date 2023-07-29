@@ -16,18 +16,18 @@ public:
 	void setNota(int, int, int);
 	void setNota(string);
 //Gets
-	int getOitava();
-	int getGrau();
-	int getAcidente();
-	int getId();
+	int getOitava() const;
+	int getGrau() const;
+ 	int getAcidente() const;
+	int getId() const;
 // Operacoes
 	bool operator==(Nota const&);
 	bool operator>(Nota const&);
 	bool operator<(Nota const&);
 // Padrão
 	void Randomizar(int =1);
-	string Descricao();
-	void ImprimirEmTela();
+	string Descricao() const;
+	void ImprimirEmTela() const;
 // ---------------------------------
 	Nota qualRelativa(int, int =1);
 	void up1SemiTom();
@@ -43,6 +43,6 @@ private:
 	string DescNota[7];
 //----------------------------------
 	void popularDescNota();
-	bool EhNota(string nota);	
+	bool EhNota(string nota) const;	
 }; 
 #endif

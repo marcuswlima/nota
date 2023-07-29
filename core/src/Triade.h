@@ -15,26 +15,26 @@ public:
 	void setInt1(Intervalo);
 	void setInt2(Intervalo);
 //Gets
-	Intervalo getInt1();
-	Intervalo getInt2();
-	Nota getFundamental();
-	Nota getTerca();
-	Nota getQuinta();
+	Intervalo getInt1() const;
+	Intervalo getInt2() const;
+	Nota getFundamental() const;
+	Nota getTerca() const;
+	Nota getQuinta() const;
 // Padrao
 	void Randomizar(int dificuldade=1);
-	string GerarDescricao();
-	void ImprimirEmTela();
+	string GerarDescricao() const;
+	void ImprimirEmTela() const;
 // ------------------------------------
-	void ImprimirTipoTriadeEmTela();
+	void ImprimirTipoTriadeEmTela() const;
 private:
 	Intervalo i1;
 	Intervalo i2;
 	char tiposTriade[4];
 // ------------------------------------
-	void ImprimirFundamentalEmTela();
+	void ImprimirFundamentalEmTela() const;
 	char RandomizarTipoTriade();
-	string DeduzirTipoTriade();
-	void getTiposTriade(const char *);
+	string DeduzirTipoTriade() const;
+	void getTiposTriade(const char *) const;
 	void popularTipoTriade();
 };
 #endif

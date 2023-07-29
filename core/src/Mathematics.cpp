@@ -26,6 +26,9 @@ bool multiple (int n1, int n2){
 int CalcMdc(int x, int y){
     int maior=0,menor=0;
 
+	if (x<0) x *= -1;
+	if (y<0) y *= -1;
+
     if (x>y){
         maior=x;
         menor=y;

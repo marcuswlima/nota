@@ -1,8 +1,8 @@
 #include "Nota.h"
 
-/////////////////////////////////////////
+//---------------------------------------
 // Prototipacoes
-/////////////////////////////////////////
+//---------------------------------------
 bool notaValida( int, int, int);
 string iDescricao( int, int, int);
 void MensagemErro( int,int, int, bool);
@@ -10,9 +10,9 @@ bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
 bool SegundaMaior(int, int , int , int , int , int );
 
-/////////////////////////////////////////
+//---------------------------------------
 // construtores
-/////////////////////////////////////////
+//---------------------------------------
 Nota::Nota()
 {
 	this->popularDescNota();
@@ -31,11 +31,9 @@ Nota::Nota(int o, int g, int a)
 	this->setNota( o, g, a );
 } 
 
-/////////////////////////////////////////
+//---------------------------------------
 // Sets
-/////////////////////////////////////////
-
-//Setar atributo oitava
+//---------------------------------------
 void Nota::setOitava(int o){
     oitava = o;
 }
@@ -100,32 +98,31 @@ void Nota::setNota(string str){
 }//setNota
 
 
-/////////////////////////////////////////
-// Gets
-/////////////////////////////////////////
-
-int Nota::getOitava(){
+//---------------------------------------
+// Sets
+//---------------------------------------
+int Nota::getOitava() const{
     return oitava;
 }
 
-int Nota::getGrau(){
+int Nota::getGrau() const{
     return grau;
 }
 
-int Nota::getAcidente(){
+int Nota::getAcidente() const{
     return acidente;
 }
 
-int Nota::getId(){
+int Nota::getId() const{
 	return (this->getOitava()*100)+ 
 		   (this->getGrau()  *10 )+
 		   (this->getAcidente()  )
 			;
 }
 
-//////////////////////////////////////
-//Operacoes 
-//////////////////////////////////////
+//---------------------------------------
+// Operations
+//---------------------------------------
 bool Nota::operator==(Nota const& other){
 	// this->  operador1
 	// other.  operador2
@@ -171,11 +168,9 @@ bool Nota::operator<(Nota const& other){
 
 }
 
-/////////////////////////////////////////
-// Padrão
-/////////////////////////////////////////
-
-// Randomizar uma nota
+//---------------------------------------
+// Padrao
+//---------------------------------------
 void Nota::Randomizar(int in_dificuldade){
 
 	int oitava, grau, acidente=0;
@@ -200,7 +195,7 @@ void Nota::Randomizar(int in_dificuldade){
 
 }
 
-string Nota::Descricao(){
+string Nota::Descricao() const{
     string strNota;
     int o = this->getOitava();
     int g = this->getGrau();
@@ -214,16 +209,13 @@ string Nota::Descricao(){
 
 }
 
-void Nota::ImprimirEmTela(){
+void Nota::ImprimirEmTela() const{
     cout << this->Descricao()<< " ";
 }
 
-/////////////////////////////////////////
-// Implementações publics
-/////////////////////////////////////////
-
-
-// Retornar a relativa
+//---------------------------------------
+// Publics
+//---------------------------------------
 Nota Nota::qualRelativa(int relativa, int orientacao){
     Nota resposta;
 
@@ -325,11 +317,10 @@ bool Nota::strEhNota(string nota){
 	return regex_search(nota, match, regra);
 }
 
-/////////////////////////////////////////
-// Implementações privates
-/////////////////////////////////////////
-
-bool Nota::EhNota(string nota){	
+//---------------------------------------
+// Privates
+//---------------------------------------
+bool Nota::EhNota(string nota) const{	
 	bool resposta = false;
 	for (int i=0; i<=7; i++){
 		if ( this->DescNota[i] == nota){
@@ -352,11 +343,9 @@ void Nota::popularDescNota(){
     this->DescNota[6]="SI";
 }
 
-/////////////////////////////////////////
-// Implementações internas
-/////////////////////////////////////////
-
-// Validar uma nota
+//---------------------------------------
+// Intervals
+//---------------------------------------
 bool notaValida( int o, int g, int a ){
 
     /* 

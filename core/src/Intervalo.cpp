@@ -1,14 +1,14 @@
 #include "Intervalo.h"
 
-/////////////////////////////////////////
-// Prototipações
-/////////////////////////////////////////
+//---------------------------------------
+// Prototipations
+//---------------------------------------
 int distanciaEmSemiTons(Nota,Nota);
 void SimplificarIntervalo(Nota, Nota &);
 
-/////////////////////////////////////////
-// construtores
-/////////////////////////////////////////
+//---------------------------------------
+// Constructors
+//---------------------------------------
 Intervalo::Intervalo()
 {
 	this->popularDadosIntervalo();
@@ -26,9 +26,9 @@ Intervalo::Intervalo(Nota n1, Nota n2)
     this->setN2(n2);
 }
     
-/////////////////////////////////////////
+//---------------------------------------
 // Sets
-/////////////////////////////////////////
+//---------------------------------------
 void Intervalo::setN1(Nota n){
     this->n1 = n;
 }
@@ -71,21 +71,20 @@ void Intervalo::setN2(string descIntervalo, int orientacao){
 
 }
 
-/////////////////////////////////////////
+//---------------------------------------
 // Gets
-/////////////////////////////////////////
-
-Nota Intervalo::getN1(){
+//---------------------------------------
+Nota Intervalo::getN1() const{
     return n1;
 }
 
-Nota Intervalo::getN2(){
+Nota Intervalo::getN2() const{
     return n2;
 }
 
-/////////////////////////////////////////
-// Padrão
-/////////////////////////////////////////
+//---------------------------------------
+// Padrao
+//---------------------------------------
 void Intervalo::Randomizar(int dificuldade){
     Nota n;
 
@@ -95,7 +94,7 @@ void Intervalo::Randomizar(int dificuldade){
     this->setN2(n);
 }
 
-string Intervalo::Descricao(){
+string Intervalo::Descricao() const{
     string resposta="";
 
     if (this->getN1().Descricao()!=""){
@@ -111,15 +110,14 @@ string Intervalo::Descricao(){
 }//Intervalo::Descricao
 
 
-void Intervalo::ImprimirEmTela(){
+void Intervalo::ImprimirEmTela() const{
     cout << this->Descricao() << " ";
 }
 
 
-/////////////////////////////////////////
-// Implementation public
-/////////////////////////////////////////
-
+//---------------------------------------
+// Publics
+//---------------------------------------
 string Intervalo::DeduzirTipoIntervalo(){
     string resposta="er";
     int qtdNotas = this->DeduzirQdtTons();
@@ -161,10 +159,10 @@ void Intervalo::getTiposIntervalo(string * const arr){
 		arr[i]=this->DadosIntervalo[i].tipoIntervalo;
 	}
 }
-/////////////////////////////////////////
-// Implementation private
-/////////////////////////////////////////
 
+//---------------------------------------
+// Privates
+//---------------------------------------
 int Intervalo::DeduzirOrientacao(){
 	return (this->getN1() < this->getN2())
                  ? 1
@@ -262,10 +260,9 @@ void Intervalo::popularDadosIntervalo(){
 	popularDadosIntervalo(15,"8J",8,13);
 }
 
-/////////////////////////////////
-// Implementações Internas
-// //////////////////////////////
-
+//---------------------------------------
+// Internals
+//---------------------------------------
 int umaoitava[13]={0,1,0,2,0,3,4,0,5,0,6,0,7};
 int RetornarSubescrito(int n){
     int resposta=0;

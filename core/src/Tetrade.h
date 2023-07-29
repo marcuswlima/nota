@@ -12,11 +12,11 @@ public:
 //sets
 	void setInt3(Intervalo);
 //gets
-	Intervalo getInt3();
+	Intervalo getInt3() const;
 // Padrao
 	void Randomizar(int =1);
-	string GerarDescricao();
-	void ImprimirEmTela();
+	string GerarDescricao() const;
+	void ImprimirEmTela() const;
 //---------------------------
 private:
 	Intervalo i3;

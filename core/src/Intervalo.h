@@ -14,12 +14,12 @@ public:
     void setN2(string ,int =1);
     void SetIntervalo(Nota,Nota);
 // Gets
-    Nota getN1();
-    Nota getN2();
+    Nota getN1() const;
+    Nota getN2() const;
 // Padrão
     void Randomizar(int =1);
-    string Descricao();
-    void ImprimirEmTela();
+    string Descricao() const;
+    void ImprimirEmTela() const;
 //----------------------------------	
     string DeduzirTipoIntervalo();
 	bool strEhIntervalo(string);

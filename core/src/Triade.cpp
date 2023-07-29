@@ -1,15 +1,13 @@
 #include "Triade.h"
 
-/////////////////////////////////////////
-// Prototipações
-/////////////////////////////////////////
-
+//---------------------------------------
+// Prototipations
+//---------------------------------------
 void MontarTriade(Nota, char, Intervalo &, Intervalo &);
 
-/////////////////////////////////////////
-// construtores
-/////////////////////////////////////////
-
+//---------------------------------------
+// Constructors
+//---------------------------------------
 Triade::Triade(){
 	this->popularTipoTriade();
 }
@@ -31,9 +29,9 @@ Triade::Triade(Intervalo i1, Intervalo i2){
     this->setInt2(i2);
 }
 
-/////////////////////////////////////////
+//---------------------------------------
 // Sets
-/////////////////////////////////////////
+//---------------------------------------
 void Triade::setInt1(Intervalo i){
     i1 = i;
 }
@@ -51,34 +49,33 @@ void Triade::setTriade(Nota n,int tipoTriade){
     this->setInt2(i2);
 }//setTriade(Nota n,int tipoTriade)
 
-/////////////////////////////////////////
+//---------------------------------------
 // Gets
-/////////////////////////////////////////
-
-Intervalo Triade::getInt1(){
+//---------------------------------------
+Intervalo Triade::getInt1()const{
     return i1;
 }//getInt1
 
-Intervalo Triade::getInt2(){
+Intervalo Triade::getInt2()const
+{
     return i2;
 }
 
-Nota Triade::getFundamental(){
+Nota Triade::getFundamental() const{
     return this->getInt1().getN1();
 }
 
-Nota Triade::getTerca(){
+Nota Triade::getTerca() const{
     return this->getInt1().getN2();
 }
 
-Nota Triade::getQuinta(){
+Nota Triade::getQuinta()const{
     return this->getInt2().getN2();
 }
 
-/////////////////////////////////////////
-// Padrão
-/////////////////////////////////////////
-
+//---------------------------------------
+// Padrao
+//---------------------------------------
 void Triade::Randomizar(int dificuldade){
 
 	char      tipoTriade=RandomizarTipoTriade();
@@ -92,7 +89,7 @@ void Triade::Randomizar(int dificuldade){
 
 }//Randomizar
 
-string Triade::GerarDescricao(){
+string Triade::GerarDescricao() const{
     string resposta="[", temp; 
 
 	temp = this->getFundamental().Descricao() + "-";
@@ -109,23 +106,21 @@ string Triade::GerarDescricao(){
     return resposta;
 }//GerarDescricao
 
-void Triade::ImprimirEmTela(){
+void Triade::ImprimirEmTela() const{
     cout << this->GerarDescricao();
 }
 
-/////////////////////////////////////////
-// Implementações public
-/////////////////////////////////////////
-
-void Triade::ImprimirTipoTriadeEmTela(){
+//---------------------------------------
+// Publics
+//---------------------------------------
+void Triade::ImprimirTipoTriadeEmTela() const{
 	cout << this->DeduzirTipoTriade();
 }//ImprimirTipoTriadeEmTela
 
-/////////////////////////////////////////
-// Implementações privadas
-/////////////////////////////////////////
-
-void Triade::ImprimirFundamentalEmTela(){
+//---------------------------------------
+// Privates
+//---------------------------------------
+void Triade::ImprimirFundamentalEmTela() const{
     cout << this->getFundamental().Descricao();
 }
 
@@ -137,7 +132,7 @@ char Triade::RandomizarTipoTriade(){
 	return this->tiposTriade[aleatorio];
 }
 
-string Triade::DeduzirTipoTriade(){
+string Triade::DeduzirTipoTriade() const{
 	string resp="";
 
 	resp += this->getInt1().DeduzirTipoIntervalo();
@@ -158,9 +153,9 @@ void Triade::popularTipoTriade(){
 	this->tiposTriade[3]='A';
 }
 
-/////////////////////////////////////////
-// Implementações Internas
-/////////////////////////////////////////
+//---------------------------------------
+// Internals
+//---------------------------------------
 void MontarTriade(Nota n, char tipoTriade, Intervalo &i1, Intervalo &i2){
 
 	Nota temp;
