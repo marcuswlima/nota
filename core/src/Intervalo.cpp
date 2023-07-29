@@ -14,12 +14,12 @@ Intervalo::Intervalo()
 	this->popularDadosIntervalo();
 }
 
-Intervalo::Intervalo(int dificuldade){
+Intervalo::Intervalo(const int dificuldade){
 	this->popularDadosIntervalo();
 	this->Randomizar(dificuldade);
 }
 
-Intervalo::Intervalo(Nota n1, Nota n2)
+Intervalo::Intervalo(const Nota n1, const Nota n2)
 {
 	this->popularDadosIntervalo();
     this->setN1(n1);
@@ -29,16 +29,16 @@ Intervalo::Intervalo(Nota n1, Nota n2)
 //---------------------------------------
 // Sets
 //---------------------------------------
-void Intervalo::setN1(Nota n){
+void Intervalo::setN1(const Nota n){
     this->n1 = n;
 }
 
-void Intervalo::setN2(Nota in_n2){
-    SimplificarIntervalo(this->n1,in_n2);
-    this->n2 = in_n2;
+void Intervalo::setN2(Nota p_n2){
+    SimplificarIntervalo(this->n1,p_n2);
+    this->n2 = p_n2;
 }
 
-void Intervalo::setN2(string descIntervalo, int orientacao){
+void Intervalo::setN2(const string descIntervalo, const int orientacao){
 
     Nota n1,n2;
     int qdtNotasDoIntervaloDesejado=0, 
@@ -85,7 +85,7 @@ Nota Intervalo::getN2() const{
 //---------------------------------------
 // Padrao
 //---------------------------------------
-void Intervalo::Randomizar(int dificuldade){
+void Intervalo::Randomizar(const int dificuldade){
     Nota n;
 
     n.Randomizar(dificuldade);
@@ -118,7 +118,7 @@ void Intervalo::ImprimirEmTela() const{
 //---------------------------------------
 // Publics
 //---------------------------------------
-string Intervalo::DeduzirTipoIntervalo(){
+string Intervalo::DeduzirTipoIntervalo() {
     string resposta="er";
     int qtdNotas = this->DeduzirQdtTons();
     int qtdSemiTons = this->DeduzirQtdSemiTons();
@@ -169,7 +169,7 @@ int Intervalo::DeduzirOrientacao(){
                  : -1;
 }
 
-int Intervalo::DeduzirQdtTons(){
+int Intervalo::DeduzirQdtTons() {
     int resposta=0,
 		g1 = this->getN1().getGrau(),
 		g2 = this->getN2().getGrau()
@@ -224,7 +224,7 @@ void Intervalo::ImprimirQtdSemiTonsEmTela(){
     cout << this->DeduzirQtdSemiTons() << " ";
 }
 
-void Intervalo::QuantidadesIntervalo(string descricao, int &qdtNotasNaturais, int &qtdSemiTons){
+void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNaturais, int &qtdSemiTons){
     
 	for (int i=0; i<=15; i++){
         if (this->DadosIntervalo[i].tipoIntervalo==descricao){
@@ -235,7 +235,7 @@ void Intervalo::QuantidadesIntervalo(string descricao, int &qdtNotasNaturais, in
     }
 }
 
-void Intervalo::popularDadosIntervalo(int i, string ti, int qnn, int qst){
+void Intervalo::popularDadosIntervalo(const int i, const string ti, const int qnn, const int qst){
 	this->DadosIntervalo[i].tipoIntervalo=ti;
 	this->DadosIntervalo[i].qtdNotasNaturais=qnn;
 	this->DadosIntervalo[i].qtdSemiTons=qst;

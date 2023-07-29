@@ -1,36 +1,17 @@
 #include "Tetrade.h"
 
-/////////////////////////////////////////
-// Prototipações
-/////////////////////////////////////////
-
-//void TestarIntervalo();
-//void TestarTriade();
-//void TestarNota();
+//--------------------------------------
+// Prototipations
+//--------------------------------------
+void TestarIntervalo();
+void TestarTriade();
+void TestarNota();
 void TodosIntervalos();
 void ToShowParameters(int , char *[]);
-//void Splash();
 
-/////////////////////////////////////////
-// Elelementos Globais
-/////////////////////////////////////////
-
-enum Saidas{
-	sucesso,
-	erro_leitura,
-	erro_permissao
-};
-
-
-struct tIntervaloResposta {
-	Intervalo intervalo;
-	string questao;
-	string resposta;
-};
-
-/////////////////////////////////////////
+//--------------------------------------
 // Main
-/////////////////////////////////////////
+//--------------------------------------
 int main(int argc, char *argv[] ){
     srand( time(0) );
 	Nota n1;
@@ -54,114 +35,6 @@ void ToShowParameters(int argc, char *argv[]){
 
 }
 
-/*
-void UC05(){
-
-    Triade triade;
-    int quantidade=ObterNumeroNaFaixa("Informe a quantidade[1:10] -> ",1,10);
-
-    struct tNoh {
-		Triade triade;
-		int diff3;
-		int diff5;
-    };
-    tNoh nohs[quantidade];
-
-    // Popular arrray de struct
-    for(int i=0; i<=quantidade-1; i++){
-		triade.Randomizar();
-		nohs[i].triade=triade;
-		nohs[i].diff3=3;
-		nohs[i].diff5=5;
-    }
-
-    // Imprimir 5 nota
-    for(int i=0; i<=quantidade-1; i++){
-		nohs[i].triade.getQuinta().ImprimirEmTela();
-		cout << "\t" << nohs[i].diff5 << "\t";
-    }
-    cout << endl;
-
-    // Imprimir 3 nota
-    for(int i=0; i<=quantidade-1; i++){
-		nohs[i].triade.getTerca().ImprimirEmTela();
-		cout << "\t" << nohs[i].diff3 << "\t";
-    }
-    cout << endl;
-
-    // Imprimir fundamental
-    for(int i=0; i<=quantidade-1; i++){
-		nohs[i].triade.getFundamental().ImprimirEmTela();
-		cout << "\t\t";
-    }
-    cout << endl;
-}
-
-
-void UC06(){
-
-    Triade triade;
-    int quantidade=ObterNumeroNaFaixa("Informe a quantidade[1:10] -> ",1,10), inversao;
-
-    struct tNoh {
-		Triade triade;
-		int inversao;
-		int diff3;
-		int diff5;
-    };
-    tNoh nohs[quantidade];
-
-    // Popular arrray de struct
-    for(int i=0; i<=quantidade-1; i++){
-		triade.Randomizar();
-		nohs[i].triade=triade;
-
-		nohs[i].inversao = GerarInteiro(1,2);
-
-		if (nohs[i].inversao == 1){
-			nohs[i].diff5=6;
-			nohs[i].diff3=3;
-		}
-		else if (nohs[i].inversao == 2){
-			nohs[i].diff5=6;
-			nohs[i].diff3=4;
-		}
-    }
-
-    cout << endl;
-    cout << endl;
-
-    // Imprimir 5 nota
-    for(int i=0; i<=quantidade-1; i++){
-		(nohs[i].inversao == 1) ? 
-			nohs[i].triade.getFundamental().ImprimirEmTela() : 
-			nohs[i].triade.getTerca().ImprimirEmTela();
-		cout << "\t" << nohs[i].diff5 << "\t";
-	    
-    }
-    cout << endl;
-
-    // Imprimir 3 nota
-    for(int i=0; i<=quantidade-1; i++){
-		(nohs[i].inversao == 1) ?
-			nohs[i].triade.getQuinta().ImprimirEmTela() : 
-			nohs[i].triade.getFundamental().ImprimirEmTela();
-		cout << "\t" << nohs[i].diff3 << "\t";
-	    
-    }
-    cout << endl;
-
-    // Imprimir o baixo 
-    for(int i=0; i<=quantidade-1; i++){
-		(nohs[i].inversao == 1) ? 
-			nohs[i].triade.getTerca().ImprimirEmTela() : 
-			nohs[i].triade.getQuinta().ImprimirEmTela();
-		cout << "\t\t";
-    }
-
-
-}
-*/
 void TestarTriade(){
 	Nota n(3,1,0);
     Triade t;

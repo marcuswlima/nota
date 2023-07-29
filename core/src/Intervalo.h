@@ -6,22 +6,21 @@ class Intervalo {
 public:
 // Constructors
     Intervalo();
-    Intervalo(int);
-    Intervalo(Nota,Nota);
+    Intervalo(const int);
+    Intervalo(const Nota, const Nota);
 // Sets
-    void setN1(Nota);
+    void setN1(const Nota);
     void setN2(Nota);
-    void setN2(string ,int =1);
-    void SetIntervalo(Nota,Nota);
+    void setN2(const string , const int =1);
 // Gets
     Nota getN1() const;
     Nota getN2() const;
 // Padrão
-    void Randomizar(int =1);
+    void Randomizar(const int =1);
     string Descricao() const;
     void ImprimirEmTela() const;
 //----------------------------------	
-    string DeduzirTipoIntervalo();
+	string DeduzirTipoIntervalo() ;
 	bool strEhIntervalo(string);
 	string OrientacaoEmString();
 	void getTiposIntervalo(string * const);
@@ -36,15 +35,15 @@ private:
 	};
 	tRecDadosIntervalo DadosIntervalo[16];
 // ---------------------------------------
-    int DeduzirQdtTons();
+    int DeduzirQdtTons() ;
     int DeduzirQtdSemiTons();
     int DeduzirOrientacao();
     void ImprimirQdtTonsEmTela();
     void ImprimirQtdSemiTonsEmTela();
 	void ImprimirOrientacaoEmTela();
     void ImprimirTipoIntervaloEmTela();
-	void QuantidadesIntervalo(string, int &, int &);
+	void QuantidadesIntervalo(const string, int &, int &);
+	void popularDadosIntervalo(const int,const string,const int,const int);
 	void popularDadosIntervalo();
-	void popularDadosIntervalo(int, string , int , int);
 };
 #endif
