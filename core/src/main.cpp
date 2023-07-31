@@ -7,6 +7,7 @@ void TestarIntervalo();
 void TestarTriade();
 void TestarNota();
 void TodosIntervalos();
+void TodasTriades();
 void ToShowParameters(int , char *[]);
 
 //--------------------------------------
@@ -14,16 +15,27 @@ void ToShowParameters(int , char *[]);
 //--------------------------------------
 int main(int argc, char *argv[] ){
     srand( time(0) );
-	Nota n1;
-	Nota n2(0);
-	Nota n3(4,1,0);
 //	ToShowParameters(argc, argv);
 //	TodosIntervalos();
+	TodasTriades();
 //	cout << endl;
 	return 0; //indica o fim do programa2
 
 }//main
 
+void TodasTriades(){
+
+	char tiposTriades[4];
+	Nota n(4,1,0);	
+	Triade t;
+	t.setTriade(n,'M');
+	cout << t.Descricao();
+	cout << '\n';
+	t.setTriade(n,'m');
+	cout << t.Descricao();
+	cout << '\n';
+	
+}
 void ToShowParameters(int argc, char *argv[]){
 	if (argc > 1){
 		for (int i=0 ; i<argc ; i++){

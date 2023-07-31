@@ -15,7 +15,7 @@ Triade::Triade(const int dificuldade){
 	this->Randomizar(dificuldade);
 }
 
-Triade::Triade(const Nota n,const int tipoTriade){
+Triade::Triade(const Nota n,const char tipoTriade){
 	this->setTriade(n,tipoTriade);
 }
 
@@ -35,7 +35,7 @@ void Triade::setInt2(const Intervalo i){
     i2 = i;
 }
 
-void Triade::setTriade(const Nota n,const int tipoTriade){
+void Triade::setTriade(const Nota n,const char tipoTriade){
 	Intervalo i1, i2;
 
 	MontarTriade(n,tipoTriade,i1,i2);
@@ -84,7 +84,7 @@ void Triade::Randomizar(int dificuldade){
 
 }//Randomizar
 
-string Triade::GerarDescricao() const{
+string Triade::Descricao() const{
     string resposta="[", temp; 
 
 	temp = this->getFundamental().Descricao() + "-";
@@ -102,7 +102,7 @@ string Triade::GerarDescricao() const{
 }//GerarDescricao
 
 void Triade::ImprimirEmTela() const{
-    cout << this->GerarDescricao();
+    cout << this->Descricao();
 }
 
 //---------------------------------------
@@ -111,6 +111,11 @@ void Triade::ImprimirEmTela() const{
 void Triade::ImprimirTipoTriadeEmTela() const{
 	cout << this->DeduzirTipoTriade();
 }//ImprimirTipoTriadeEmTela
+ //
+
+void Triade::getTiposTriade(char * const arr){
+	arr = this->tiposTriade;
+}
 
 //---------------------------------------
 // Privates

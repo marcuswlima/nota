@@ -7,12 +7,12 @@ public:
 // Constructors
 	Triade();
 	Triade(const int);
-	Triade(const Nota,const int);
+	Triade(const Nota,const char);
 	Triade(const Intervalo, const Intervalo);
 // Sets
 	void setInt1(const Intervalo);
 	void setInt2(const Intervalo);
-	void setTriade(const Nota, const int);
+	void setTriade(const Nota, const char);
 //Gets
 	Intervalo getInt1() const;
 	Intervalo getInt2() const;
@@ -21,10 +21,11 @@ public:
 	Nota getQuinta() const;
 // Padrao
 	void Randomizar(int dificuldade=1);
-	string GerarDescricao() const;
+	string Descricao() const;
 	void ImprimirEmTela() const;
 // ------------------------------------
 	void ImprimirTipoTriadeEmTela() const;
+	void getTiposTriade(char * const);
 private:
 	Intervalo i1;
 	Intervalo i2;
