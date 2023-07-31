@@ -6,7 +6,7 @@
 :tabedit src/Triade.cpp
 :54vsplit src/Triade.h
 :tabedit src/Tetrade.cpp
-:38vsplit src/Tetrade.h
+:48vsplit src/Tetrade.h
 :tabedit src/main.cpp
 :tabfirst
 

@@ -25,7 +25,7 @@ public:
 	void ImprimirEmTela() const;
 // ------------------------------------
 	void ImprimirTipoTriadeEmTela() const;
-	void getTiposTriade(char * const);
+	void getTiposTriade( char *);
 private:
 	Intervalo i1;
 	Intervalo i2;
@@ -34,6 +34,6 @@ private:
 	void ImprimirFundamentalEmTela() const;
 	char RandomizarTipoTriade();
 	string DeduzirTipoTriade() const;
-	void getTiposTriade(char *) const;
+//	void getTiposTriade(char *) const;
 };
 #endif

@@ -25,7 +25,7 @@ public:
 	bool operator>(Nota const&);
 	bool operator<(Nota const&);
 	void operator=(Nota const&);
-// Padrão
+// Padrao
 	void Randomizar(const int =1);
 	string Descricao() const;
 	void ImprimirEmTela() const;

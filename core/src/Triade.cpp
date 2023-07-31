@@ -113,7 +113,7 @@ void Triade::ImprimirTipoTriadeEmTela() const{
 }//ImprimirTipoTriadeEmTela
  //
 
-void Triade::getTiposTriade( char * arr){
+void Triade::getTiposTriade( char * arr) {
 	arr[0] = this->tiposTriade[0];
 	arr[1] = this->tiposTriade[1];
 	arr[2] = this->tiposTriade[2];

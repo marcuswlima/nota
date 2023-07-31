@@ -16,8 +16,8 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 //	ToShowParameters(argc, argv);
-//	TodosIntervalos();
-	TodasTriades();
+	TodosIntervalos();
+//	TodasTriades();
 //	cout << endl;
 	return 0; //indica o fim do programa2
 
