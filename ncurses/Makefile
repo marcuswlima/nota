@@ -11,7 +11,7 @@ CCFLAGS=$(DEBUG) $(OPT) $(WARN)
 LD=g++
 GTK=$$(pkg-config gtkmm-3.0 --cflags --libs) -export-dynamic
 NCURSES=-lncurses
-OBJS=$(OBJ)main.o $(OBJ)ncurses-notas.o $(OBJ)Tetrade.o $(OBJ)Triade.o $(OBJ)Intervalo.o $(OBJ)Janela.o $(OBJ)Nota.o $(OBJ)Mathematics.o
+OBJS=$(OBJ)Mathematics.o $(OBJ)Nota.o $(OBJ)Intervalo.o $(OBJ)Triade.o $(OBJ)Tetrade.o $(OBJ)Janela.o $(OBJ)ncurses-notas.o $(OBJ)main.o 
 
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS) $(NCURSES)
