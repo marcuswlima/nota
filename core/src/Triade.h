@@ -6,14 +6,13 @@ class Triade{
 public:
 // Constructors
 	Triade();
-	Triade(int);
-	Triade(Nota,int);
-	Triade(Intervalo, Intervalo);
+	Triade(const int);
+	Triade(const Nota,const int);
+	Triade(const Intervalo, const Intervalo);
 // Sets
-	void setTriade(Intervalo, Intervalo);
-	void setTriade(Nota, int);
-	void setInt1(Intervalo);
-	void setInt2(Intervalo);
+	void setInt1(const Intervalo);
+	void setInt2(const Intervalo);
+	void setTriade(const Nota, const int);
 //Gets
 	Intervalo getInt1() const;
 	Intervalo getInt2() const;
@@ -29,12 +28,11 @@ public:
 private:
 	Intervalo i1;
 	Intervalo i2;
-	char tiposTriade[4];
+	const char tiposTriade[4]={'M','m','d','A'};
 // ------------------------------------
 	void ImprimirFundamentalEmTela() const;
 	char RandomizarTipoTriade();
 	string DeduzirTipoTriade() const;
 	void getTiposTriade(const char *) const;
-	void popularTipoTriade();
 };
 #endif

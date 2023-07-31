@@ -24,6 +24,7 @@ public:
 	bool operator==(Nota const&);
 	bool operator>(Nota const&);
 	bool operator<(Nota const&);
+	void operator=(Nota const&);
 // Padrão
 	void Randomizar(const int =1);
 	string Descricao() const;
@@ -40,9 +41,9 @@ private:
 	int grau;     // 1--7 
 	int acidente; // [-2,0,2] [bb,b,0,#,*]
 	int clave;    // [5-sol,4-fa]
-	string DescNota[7];
+	const string NomeNota[7]={"DO","RE","MI","FA"
+	                          "SOL","LA","SI"};
 //----------------------------------
 	bool EhNota(const string nota) const;	
-	void popularDescNota();
 }; 
 #endif

@@ -15,19 +15,16 @@ bool SegundaMaior(int, int , int , int , int , int );
 //---------------------------------------
 Nota::Nota()
 {
-	this->popularDescNota();
 	this->setNota( 4, 1, 0 );
 } 
 
 Nota::Nota(const int dificuldade)
 {
-	this->popularDescNota();
 	this->Randomizar(dificuldade);
 } 
 
 Nota::Nota(const int o, const int g, const int a)
 {
-	this->popularDescNota();
 	this->setNota( o, g, a );
 } 
 
@@ -66,7 +63,7 @@ void Nota::setNota(string str){
 	
 	regex regra("DO");
 	for(int i=0; i<=7;i++){
-		regra = this->DescNota[i];
+		regra = this->NomeNota[i];
 		if ( regex_search(str, match, regra) ){
 			g = i+1;
 			break;
@@ -166,6 +163,14 @@ bool Nota::operator<(Nota const& other){
 					    other.acidente
 						);
 
+}
+
+void Nota::operator=(Nota const& other){
+	// this->  operador1
+	// other.  operador2
+	this->setOitava(other.getOitava());
+	this->setGrau(other.getGrau());
+	this->setAcidente(other.getAcidente());
 }
 
 //---------------------------------------
@@ -323,7 +328,7 @@ bool Nota::strEhNota(string nota){
 bool Nota::EhNota(const string nota) const{	
 	bool resposta = false;
 	for (int i=0; i<=7; i++){
-		if ( this->DescNota[i] == nota){
+		if ( this->NomeNota[i] == nota){
 			resposta=true;
 			break;
 		}
@@ -331,16 +336,6 @@ bool Nota::EhNota(const string nota) const{
 	}
 
 	return resposta;
-}
-
-void Nota::popularDescNota(){
-    this->DescNota[0]="DO";
-    this->DescNota[1]="RE";
-    this->DescNota[2]="MI";
-    this->DescNota[3]="FA";
-    this->DescNota[4]="SOL";
-    this->DescNota[5]="LA";
-    this->DescNota[6]="SI";
 }
 
 //---------------------------------------

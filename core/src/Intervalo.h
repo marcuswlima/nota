@@ -15,6 +15,8 @@ public:
 // Gets
     Nota getN1() const;
     Nota getN2() const;
+// Operacoes
+	void operator=(Nota const&);
 // Padrão
     void Randomizar(const int =1);
     string Descricao() const;

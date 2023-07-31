@@ -9,22 +9,17 @@ void MontarTriade(Nota, char, Intervalo &, Intervalo &);
 // Constructors
 //---------------------------------------
 Triade::Triade(){
-	this->popularTipoTriade();
 }
 
-Triade::Triade(int dificuldade){
-	this->popularTipoTriade();
+Triade::Triade(const int dificuldade){
 	this->Randomizar(dificuldade);
 }
 
-Triade::Triade(Nota n,int tipoTriade){
-	this->popularTipoTriade();
+Triade::Triade(const Nota n,const int tipoTriade){
 	this->setTriade(n,tipoTriade);
 }
 
-
-Triade::Triade(Intervalo i1, Intervalo i2){
-	this->popularTipoTriade();
+Triade::Triade(const Intervalo i1, const Intervalo i2){
     this->setInt1(i1);
     this->setInt2(i2);
 }
@@ -32,22 +27,22 @@ Triade::Triade(Intervalo i1, Intervalo i2){
 //---------------------------------------
 // Sets
 //---------------------------------------
-void Triade::setInt1(Intervalo i){
+void Triade::setInt1(const Intervalo i){
     i1 = i;
 }
 
-void Triade::setInt2(Intervalo i){
+void Triade::setInt2(const Intervalo i){
     i2 = i;
 }
 
-void Triade::setTriade(Nota n,int tipoTriade){
+void Triade::setTriade(const Nota n,const int tipoTriade){
 	Intervalo i1, i2;
 
 	MontarTriade(n,tipoTriade,i1,i2);
     
 	this->setInt1(i1);
     this->setInt2(i2);
-}//setTriade(Nota n,int tipoTriade)
+}
 
 //---------------------------------------
 // Gets
@@ -145,14 +140,6 @@ string Triade::DeduzirTipoTriade() const{
 	
 	return resp;
 }
-
-void Triade::popularTipoTriade(){
-	this->tiposTriade[0]='M';
-	this->tiposTriade[1]='m';
-	this->tiposTriade[2]='d';
-	this->tiposTriade[3]='A';
-}
-
 //---------------------------------------
 // Internals
 //---------------------------------------
