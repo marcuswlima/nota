@@ -25,16 +25,40 @@ int main(int argc, char *argv[] ){
 
 void TodasTriades(){
 
-	char tiposTriades[4];
 	Nota n(4,1,0);	
 	Triade t;
-	t.setTriade(n,'M');
-	cout << t.Descricao();
+	char tiposTriades[4];
+	t.getTiposTriade(tiposTriades);
+
+	for (int y=1;y<=12;y++){
+
+		for (int i=0;i<=3;i++){
+			t.setTriade(n,tiposTriades[i]);
+			cout << t.Descricao();
+			cout << "\t\t";
+		}
+		cout << '\n';
+
+		n.up1SemiTom();
+
+	}
+
 	cout << '\n';
-	t.setTriade(n,'m');
-	cout << t.Descricao();
-	cout << '\n';
-	
+
+//	n.down1SemiTom();
+	for (int y=1;y<=13;y++){
+
+		for (int i=0;i<=3;i++){
+			t.setTriade(n,tiposTriades[i]);
+			cout << t.Descricao();
+			cout << "\t\t";
+		}
+		cout << '\n';
+
+		n.down1SemiTom();
+
+	}
+
 }
 void ToShowParameters(int argc, char *argv[]){
 	if (argc > 1){

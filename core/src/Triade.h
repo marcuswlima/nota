@@ -34,6 +34,6 @@ private:
 	void ImprimirFundamentalEmTela() const;
 	char RandomizarTipoTriade();
 	string DeduzirTipoTriade() const;
-	void getTiposTriade(const char *) const;
+	void getTiposTriade(char *) const;
 };
 #endif

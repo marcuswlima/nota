@@ -87,10 +87,10 @@ void Triade::Randomizar(int dificuldade){
 string Triade::Descricao() const{
     string resposta="[", temp; 
 
-	temp = this->getFundamental().Descricao() + "-";
+	temp = this->getFundamental().Descricao() + "\t";
     if (temp!="") resposta+=temp;
 
-    temp = this->getTerca().Descricao() + "-";
+    temp = this->getTerca().Descricao() + "\t";
     if (temp!="") resposta+=temp;
 
     temp = this->getQuinta().Descricao();
@@ -113,8 +113,11 @@ void Triade::ImprimirTipoTriadeEmTela() const{
 }//ImprimirTipoTriadeEmTela
  //
 
-void Triade::getTiposTriade(char * const arr){
-	arr = this->tiposTriade;
+void Triade::getTiposTriade( char * arr){
+	arr[0] = this->tiposTriade[0];
+	arr[1] = this->tiposTriade[1];
+	arr[2] = this->tiposTriade[2];
+	arr[3] = this->tiposTriade[3];
 }
 
 //---------------------------------------
