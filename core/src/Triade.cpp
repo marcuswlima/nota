@@ -82,7 +82,7 @@ void Triade::Randomizar(const int dificuldade){
 	this->setInt1(i1);
     this->setInt2(i2);
 
-}//Randomizar
+}
 
 string Triade::Descricao() const{
     string resposta="[", temp; 

@@ -22,7 +22,7 @@ $(OBJ)Mathematics.o: $(LIB)Mathematics.cpp $(LIB)Mathematics.h
 	$(CC) -c $(CCFLAGS) $(LIB)Mathematics.cpp -o $(OBJ)Mathematics.o
 
 $(OBJ)Nota.o: $(SRC)Nota.cpp $(SRC)Nota.h 
-#	cp -v $(LIB)Mathematics* $(SRC)
+	cp -v $(LIB)Mathematics* $(SRC)
 	$(CC) -c $(CCFLAGS) $(SRC)Nota.cpp -o $(OBJ)Nota.o
 
 $(OBJ)Intervalo.o: $(SRC)Intervalo.cpp $(SRC)Intervalo.h 

@@ -19,6 +19,7 @@ public:
 	string Descricao() const;
 	void ImprimirEmTela() const;
 //---------------------------
+	void getTiposSetima(char *);
 private:
 	Intervalo i3;
 	const char tiposSetima[3]={'M','m','d'};

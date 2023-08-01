@@ -9,24 +9,38 @@ Tetrade::Tetrade(const int dificuldade){
 Tetrade::Tetrade(const Nota n,const int dificuldade){
 }
 
-Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoTetrade){
-	this->setTetrade(n,tipoTriade, tipoTetrade);
+Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima){
+	this->setTetrade(n,tipoTriade, tipoSetima);
 }
 
 //----------------------------------------
 // Sets
 //----------------------------------------
+void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoSetima){
 
-void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoTetrade){
+	Intervalo i;
 
-	Nota temp;
-	string novoIntervalo = "3M";
-	cout << "novoIntervalo>"<< novoIntervalo<<'\n';
-
+	//Montar triade
 	this->setTriade(n,tipoTriade);
-	temp = this->getQuinta();
-	this->i3.setN1(temp);
-	this->i3.setN2(novoIntervalo);
+
+
+	//Primeira nota terceiro intervalo
+	this->i3.setN1(this->getQuinta());
+
+	//Segunda nota terceiro intervalo
+	i.setN1(n);
+	switch (tipoSetima){
+		case 'M':
+			i.setN2("7M");
+			break;
+		case 'm':
+			i.setN2("7m");
+			break;
+		case 'd':
+			i.setN2("7d");
+			break;
+	}
+	this->i3.setN2(i.getN2());
 }
 
 //----------------------------------------
@@ -42,13 +56,13 @@ Intervalo Tetrade::getInt3() const{
 string Tetrade::Descricao() const{
     string resposta="[", saida; 
 
-	saida = this->getFundamental().Descricao() + "\t";
+	saida = this->getFundamental().Descricao() + '\t';
     if (saida!="") resposta+=saida;
 
-    saida = this->getTerca().Descricao() + "\t";
+    saida = this->getTerca().Descricao() + '\t';
     if (saida!="") resposta+=saida;
 
-    saida = this->getQuinta().Descricao() + "\t";
+    saida = this->getQuinta().Descricao() + '\t';
     if (saida!="") resposta+=saida;
 	
     saida = this->getInt3().getN2().Descricao() ;
@@ -62,6 +76,11 @@ string Tetrade::Descricao() const{
 //----------------------------------------
 // Public
 //----------------------------------------
+void Tetrade::getTiposSetima(char *arr){
+	arr[0] = this->tiposSetima[0];
+	arr[1] = this->tiposSetima[1];
+	arr[2] = this->tiposSetima[2];
+}
 
 //----------------------------------------
 // Private

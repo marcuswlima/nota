@@ -25,7 +25,7 @@ public:
 	void ImprimirEmTela() const;
 // ------------------------------------
 	void ImprimirTipoTriadeEmTela() const;
-	void getTiposTriade( char *);
+	void getTiposTriade(char *);
 private:
 	Intervalo i1;
 	Intervalo i2;

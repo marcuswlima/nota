@@ -27,9 +27,26 @@ int main(int argc, char *argv[] ){
 
 
 void TestarTetrade(){
-	Nota n(3,1,0);
-	Tetrade t(n,'A','M');
-	cout << t.Descricao();
+	Nota n(3,4,0);
+	Intervalo i;
+	Triade tr;
+	Tetrade te;
+	char tipoTriade[4];
+	char tipoSetima[3];
+	tr.getTiposTriade(tipoTriade);
+	te.getTiposSetima(tipoSetima);
+
+	for (int ni=1; ni<=12; ni++){
+		for (int tri=0; tri<4; tri++){
+			for (int tei=0; tei<3; tei++){
+				te.setTetrade(n,tipoTriade[tri],tipoSetima[tei]);
+				cout << te.Descricao();
+			}
+			cout << '\n';
+		}
+		cout << '\n'; 
+		n.up1SemiTom();
+	}
 }
 
 void TodasTriades(){
@@ -132,7 +149,7 @@ void TodosIntervalos(){
     Nota n1,n2;
     Intervalo i;
 
-	string intervalos[16];
+	string intervalos[17];
 	i.getTiposIntervalo(intervalos);
 
 	cout << "Nota\t";
