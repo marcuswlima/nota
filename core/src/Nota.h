@@ -41,7 +41,7 @@ private:
 	int grau;     // 1--7 
 	int acidente; // [-2,0,2] [bb,b,0,#,*]
 	int clave;    // [5-sol,4-fa]
-	const string NomeNota[7]={"DO","RE","MI","FA"
+	const string NomeNota[7]={"DO","RE","MI","FA",
 	                          "SOL","LA","SI"};
 //----------------------------------
 	bool EhNota(const string nota) const;	

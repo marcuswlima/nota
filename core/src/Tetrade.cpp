@@ -3,17 +3,14 @@
 //----------------------------------------
 // construtores
 //----------------------------------------
-Tetrade::Tetrade(){
-}
-
 Tetrade::Tetrade(const int dificuldade){
 }
 
 Tetrade::Tetrade(const Nota n,const int dificuldade){
 }
 
-Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima){
-	this->setTriade(n,tipoTriade);
+Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoTetrade){
+	this->setTetrade(n,tipoTriade, tipoTetrade);
 }
 
 //----------------------------------------
@@ -21,33 +18,41 @@ Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima){
 //----------------------------------------
 
 void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoTetrade){
+
 	Nota temp;
+	string novoIntervalo = "3M";
+	cout << "novoIntervalo>"<< novoIntervalo<<'\n';
+
 	this->setTriade(n,tipoTriade);
 	temp = this->getQuinta();
 	this->i3.setN1(temp);
+	this->i3.setN2(novoIntervalo);
 }
 
 //----------------------------------------
 // Gets
 //----------------------------------------
+Intervalo Tetrade::getInt3() const{
+	return this->i3;
+}
 
 //----------------------------------------
 // padrao
 //----------------------------------------
 string Tetrade::Descricao() const{
-    string resposta="[", temp; 
+    string resposta="[", saida; 
 
-	temp = this->getFundamental().Descricao() + "\t";
-    if (temp!="") resposta+=temp;
+	saida = this->getFundamental().Descricao() + "\t";
+    if (saida!="") resposta+=saida;
 
-    temp = this->getTerca().Descricao() + "\t";
-    if (temp!="") resposta+=temp;
+    saida = this->getTerca().Descricao() + "\t";
+    if (saida!="") resposta+=saida;
 
-    temp = this->getQuinta().Descricao() + "\t";
-    if (temp!="") resposta+=temp;
+    saida = this->getQuinta().Descricao() + "\t";
+    if (saida!="") resposta+=saida;
 	
-//    temp = this->getInt3().getN2().Descricao() + "\t";
-//    if (temp!="") resposta+=temp;
+    saida = this->getInt3().getN2().Descricao() ;
+    if (saida!="") resposta+=saida;
 	
 	resposta+="]";
 

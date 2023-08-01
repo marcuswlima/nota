@@ -8,6 +8,7 @@ void TestarTriade();
 void TestarNota();
 void TodosIntervalos();
 void TodasTriades();
+void TestarTetrade();
 void ToShowParameters(int , char *[]);
 
 //--------------------------------------
@@ -16,12 +17,20 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 //	ToShowParameters(argc, argv);
-	TodosIntervalos();
+//	TodosIntervalos();
 //	TodasTriades();
-//	cout << endl;
+	TestarTetrade();
+	cout << endl;
 	return 0; //indica o fim do programa2
 
 }//main
+
+
+void TestarTetrade(){
+	Nota n(3,1,0);
+	Tetrade t(n,'A','M');
+	cout << t.Descricao();
+}
 
 void TodasTriades(){
 

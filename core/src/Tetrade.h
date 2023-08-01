@@ -6,7 +6,6 @@
 class Tetrade : public Triade{
 public:
 // Constructors
-	Tetrade();
 	Tetrade(const int =1);
 	Tetrade(const Nota,const int =1);
 	Tetrade(const Nota ,const char, const char);

@@ -17,7 +17,7 @@ public:
     Nota getN2() const;
 // Operacoes
 	void operator=(Intervalo const&);
-// Padrão
+// Padrao
     void Randomizar(const int =1);
     string Descricao() const;
     void ImprimirEmTela() const;
@@ -35,10 +35,11 @@ private:
 		int qtdNotasNaturais;
 		int qtdSemiTons;
 	};
-	const tRecDadosIntervalo DadosIntervalo[16]={
+	const tRecDadosIntervalo DadosIntervalo[17]={
                                {"1J",1, 1},
                                {"2m",2, 2},
                                {"2M",2, 3},
+                               {"3d",3, 3},
                                {"3m",3, 4},
                                {"3M",3, 5},
                                {"4d",4, 5},
