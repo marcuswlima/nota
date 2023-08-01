@@ -71,7 +71,7 @@ Nota Triade::getQuinta()const{
 //---------------------------------------
 // Padrao
 //---------------------------------------
-void Triade::Randomizar(int dificuldade){
+void Triade::Randomizar(const int dificuldade){
 
 	char      tipoTriade=RandomizarTipoTriade();
 	Nota      n(dificuldade);

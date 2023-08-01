@@ -20,7 +20,7 @@ public:
 	Nota getTerca() const;
 	Nota getQuinta() const;
 // Padrao
-	void Randomizar(int dificuldade=1);
+	void Randomizar(const int dificuldade=1);
 	string Descricao() const;
 	void ImprimirEmTela() const;
 // ------------------------------------
