@@ -1,6 +1,5 @@
 OBJ=build/
 SRC=./
-LIB=../../lib-cplusplus/src/
 TARGET=$(OBJ)notas.sh
 CC=g++
 DEBUG=-g
@@ -18,8 +17,8 @@ OBJS=$(OBJ)Mathematics.o               \
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS)
  
-$(OBJ)Mathematics.o: $(LIB)Mathematics.cpp $(LIB)Mathematics.h  
-	$(CC) -c $(CCFLAGS) $(LIB)Mathematics.cpp -o $(OBJ)Mathematics.o
+$(OBJ)Mathematics.o: $(SRC)Mathematics.cpp $(SRC)Mathematics.h  
+	$(CC) -c $(CCFLAGS) $(SRC)Mathematics.cpp -o $(OBJ)Mathematics.o
 
 $(OBJ)Nota.o: $(SRC)Nota.cpp $(SRC)Nota.h 
 	$(CC) -c $(CCFLAGS) $(SRC)Nota.cpp -o $(OBJ)Nota.o
