@@ -1,12 +1,12 @@
 :edit Makefile
-:tabedit src/Nota.cpp
-:57vsplit src/Nota.h
-:tabedit src/Intervalo.cpp
-:65vsplit src/Intervalo.h
-:tabedit src/Triade.cpp
-:54vsplit src/Triade.h
-:tabedit src/Tetrade.cpp
-:61vsplit src/Tetrade.h
-:tabedit src/main.cpp
+:tabedit Nota.cpp
+:57vsplit Nota.h
+:tabedit Intervalo.cpp
+:65vsplit Intervalo.h
+:tabedit Triade.cpp
+:54vsplit Triade.h
+:tabedit Tetrade.cpp
+:61vsplit Tetrade.h
+:tabedit main.cpp
 :tabfirst
 

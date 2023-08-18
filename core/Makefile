@@ -1,5 +1,5 @@
-OBJ=obj/
-SRC=src/
+OBJ=build/
+SRC=./
 LIB=../../lib-cplusplus/src/
 TARGET=$(OBJ)notas.sh
 CC=g++
@@ -22,7 +22,6 @@ $(OBJ)Mathematics.o: $(LIB)Mathematics.cpp $(LIB)Mathematics.h
 	$(CC) -c $(CCFLAGS) $(LIB)Mathematics.cpp -o $(OBJ)Mathematics.o
 
 $(OBJ)Nota.o: $(SRC)Nota.cpp $(SRC)Nota.h 
-	cp -v $(LIB)Mathematics* $(SRC)
 	$(CC) -c $(CCFLAGS) $(SRC)Nota.cpp -o $(OBJ)Nota.o
 
 $(OBJ)Intervalo.o: $(SRC)Intervalo.cpp $(SRC)Intervalo.h 
