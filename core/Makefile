@@ -9,17 +9,13 @@ CCFLAGS=$(DEBUG) $(OPT) $(WARN)
 LD=g++
 GTK=$$(pkg-config gtkmm-3.0 --cflags --libs) -export-dynamic
 NCURSES=-lncurses
-OBJS=$(OBJ)Mathematics.o               \
-	 $(OBJ)Nota.o   $(OBJ)Intervalo.o  \
+OBJS=$(OBJ)Nota.o   $(OBJ)Intervalo.o  \
 	 $(OBJ)Triade.o $(OBJ)Tetrade.o    \
 	 $(OBJ)main.o
 
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS)
  
-$(OBJ)Mathematics.o: $(SRC)Mathematics.cpp $(SRC)Mathematics.h  
-	$(CC) -c $(CCFLAGS) $(SRC)Mathematics.cpp -o $(OBJ)Mathematics.o
-
 $(OBJ)Nota.o: $(SRC)Nota.cpp $(SRC)Nota.h 
 	$(CC) -c $(CCFLAGS) $(SRC)Nota.cpp -o $(OBJ)Nota.o
 

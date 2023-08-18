@@ -128,7 +128,7 @@ void Triade::ImprimirFundamentalEmTela() const{
 }
 
 char Triade::RandomizarTipoTriade(){
-    int aleatorio=GerarInteiro(1,4);
+    int aleatorio=Nota::GerarInteiro(1,4);
 
 	aleatorio--; //ajuste indice
 

@@ -178,17 +178,17 @@ void Nota::operator=(Nota const& other){
 //---------------------------------------
 void Nota::Randomizar(const int in_dificuldade){
 
-	int oitava, grau, acidente=0;
+	int oitava=grau=acidente=0;
 
 	do{
-		oitava = GerarInteiro(1,7);
-		grau = GerarInteiro(1,7);
+		oitava = this->GerarInteiro(1,7);
+		grau = this->GerarInteiro(1,7);
 
 		switch (in_dificuldade)
 		{
 			case 1:acidente = 0;break;
-			case 2:acidente = GerarInteiro(-1,1);break;
-			case 3:acidente = GerarInteiro(-2,2);break;
+			case 2:acidente = this->GerarInteiro(-1,1);break;
+			case 3:acidente = this->GerarInteiro(-2,2);break;
 			default:break;
 		}
 
@@ -320,6 +320,18 @@ bool Nota::strEhNota(string nota){
 	smatch match;
 	transform(nota.begin(), nota.end(), nota.begin(), ::toupper);//toUpperCase
 	return regex_search(nota, match, regra);
+}
+
+int Nota::GerarInteiro(const int menor, const int maior){
+
+    if (maior > menor){
+        int faixa  = (maior - menor + 1);
+        int gerado = (1 + rand() % faixa);
+        return menor + (gerado-1);
+    }
+    else
+        return 0;
+
 }
 
 //---------------------------------------

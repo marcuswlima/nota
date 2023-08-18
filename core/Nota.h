@@ -1,5 +1,6 @@
+#include <iostream>
 #include <regex>
-#include "Mathematics.h"
+using namespace std;
 
 #ifndef NOTA_H
 #define NOTA_H
@@ -36,14 +37,15 @@ public:
 	void down1SemiTom();
 	void down1Tom();
 	static bool strEhNota(string);
+	static int GerarInteiro(const int menor, const int maior);
 private:
+	bool EhNota(const string nota) const;	
+//----------------------------------
 	int oitava;   // 0--8 
 	int grau;     // 1--7 
 	int acidente; // [-2,0,2] [bb,b,0,#,*]
 	int clave;    // [5-sol,4-fa]
 	const string NomeNota[7]={"DO","RE","MI","FA",
 	                          "SOL","LA","SI"};
-//----------------------------------
-	bool EhNota(const string nota) const;	
 }; 
 #endif
