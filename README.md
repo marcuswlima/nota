@@ -1,3 +1,24 @@
+# Compilação
+
+## Makefile
+
+```
+$ mkdir build
+$ make
+$ build/notas.sh  #executar
+```
+
+## CMake
+
+```
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ ./notas.sh  #executar
+```
+
+
 # Motivação 
 - Prover aos alunos e profesores da EMUFPA uma solução tecnológica com o intuido de auxiliar o aprendizado dos conteúdos ministrados sobre teoria musical na escola. 
 
