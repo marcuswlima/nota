@@ -39,7 +39,7 @@ public:
 	static bool strEhNota( string );//analisa 3 itens
 	static int GerarInteiro( const int menor, const int maior );
 	static bool EhNota(const char * nota);//analisa apenas grau	
-	static void todasNotas( const char ** );
+	static void getNotas( const char ** );
 //----------------------------------
 	static const int QTDNOTAS=7;
 private:

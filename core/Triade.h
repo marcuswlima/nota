@@ -23,17 +23,17 @@ public:
 	void Randomizar(const int dificuldade=1);
 	string Descricao() const;
 	void ImprimirEmTela() const;
-// ------------------------------------
+// Public
 	void ImprimirTipoTriadeEmTela() const;
-	void getTiposTriade(char *);
+	static void getTriades( char *);
+// ------------------------------------
+	static const int QTDTRIADES=4;
 private:
 	Intervalo i1;
 	Intervalo i2;
-	const char tiposTriade[4]={'M','m','d','A'};
 // ------------------------------------
 	void ImprimirFundamentalEmTela() const;
 	char RandomizarTipoTriade();
 	string DeduzirTipoTriade() const;
-//	void getTiposTriade(char *) const;
 };
 #endif

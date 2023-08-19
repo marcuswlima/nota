@@ -18,11 +18,13 @@ public:
 	void Randomizar(const int =1);
 	string Descricao() const;
 	void ImprimirEmTela() const;
+//Public
+	static void getSetimas(char *);
 //---------------------------
-	void getTiposSetima(char *);
+	static const int QTDSETIMAS=3;
 private:
+//---------------------------
 	Intervalo i3;
 	const char tiposSetima[3]={'M','m','d'};
-//---------------------------
 };
 #endif

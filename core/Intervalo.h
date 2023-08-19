@@ -32,7 +32,7 @@ public:
 	bool strEhIntervalo(string);
 	string OrientacaoEmString();
 	void getTiposIntervalo(string * const);
-	static void todosIntervalos( tRecDadosIntervalo * );
+	static void getIntervalos( tRecDadosIntervalo * );
 // ---------------------------------------
 	static const int QTDINTERVALOS=17;
 private:

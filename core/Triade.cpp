@@ -113,11 +113,10 @@ void Triade::ImprimirTipoTriadeEmTela() const{
 }//ImprimirTipoTriadeEmTela
  //
 
-void Triade::getTiposTriade( char * arr) {
-	arr[0] = this->tiposTriade[0];
-	arr[1] = this->tiposTriade[1];
-	arr[2] = this->tiposTriade[2];
-	arr[3] = this->tiposTriade[3];
+void Triade::getTriades( char * arr ) {
+	static const char triades[QTDTRIADES]={'M','m','d','A'};
+	for (int i=0; i<QTDTRIADES; i++)
+		arr[i] = triades[i];
 }
 
 //---------------------------------------
@@ -129,10 +128,12 @@ void Triade::ImprimirFundamentalEmTela() const{
 
 char Triade::RandomizarTipoTriade(){
     int aleatorio=Nota::GerarInteiro(1,4);
-
 	aleatorio--; //ajuste indice
+	
+	char triades[QTDTRIADES];
+	getTriades(triades);
 
-	return this->tiposTriade[aleatorio];
+	return triades[aleatorio];
 }
 
 string Triade::DeduzirTipoTriade() const{

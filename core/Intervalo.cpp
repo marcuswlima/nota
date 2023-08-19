@@ -136,7 +136,7 @@ string Intervalo::DeduzirTipoIntervalo() {
 //	cout << "qdtSemitons->"<< qtdSemiTons<< endl;
 //
 	tRecDadosIntervalo intervalos[QTDINTERVALOS];
-	todosIntervalos(intervalos);
+	getIntervalos(intervalos);
 
     for (int i=0; i<QTDINTERVALOS; i++){
         if ((intervalos[i].qtdNotasNaturais==qtdNotas) && (intervalos[i].qtdSemiTons==qtdSemiTons)){
@@ -167,7 +167,7 @@ string Intervalo::OrientacaoEmString(){
 
 void Intervalo::getTiposIntervalo(string * const arr){
 	tRecDadosIntervalo intervalos[QTDINTERVALOS];
-	todosIntervalos(intervalos);
+	getIntervalos(intervalos);
 
 	for (int i=0; i<QTDINTERVALOS; i++){
 		arr[i]=intervalos[i].tipoIntervalo;
@@ -175,7 +175,7 @@ void Intervalo::getTiposIntervalo(string * const arr){
 }
 
 
-void Intervalo::todosIntervalos( tRecDadosIntervalo * arr){
+void Intervalo::getIntervalos( tRecDadosIntervalo * arr){
 
 	static const tRecDadosIntervalo intervalos[QTDINTERVALOS]={
                                {"1J",1, 1},
@@ -272,7 +272,7 @@ void Intervalo::ImprimirQtdSemiTonsEmTela(){
 void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNaturais, int &qtdSemiTons){
     
 	tRecDadosIntervalo intervalos[QTDINTERVALOS];
-	todosIntervalos(intervalos);
+	getIntervalos(intervalos);
 
 	for (int i=0; i<QTDINTERVALOS; i++){
         if (intervalos[i].tipoIntervalo==descricao){

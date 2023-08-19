@@ -24,7 +24,7 @@ int main(int argc, char *argv[] ){
 
 	int qtd=Nota::QTDNOTAS;
 	const char * nota[qtd];
-	Nota::todasNotas(nota);
+	Nota::getNotas(nota);
 	for (int i=0; i<qtd; i++){
 		cout << nota[i] << ' ';
 	}
@@ -35,7 +35,7 @@ int main(int argc, char *argv[] ){
 
 	cout << '\n';
 	tRecDadosIntervalo intervalos[Intervalo::QTDINTERVALOS]; 
-	Intervalo::todosIntervalos(intervalos);
+	Intervalo::getIntervalos(intervalos);
 	for (int i=0; i<Intervalo::QTDINTERVALOS; i++){
 		cout << intervalos[i].tipoIntervalo << ' '; 
 		cout << intervalos[i].qtdNotasNaturais << ' '; 
@@ -49,13 +49,11 @@ int main(int argc, char *argv[] ){
 
 void TestarTetrade(){
 	Nota n(3,4,0);
-	Intervalo i;
-	Triade tr;
 	Tetrade te;
-	char tipoTriade[4];
-	char tipoSetima[3];
-	tr.getTiposTriade(tipoTriade);
-	te.getTiposSetima(tipoSetima);
+	char tipoTriade[Triade::QTDTRIADES];
+	char tipoSetima[Tetrade::QTDSETIMAS];
+	Triade::getTriades(tipoTriade);
+	Tetrade::getSetimas(tipoSetima);
 
 	for (int ni=1; ni<=12; ni++){
 		for (int tri=0; tri<4; tri++){
@@ -74,8 +72,8 @@ void TodasTriades(){
 
 	Nota n(4,1,0);	
 	Triade t;
-	char tiposTriades[4];
-	t.getTiposTriade(tiposTriades);
+	char tiposTriades[Triade::QTDTRIADES];
+	Triade::getTriades(tiposTriades);
 
 	for (int y=1;y<=12;y++){
 

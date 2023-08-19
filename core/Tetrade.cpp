@@ -76,11 +76,13 @@ string Tetrade::Descricao() const{
 //----------------------------------------
 // Public
 //----------------------------------------
-void Tetrade::getTiposSetima(char *arr){
-	arr[0] = this->tiposSetima[0];
-	arr[1] = this->tiposSetima[1];
-	arr[2] = this->tiposSetima[2];
+void Tetrade::getSetimas(char * arr){
+	static const char setimas[QTDSETIMAS]={'M','m','d'};
+
+	for (int i=0; i<QTDSETIMAS; i++)
+		arr[i]=setimas[i];
 }
+
 
 //----------------------------------------
 // Private

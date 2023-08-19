@@ -59,7 +59,7 @@ void Nota::setNota(const int o, const int g, const int a )
 void Nota::setNota(string str){
 	//obter todas notas em arrNotas
 	const char * arrNotas[QTDNOTAS];
-	todasNotas(arrNotas);
+	getNotas(arrNotas);
 
 	int oitava=grau=acidente=0;
 
@@ -348,7 +348,7 @@ int Nota::GerarInteiro(const int menor, const int maior){
 bool Nota::EhNota(const char * nota) {	
 	bool resposta = false;
 	const char * arrNotas[QTDNOTAS];
-	todasNotas(arrNotas);
+	getNotas(arrNotas);
 
 	for (int i=0; i<QTDNOTAS; i++){
 //		if ( this->NomeNota[i] == nota){
@@ -362,7 +362,7 @@ bool Nota::EhNota(const char * nota) {
 	return resposta;
 }
 
-void Nota::todasNotas( const char ** arr ){
+void Nota::getNotas( const char ** arr ){
 	static const char * notas[QTDNOTAS]={"DO","RE","MI","FA","SOL","LA","SI"};//array de ponteiros para char
 	for (int i=0 ; i<QTDNOTAS ; i++){
 		arr[i]=notas[i]; 
