@@ -19,11 +19,28 @@ int main(int argc, char *argv[] ){
 //	ToShowParameters(argc, argv);
 //	TodosIntervalos();
 //	TodasTriades();
-	TestarTetrade();
+//	TestarTetrade();
 	cout << endl;
+
+	int qtd=Nota::QTDNOTAS;
+	const char * nota[qtd];
+	Nota::todasNotas(nota);
+	for (int i=0; i<qtd; i++){
+		cout << nota[i] << ' ';
+	}
+	cout << '\n';
 
 	if ( Nota::EhNota("MI") )
 		cout << "acertou";
+
+	cout << '\n';
+	tRecDadosIntervalo intervalos[Intervalo::QTDINTERVALOS]; 
+	Intervalo::todosIntervalos(intervalos);
+	for (int i=0; i<Intervalo::QTDINTERVALOS; i++){
+		cout << intervalos[i].tipoIntervalo << ' '; 
+		cout << intervalos[i].qtdNotasNaturais << ' '; 
+		cout << intervalos[i].qtdSemiTons << ' '; 
+	}
 
 	return 0; //indica o fim do programa2
 

@@ -59,7 +59,7 @@ void Nota::setNota(const int o, const int g, const int a )
 void Nota::setNota(string str){
 	//obter todas notas em arrNotas
 	const char * arrNotas[QTDNOTAS];
-	todasNotas(arrNotas,QTDNOTAS);
+	todasNotas(arrNotas);
 
 	int oitava=grau=acidente=0;
 
@@ -348,7 +348,7 @@ int Nota::GerarInteiro(const int menor, const int maior){
 bool Nota::EhNota(const char * nota) {	
 	bool resposta = false;
 	const char * arrNotas[QTDNOTAS];
-	todasNotas(arrNotas,QTDNOTAS);
+	todasNotas(arrNotas);
 
 	for (int i=0; i<QTDNOTAS; i++){
 //		if ( this->NomeNota[i] == nota){
@@ -362,6 +362,12 @@ bool Nota::EhNota(const char * nota) {
 	return resposta;
 }
 
+void Nota::todasNotas( const char ** arr ){
+	static const char * notas[QTDNOTAS]={"DO","RE","MI","FA","SOL","LA","SI"};//array de ponteiros para char
+	for (int i=0 ; i<QTDNOTAS ; i++){
+		arr[i]=notas[i]; 
+	}
+}
 //---------------------------------------
 // Privates
 //---------------------------------------
@@ -455,10 +461,4 @@ bool SegundaMaior(int o1, int g1, int a1, int o2, int g2, int a2){
 
 }
 
-void todasNotas( const char ** arr, int SIZE ){
-	const char * notas[SIZE]={"DO","RE","MI","FA","SOL","LA","SI"};//array de ponteiros para char
-	for (int i=0 ; i<SIZE ; i++){
-		arr[i]=notas[i]; 
-	}
-}
 

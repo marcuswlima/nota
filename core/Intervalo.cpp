@@ -134,10 +134,13 @@ string Intervalo::DeduzirTipoIntervalo() {
 //	cout << endl;
 //	cout << "qtdNotas->"<< qtdNotas<< endl;
 //	cout << "qdtSemitons->"<< qtdSemiTons<< endl;
+//
+	tRecDadosIntervalo intervalos[QTDINTERVALOS];
+	todosIntervalos(intervalos);
 
-    for (int i=0; i<=15; i++){
-        if ((DadosIntervalo[i].qtdNotasNaturais==qtdNotas) && (DadosIntervalo[i].qtdSemiTons==qtdSemiTons)){
-            resposta = DadosIntervalo[i].tipoIntervalo;
+    for (int i=0; i<QTDINTERVALOS; i++){
+        if ((intervalos[i].qtdNotasNaturais==qtdNotas) && (intervalos[i].qtdSemiTons==qtdSemiTons)){
+            resposta = intervalos[i].tipoIntervalo;
             break; 
         }
     }
@@ -163,8 +166,42 @@ string Intervalo::OrientacaoEmString(){
 }
 
 void Intervalo::getTiposIntervalo(string * const arr){
-	for (int i=0; i<16; i++){
-		arr[i]=this->DadosIntervalo[i].tipoIntervalo;
+	tRecDadosIntervalo intervalos[QTDINTERVALOS];
+	todosIntervalos(intervalos);
+
+	for (int i=0; i<QTDINTERVALOS; i++){
+		arr[i]=intervalos[i].tipoIntervalo;
+	}
+}
+
+
+void Intervalo::todosIntervalos( tRecDadosIntervalo * arr){
+
+	static const tRecDadosIntervalo intervalos[QTDINTERVALOS]={
+                               {"1J",1, 1},
+                               {"2m",2, 2},
+                               {"2M",2, 3},
+                               {"3m",3, 4},
+                               {"3M",3, 5},
+                               {"4d",4, 5},
+                               {"4J",4, 6},
+                               {"4A",4, 7},
+                               {"5d",5, 7},
+                               {"5J",5, 8},
+                               {"5A",5, 9},
+                               {"6m",6, 9},
+                               {"6M",6,10},
+                               {"7d",7,10},
+                               {"7m",7,11},
+                               {"7M",7,12},
+                               {"8J",8,13}
+
+	};
+
+	for (int i=0 ; i<QTDINTERVALOS ; i++){
+		arr[i].tipoIntervalo    = intervalos[i].tipoIntervalo; 
+		arr[i].qtdNotasNaturais = intervalos[i].qtdNotasNaturais; 
+		arr[i].qtdSemiTons      = intervalos[i].qtdSemiTons; 
 	}
 }
 
@@ -234,10 +271,13 @@ void Intervalo::ImprimirQtdSemiTonsEmTela(){
 
 void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNaturais, int &qtdSemiTons){
     
-	for (int i=0; i<=15; i++){
-        if (this->DadosIntervalo[i].tipoIntervalo==descricao){
-			qdtNotasNaturais=this->DadosIntervalo[i].qtdNotasNaturais;
-			qtdSemiTons=this->DadosIntervalo[i].qtdSemiTons;
+	tRecDadosIntervalo intervalos[QTDINTERVALOS];
+	todosIntervalos(intervalos);
+
+	for (int i=0; i<QTDINTERVALOS; i++){
+        if (intervalos[i].tipoIntervalo==descricao){
+			qdtNotasNaturais=intervalos[i].qtdNotasNaturais;
+			qtdSemiTons=intervalos[i].qtdSemiTons;
             break; 
         }
     }

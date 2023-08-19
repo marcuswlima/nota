@@ -36,9 +36,10 @@ public:
 	void up1Tom();
 	void down1SemiTom();
 	void down1Tom();
-	static bool strEhNota(string);//analisa 3 itens
-	static int GerarInteiro(const int menor, const int maior);
+	static bool strEhNota( string );//analisa 3 itens
+	static int GerarInteiro( const int menor, const int maior );
 	static bool EhNota(const char * nota);//analisa apenas grau	
+	static void todasNotas( const char ** );
 //----------------------------------
 	static const int QTDNOTAS=7;
 private:
