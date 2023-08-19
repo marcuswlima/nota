@@ -1,5 +1,11 @@
 #include "Nota.h"
 
+struct tRecDadosIntervalo {
+	string tipoIntervalo;
+	int qtdNotasNaturais;
+	int qtdSemiTons;
+};
+
 #ifndef INTERVALO_H
 #define INTERVALO_H
 class Intervalo {
@@ -21,21 +27,26 @@ public:
     void Randomizar(const int =1);
     string Descricao() const;
     void ImprimirEmTela() const;
-//----------------------------------	
+//public	
 	string DeduzirTipoIntervalo() ;
 	bool strEhIntervalo(string);
 	string OrientacaoEmString();
 	void getTiposIntervalo(string * const);
+	static const int QTDINTERVALOS=17;
 private:
+    int DeduzirQdtTons() ;
+    int DeduzirQtdSemiTons();
+    int DeduzirOrientacao();
+    void ImprimirQdtTonsEmTela();
+    void ImprimirQtdSemiTonsEmTela();
+	void ImprimirOrientacaoEmTela();
+    void ImprimirTipoIntervaloEmTela();
+	void QuantidadesIntervalo(const string, int &, int &);
+// ---------------------------------------
     Nota n1;
     Nota n2;
 
-	struct tRecDadosIntervalo {
-		string tipoIntervalo;
-		int qtdNotasNaturais;
-		int qtdSemiTons;
-	};
-	const tRecDadosIntervalo DadosIntervalo[17]={
+	const tRecDadosIntervalo DadosIntervalo[QTDINTERVALOS]={
                                {"1J",1, 1},
                                {"2m",2, 2},
                                {"2M",2, 3},
@@ -56,14 +67,5 @@ private:
 
 	};
 
-// ---------------------------------------
-    int DeduzirQdtTons() ;
-    int DeduzirQtdSemiTons();
-    int DeduzirOrientacao();
-    void ImprimirQdtTonsEmTela();
-    void ImprimirQtdSemiTonsEmTela();
-	void ImprimirOrientacaoEmTela();
-    void ImprimirTipoIntervaloEmTela();
-	void QuantidadesIntervalo(const string, int &, int &);
 };
 #endif

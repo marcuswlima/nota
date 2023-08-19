@@ -246,8 +246,8 @@ void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNatura
 //---------------------------------------
 // Internals
 //---------------------------------------
-int umaoitava[13]={0,1,0,2,0,3,4,0,5,0,6,0,7};
 int RetornarSubescrito(int n){
+	int umaoitava[13]={0,1,0,2,0,3,4,0,5,0,6,0,7};
     int resposta=0;
     for (int i=1;i<=12;i++){
         if (umaoitava[i]==n){

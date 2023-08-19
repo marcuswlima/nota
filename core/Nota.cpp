@@ -9,6 +9,7 @@ void MensagemErro( int,int, int, bool);
 bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
 bool SegundaMaior(int, int , int , int , int , int );
+void todasNotas( const char ** , int );
 
 //---------------------------------------
 // construtores
@@ -56,41 +57,51 @@ void Nota::setNota(const int o, const int g, const int a )
 }
 
 void Nota::setNota(string str){
-	int o, g=0, a;
-	o = stoi(str.substr(0,1));
+	//obter todas notas em arrNotas
+	const char * arrNotas[QTDNOTAS];
+	todasNotas(arrNotas,QTDNOTAS);
+
+	int oitava=grau=acidente=0;
+
+	//Oitava
+	oitava = stoi(str.substr(0,1));
+
+
+	// Grau
 	transform(str.begin(), str.end(), str.begin(), ::toupper);//toUpperCase
 	smatch match;
-	
 	regex regra("DO");
-	for(int i=0; i<=7;i++){
-		regra = this->NomeNota[i];
+	for(int i=0; i<QTDNOTAS;i++){
+//		regra = this->NomeNota[i];
+		regra = arrNotas[i];
 		if ( regex_search(str, match, regra) ){
-			g = i+1;
+			grau = i+1;
 			break;
 		}
 	}
-	a=0;
+
+	// acidente
 	regra="#";
 	if ( regex_search(str, match, regra) ){
-		a=1;
+		acidente=1;
 	}else{
 		regra="BB";
 		if ( regex_search(str, match, regra) ){
-			a=-2;
+			acidente=-2;
 		}else{
 			regra="B";
 			if ( regex_search(str, match, regra) ){
-				a = -1;
+				acidente = -1;
 			}else{
 				regra="\\*";
 				if ( regex_search(str, match, regra) ){
-					a = 2;
+					acidente = 2;
 				}
-  	             }
-		     }
-	    }
+			}
+		}
+	}
 	
-	this->setNota(o,g,a);
+	this->setNota(oitava,grau,acidente);
 
 }//setNota
 
@@ -334,13 +345,14 @@ int Nota::GerarInteiro(const int menor, const int maior){
 
 }
 
-//---------------------------------------
-// Privates
-//---------------------------------------
-bool Nota::EhNota(const string nota) const{	
+bool Nota::EhNota(const char * nota) {	
 	bool resposta = false;
-	for (int i=0; i<=7; i++){
-		if ( this->NomeNota[i] == nota){
+	const char * arrNotas[QTDNOTAS];
+	todasNotas(arrNotas,QTDNOTAS);
+
+	for (int i=0; i<QTDNOTAS; i++){
+//		if ( this->NomeNota[i] == nota){
+		if ( arrNotas[i] == nota){
 			resposta=true;
 			break;
 		}
@@ -351,7 +363,11 @@ bool Nota::EhNota(const string nota) const{
 }
 
 //---------------------------------------
-// Intervals
+// Privates
+//---------------------------------------
+
+//---------------------------------------
+// Internals
 //---------------------------------------
 bool notaValida( int o, int g, int a ){
 
@@ -437,5 +453,12 @@ bool SegundaMaior(int o1, int g1, int a1, int o2, int g2, int a2){
 
 	return !NotaIgual(o1, g1, a1, o2, g2, a2) && !PrimeiraMaior(o1, g1, a1, o2, g2, a2);
 
+}
+
+void todasNotas( const char ** arr, int SIZE ){
+	const char * notas[SIZE]={"DO","RE","MI","FA","SOL","LA","SI"};//array de ponteiros para char
+	for (int i=0 ; i<SIZE ; i++){
+		arr[i]=notas[i]; 
+	}
 }
 

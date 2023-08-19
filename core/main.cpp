@@ -21,6 +21,10 @@ int main(int argc, char *argv[] ){
 //	TodasTriades();
 	TestarTetrade();
 	cout << endl;
+
+	if ( Nota::EhNota("MI") )
+		cout << "acertou";
+
 	return 0; //indica o fim do programa2
 
 }//main

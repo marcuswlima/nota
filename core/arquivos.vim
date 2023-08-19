@@ -1,6 +1,6 @@
 :edit Makefile
 :tabedit Nota.cpp
-:67vsplit Nota.h
+:69vsplit Nota.h
 :tabedit Intervalo.cpp
 :65vsplit Intervalo.h
 :tabedit Triade.cpp
