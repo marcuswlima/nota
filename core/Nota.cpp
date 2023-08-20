@@ -5,7 +5,6 @@
 //---------------------------------------
 bool notaValida( int, int, int);
 string iDescricao( int, int, int);
-void MensagemErro( int,int, int, bool);
 bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
 bool SegundaMaior(int, int , int , int , int , int );
@@ -55,28 +54,32 @@ void Nota::setNota(const int o, const int g, const int a )
         setGrau(g);
         setAcidente(a);
     }
-    else
-        MensagemErro(o,g,a, true);
+    else{
+		throw invalid_argument("valores de nota invalidos: o:" + to_string(o)+ ", g: "+to_string(g) + " ou a: "+to_string(a));
+	}
 
 }
 
 void Nota::setNota(string str){
-	//obter todas notas em arrNotas
-	const char * arrNotas[QTDNOTAS];
-	getNotas(arrNotas);
+
+	if (!strEhNota(str)){
+		throw invalid_argument("formatação de Nota invalid("+str+")");
+	}
+
 
 	int oitava=grau=acidente=0;
-
+	
 	//Oitava
 	oitava = stoi(str.substr(0,1));
 
 
 	// Grau
+	const char * arrNotas[QTDNOTAS];
+	getNotas(arrNotas);
 	transform(str.begin(), str.end(), str.begin(), ::toupper);//toUpperCase
 	smatch match;
 	regex regra("DO");
 	for(int i=0; i<QTDNOTAS;i++){
-//		regra = this->NomeNota[i];
 		regra = arrNotas[i];
 		if ( regex_search(str, match, regra) ){
 			grau = i+1;
@@ -220,10 +223,12 @@ string Nota::Descricao() const{
     int o = this->getOitava();
     int g = this->getGrau();
     int a = this->getAcidente();
-    if (notaValida(o,g,a))
+    if (notaValida(o,g,a)){
         strNota = iDescricao(o,g,a);
-    else 
-        MensagemErro(o,g,a,true);
+	}
+    else {
+		strNota=to_string(o)+ "/"+to_string(g) + "/"+to_string(a);
+	}
 
     return strNota;
 
@@ -349,25 +354,9 @@ int Nota::GerarInteiro(const int menor, const int maior){
 
 }
 
-bool Nota::EhNota(const char * nota) {	
-	bool resposta = false;
-	const char * arrNotas[QTDNOTAS];
-	getNotas(arrNotas);
-
-	for (int i=0; i<QTDNOTAS; i++){
-//		if ( this->NomeNota[i] == nota){
-		if ( arrNotas[i] == nota){
-			resposta=true;
-			break;
-		}
-
-	}
-
-	return resposta;
-}
-
 void Nota::getNotas( const char ** arr ){
-	static const char * notas[QTDNOTAS]={"DO","RE","MI","FA","SOL","LA","SI"};//array de ponteiros para char
+    //array de ponteiros para char
+	static const char * notas[QTDNOTAS]={"DO","RE","MI","FA","SOL","LA","SI"};
 	for (int i=0 ; i<QTDNOTAS ; i++){
 		arr[i]=notas[i]; 
 	}
@@ -431,16 +420,6 @@ string iDescricao( int o, int g, int a ){
 
     return strNota;
 
-}
-
-void MensagemErro( int o, int g, int a, bool mostraValores ){
-//        cout << "Oitava, nota e/ou acidente invalido\t";
-        if (mostraValores){
-             cout << o << '/';
-             cout << g << '/';
-             cout << a;
-        }
-//        cout << endl;
 }
 
 bool NotaIgual(int o1, int g1, int a1, int o2, int g2, int a2){

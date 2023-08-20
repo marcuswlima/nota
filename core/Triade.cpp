@@ -77,10 +77,9 @@ void Triade::Randomizar(const int dificuldade){
 	//randomizar triade
 	char triades[QTDTRIADES];
 	getTriades(triades);
-    int aleatorio=Nota::GerarInteiro(1,QTDTRIADES);
+    int r=Nota::GerarInteiro(1,QTDTRIADES);
 	Intervalo i1,i2;
-	MontarTriade(n,triades[aleatorio-1],i1,i2);
-	
+	MontarTriade(n,triades[r-1],i1,i2);
 	
 	setTriade(i1,i2);
 }

@@ -17,7 +17,7 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 //	ToShowParameters(argc, argv);
-//	TodosIntervalos();
+	TodosIntervalos();
 //	TodasTriades();
 //	TestarTetrade();
 	cout << endl;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[] ){
 	}
 	cout << '\n';
 
-	if ( Nota::EhNota("MI") )
+	if ( Nota::strEhNota("MI") )
 		cout << "acertou";
 
 	cout << '\n';

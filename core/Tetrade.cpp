@@ -74,20 +74,24 @@ string Tetrade::Descricao() const{
 }//GerarDescricao
 
 void Tetrade::Randomizar(const int dificuldade){
+	int r;
+
 	//randomizar nota
 	Nota n(dificuldade);
 
 	//randomizar triade 
 	char triades[QTDTRIADES];
-	int rand_triade=Nota::GerarInteiro(1,QTDTRIADES);
 	getTriades(triades);
+	r=Nota::GerarInteiro(1,QTDTRIADES);
+	char triade_randomizada = triades[r-1];
 
 	//randomizar setima
 	char setimas[QTDSETIMAS];
-	int rand_setima=Nota::GerarInteiro(1,QTDSETIMAS);
 	getSetimas(setimas);
+	r=Nota::GerarInteiro(1,QTDSETIMAS);
+	char setima_randomizada=setimas[r-1];
 
-	this->setTetrade(n,triades[rand_triade-1],setimas[rand_setima-1]);
+	this->setTetrade(n,triade_randomizada,setima_randomizada);
 
 }
 
