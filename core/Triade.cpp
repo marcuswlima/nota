@@ -19,11 +19,6 @@ Triade::Triade(const Nota n,const char tipoTriade){
 	this->setTriade(n,tipoTriade);
 }
 
-Triade::Triade(const Intervalo i1, const Intervalo i2){
-    this->setInt1(i1);
-    this->setInt2(i2);
-}
-
 //---------------------------------------
 // Sets
 //---------------------------------------
@@ -37,9 +32,12 @@ void Triade::setInt2(const Intervalo i){
 
 void Triade::setTriade(const Nota n,const char tipoTriade){
 	Intervalo i1, i2;
-
 	MontarTriade(n,tipoTriade,i1,i2);
-    
+
+	setTriade(i1,i2);
+}
+
+void Triade::setTriade(const Intervalo i1, const Intervalo i2){
 	this->setInt1(i1);
     this->setInt2(i2);
 }
@@ -73,19 +71,18 @@ Nota Triade::getQuinta()const{
 //---------------------------------------
 void Triade::Randomizar(const int dificuldade){
 
-	Nota      n(dificuldade);//randomiza a nota
+	//randomizar nota
+	Nota n(dificuldade);
 	
-	Intervalo i1,i2;
-	
-    int aleatorio=Nota::GerarInteiro(1,QTDTRIADES);
-	aleatorio--; //ajuste indice
+	//randomizar triade
 	char triades[QTDTRIADES];
 	getTriades(triades);
-
-
-	MontarTriade(n,triades[aleatorio],i1,i2);
-	this->setInt1(i1);
-    this->setInt2(i2);
+    int aleatorio=Nota::GerarInteiro(1,QTDTRIADES);
+	Intervalo i1,i2;
+	MontarTriade(n,triades[aleatorio-1],i1,i2);
+	
+	
+	setTriade(i1,i2);
 }
 
 string Triade::Descricao() const{
@@ -129,17 +126,7 @@ void Triade::getTriades( char * arr ) {
 void Triade::ImprimirFundamentalEmTela() const{
     cout << this->getFundamental().Descricao();
 }
-/*
-char Triade::RandomizarTipoTriade(){
-    int aleatorio=Nota::GerarInteiro(1,4);
-	aleatorio--; //ajuste indice
-	
-	char triades[QTDTRIADES];
-	getTriades(triades);
 
-	return triades[aleatorio];
-}
-*/
 string Triade::DeduzirTipoTriade() const{
 	string resp="";
 

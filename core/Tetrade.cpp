@@ -3,10 +3,11 @@
 //----------------------------------------
 // construtores
 //----------------------------------------
-Tetrade::Tetrade(const int dificuldade){
+Tetrade::Tetrade(){
 }
 
-Tetrade::Tetrade(const Nota n,const int dificuldade){
+Tetrade::Tetrade(const int dificuldade){
+	this->Randomizar(dificuldade);
 }
 
 Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima){
@@ -83,8 +84,8 @@ void Tetrade::Randomizar(const int dificuldade){
 
 	//randomizar setima
 	char setimas[QTDSETIMAS];
-	getSetimas(setimas);
 	int rand_setima=Nota::GerarInteiro(1,QTDSETIMAS);
+	getSetimas(setimas);
 
 	this->setTetrade(n,triades[rand_triade-1],setimas[rand_setima-1]);
 

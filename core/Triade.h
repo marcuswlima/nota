@@ -8,11 +8,11 @@ public:
 	Triade();
 	Triade(const int);
 	Triade(const Nota,const char);
-	Triade(const Intervalo, const Intervalo);
 // Sets
 	void setInt1(const Intervalo);
 	void setInt2(const Intervalo);
 	void setTriade(const Nota, const char);
+	void setTriade(const Intervalo, const Intervalo);
 //Gets
 	Intervalo getInt1() const;
 	Intervalo getInt2() const;
@@ -33,7 +33,6 @@ private:
 	Intervalo i2;
 // ------------------------------------
 	void ImprimirFundamentalEmTela() const;
-	char RandomizarTipoTriade();
 	string DeduzirTipoTriade() const;
 };
 #endif

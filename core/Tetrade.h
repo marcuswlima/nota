@@ -6,8 +6,8 @@
 class Tetrade : public Triade{
 public:
 // Constructors
-	Tetrade(const int =1);
-	Tetrade(const Nota,const int =1);
+	Tetrade();
+	Tetrade(const int);
 	Tetrade(const Nota ,const char, const char);
 //sets
 	void setInt3(const Intervalo);

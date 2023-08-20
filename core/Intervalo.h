@@ -13,7 +13,7 @@ public:
 // Constructors
     Intervalo();
     Intervalo(const int);
-    Intervalo(const Nota, const Nota);
+	Intervalo(const Nota, const char *);
 // Sets
     void setN1(const Nota);
     void setN2(Nota);

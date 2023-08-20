@@ -16,7 +16,6 @@ void todasNotas( const char ** , int );
 //---------------------------------------
 Nota::Nota()
 {
-	this->setNota( 4, 1, 0 );
 } 
 
 Nota::Nota(const int dificuldade)

@@ -17,12 +17,12 @@ Intervalo::Intervalo(const int dificuldade){
 	this->Randomizar(dificuldade);
 }
 
-Intervalo::Intervalo(const Nota n1, const Nota n2)
-{
-    this->setN1(n1);
-    this->setN2(n2);
+Intervalo::Intervalo(const Nota n, const char * tipoIntervalo){
+	setN1(n);
+	setN2(tipoIntervalo,1); //1=ascendente
 }
-    
+
+
 //---------------------------------------
 // Sets
 //---------------------------------------
