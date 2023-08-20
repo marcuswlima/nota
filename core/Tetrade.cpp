@@ -23,7 +23,6 @@ void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoSeti
 	//Montar triade
 	this->setTriade(n,tipoTriade);
 
-
 	//Primeira nota terceiro intervalo
 	this->i3.setN1(this->getQuinta());
 
@@ -72,6 +71,24 @@ string Tetrade::Descricao() const{
 
     return resposta;
 }//GerarDescricao
+
+void Tetrade::Randomizar(const int dificuldade){
+	//randomizar nota
+	Nota n(dificuldade);
+
+	//randomizar triade 
+	char triades[QTDTRIADES];
+	int rand_triade=Nota::GerarInteiro(1,QTDTRIADES);
+	getTriades(triades);
+
+	//randomizar setima
+	char setimas[QTDSETIMAS];
+	getSetimas(setimas);
+	int rand_setima=Nota::GerarInteiro(1,QTDSETIMAS);
+
+	this->setTetrade(n,triades[rand_triade-1],setimas[rand_setima-1]);
+
+}
 
 //----------------------------------------
 // Public

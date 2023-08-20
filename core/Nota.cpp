@@ -29,6 +29,11 @@ Nota::Nota(const int o, const int g, const int a)
 	this->setNota( o, g, a );
 } 
 
+Nota::Nota(const Nota &n)
+{
+	this->setNota( n.getOitava(), n.getGrau(), n.getAcidente() );
+} 
+
 //---------------------------------------
 // Sets
 //---------------------------------------

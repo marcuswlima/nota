@@ -10,6 +10,7 @@ public:
 	Nota() ; 
 	Nota(const int);//randomizar 
 	Nota(const int, const int, const int ); 
+	Nota(const Nota&);
 // Sets
 	void setOitava(const int);
 	void setGrau(const int);
