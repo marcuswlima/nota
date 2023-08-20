@@ -84,11 +84,14 @@ Nota Intervalo::getN2() const{
 //---------------------------------------
 void Intervalo::Randomizar(const int dificuldade){
     Nota n;
+	tRecDadosIntervalo intervalos[QTDINTERVALOS];
+	getIntervalos(intervalos);
+	int aleatorio = Nota::GerarInteiro(1,QTDINTERVALOS);
+
 
     n.Randomizar(dificuldade);
     this->setN1(n);
-    n.Randomizar(dificuldade);
-    this->setN2(n);
+    this->setN2(intervalos[aleatorio-1].tipoIntervalo);
 }
 
 string Intervalo::Descricao() const{
@@ -165,17 +168,7 @@ string Intervalo::OrientacaoEmString(){
 	return resposta;
 }
 
-void Intervalo::getTiposIntervalo(string * const arr){
-	tRecDadosIntervalo intervalos[QTDINTERVALOS];
-	getIntervalos(intervalos);
-
-	for (int i=0; i<QTDINTERVALOS; i++){
-		arr[i]=intervalos[i].tipoIntervalo;
-	}
-}
-
-
-void Intervalo::getIntervalos( tRecDadosIntervalo * arr){
+void Intervalo::getIntervalos( tRecDadosIntervalo * const arr){
 
 	static const tRecDadosIntervalo intervalos[QTDINTERVALOS]={
                                {"1J",1, 1},

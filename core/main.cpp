@@ -168,12 +168,15 @@ void TodosIntervalos(){
     Nota n1,n2;
     Intervalo i;
 
-	string intervalos[17];
-	i.getTiposIntervalo(intervalos);
+//	string intervalos[17];
+//	i.getTiposIntervalo(intervalos);
+	tRecDadosIntervalo intervalos[Intervalo::QTDINTERVALOS];
+	Intervalo::getIntervalos(intervalos);
+
 
 	cout << "Nota\t";
-	for(int i=0; i<16; i++)
-		cout << intervalos[i]<<'\t';
+	for(int i=0; i<17; i++)
+		cout << intervalos[i].tipoIntervalo <<'\t';
 	cout << '\n';
 
 	n1.setNota(3,1,0);
@@ -182,8 +185,8 @@ void TodosIntervalos(){
 		n1.ImprimirEmTela();
 		cout << '\t' ;
 
-		for (int iii=0;iii<16;iii++){
-			i.setN2(intervalos[iii]);
+		for (int iii=0;iii<17;iii++){
+			i.setN2(intervalos[iii].tipoIntervalo);
 			i.getN2().ImprimirEmTela();
 			cout << '\t' ;
 		}
@@ -198,8 +201,8 @@ void TodosIntervalos(){
 		n1.ImprimirEmTela();
 		cout << '\t' ;
 
-		for (int iii=0; iii<16; iii++){
-			i.setN2(intervalos[iii]);
+		for (int iii=0; iii<17; iii++){
+			i.setN2(intervalos[iii].tipoIntervalo);
 			i.getN2().ImprimirEmTela();
 			cout << '\t' ;
 		}
@@ -215,8 +218,8 @@ void TodosIntervalos(){
 		n1.ImprimirEmTela();
 		cout << '\t' ;
 
-		for (int iii=0;iii<16;iii++){
-			i.setN2(intervalos[iii],-1);
+		for (int iii=0;iii<17;iii++){
+			i.setN2(intervalos[iii].tipoIntervalo,-1);
 			i.getN2().ImprimirEmTela();
 			cout << '\t' ;
 		}
@@ -231,8 +234,8 @@ void TodosIntervalos(){
 		n1.ImprimirEmTela();
 		cout << '\t' ;
 
-		for (int iii=0;iii<16;iii++){
-			i.setN2(intervalos[iii],-1);
+		for (int iii=0;iii<17;iii++){
+			i.setN2(intervalos[iii].tipoIntervalo,-1);
 			i.getN2().ImprimirEmTela();
 			cout << '\t' ;
 		}

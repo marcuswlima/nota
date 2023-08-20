@@ -25,6 +25,5 @@ public:
 private:
 //---------------------------
 	Intervalo i3;
-	const char tiposSetima[3]={'M','m','d'};
 };
 #endif

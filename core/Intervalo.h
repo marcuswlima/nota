@@ -31,8 +31,7 @@ public:
 	string DeduzirTipoIntervalo() ;
 	bool strEhIntervalo(string);
 	string OrientacaoEmString();
-	void getTiposIntervalo(string * const);
-	static void getIntervalos( tRecDadosIntervalo * );
+	static void getIntervalos( tRecDadosIntervalo * const );
 // ---------------------------------------
 	static const int QTDINTERVALOS=17;
 private:
@@ -47,6 +46,5 @@ private:
 // ---------------------------------------
     Nota n1;
     Nota n2;
-
 };
 #endif
