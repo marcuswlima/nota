@@ -7,7 +7,6 @@ bool notaValida( int, int, int);
 string iDescricao( int, int, int);
 bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
-bool SegundaMaior(int, int , int , int , int , int );
 
 //---------------------------------------
 // construtores
@@ -108,8 +107,7 @@ void Nota::setNota(string str){
 	}
 	
 	this->setNota(oitava,grau,acidente);
-
-}//setNota
+}
 
 
 //---------------------------------------
@@ -137,10 +135,9 @@ int Nota::getId() const{
 //---------------------------------------
 // Operations
 //---------------------------------------
-bool Nota::operator==(Nota const& other){
+bool Nota::operator==(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
-
 	return NotaIgual(
 			         this->getOitava(),
 			         this->getGrau(),
@@ -152,37 +149,58 @@ bool Nota::operator==(Nota const& other){
 
 }
 
-bool Nota::operator>(Nota const& other){
+bool Nota::operator>(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
 
-	return PrimeiraMaior(
-			             this->getOitava(),
-			             this->getGrau(),
-					     this->getAcidente(),
-					     other.oitava,
-					     other.grau,
-					     other.acidente
-						 );
+	return PrimeiraMaior
+			(
+				 this->getOitava(),
+				 this->getGrau(),
+				 this->getAcidente(),
+				 other.oitava,
+				 other.grau,
+				 other.acidente
+			)&&
+		   !NotaIgual
+			(
+				this->getOitava(),
+				this->getGrau(),
+				this->getAcidente(),
+				other.oitava,
+				other.grau,
+				other.acidente
+			);
 
 }
 
-bool Nota::operator<(Nota const& other){
+
+bool Nota::operator<(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
+
+	return !PrimeiraMaior
+			(
+				 this->getOitava(),
+				 this->getGrau(),
+				 this->getAcidente(),
+				 other.oitava,
+				 other.grau,
+				 other.acidente
+			)&&
+		   !NotaIgual
+			(
+				this->getOitava(),
+				this->getGrau(),
+				this->getAcidente(),
+				other.oitava,
+				other.grau,
+				other.acidente
+			);
 	
-	return SegundaMaior(
-			            this->getOitava(),
-			            this->getGrau(),
-					    this->getAcidente(),
-					    other.oitava,
-					    other.grau,
-					    other.acidente
-						);
-
 }
 
-void Nota::operator=(Nota const& other){
+void Nota::operator=(const Nota & other){
 	// this->  operador1
 	// other.  operador2
 	this->setOitava(other.getOitava());
@@ -425,6 +443,12 @@ bool NotaIgual(int o1, int g1, int a1, int o2, int g2, int a2){
 	return (o1==o2)&&(g1==g2)&&(a1==a2);
 }
 
+bool NotaIgual(Nota n1, Nota n2){
+	return ( n1.getOitava()   == n2.getOitava()   ) &&
+		   ( n1.getGrau()     == n2.getGrau()     ) &&
+		   ( n1.getAcidente() == n2.getAcidente() );
+}
+
 bool PrimeiraMaior(int o1, int g1, int a1, int o2, int g2, int a2){
 
 	bool resposta=false;
@@ -436,11 +460,3 @@ bool PrimeiraMaior(int o1, int g1, int a1, int o2, int g2, int a2){
 	}
     return resposta;
 }
-
-bool SegundaMaior(int o1, int g1, int a1, int o2, int g2, int a2){
-
-	return !NotaIgual(o1, g1, a1, o2, g2, a2) && !PrimeiraMaior(o1, g1, a1, o2, g2, a2);
-
-}
-
-

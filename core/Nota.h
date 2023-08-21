@@ -23,10 +23,10 @@ public:
  	int getAcidente() const;
 	int getId() const;
 // Operacoes
-	bool operator==(Nota const&);
-	bool operator>(Nota const&);
-	bool operator<(Nota const&);
-	void operator=(Nota const&);
+	bool operator==(const Nota &)const;
+	bool operator>(const Nota &)const;
+	bool operator<(const Nota &)const;
+	void operator=(const Nota &);
 // Padrao
 	void Randomizar(const int =1);
 	string Descricao() const;
