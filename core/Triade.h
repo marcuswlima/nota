@@ -25,14 +25,15 @@ public:
 	void ImprimirEmTela() const;
 // Public
 	void ImprimirTipoTriadeEmTela() const;
+	static char randomizarTriade();
 	static void getTriades( char *);
 // ------------------------------------
 	static const int QTDTRIADES=4;
 private:
-	Intervalo i1;
-	Intervalo i2;
-// ------------------------------------
 	void ImprimirFundamentalEmTela() const;
 	string DeduzirTipoTriade() const;
+// ------------------------------------
+	Intervalo i1;
+	Intervalo i2;
 };
 #endif

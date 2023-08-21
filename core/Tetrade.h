@@ -19,6 +19,7 @@ public:
 	string Descricao() const;
 	void ImprimirEmTela() const;
 //Public
+	static char randomizarSetima();
 	static void getSetimas(char *);
 //---------------------------
 	static const int QTDSETIMAS=3;

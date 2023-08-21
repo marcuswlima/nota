@@ -75,12 +75,9 @@ void Triade::Randomizar(const int dificuldade){
 	Nota n(dificuldade);
 	
 	//randomizar triade
-	char triades[QTDTRIADES];
-	getTriades(triades);
-    int r=Nota::GerarInteiro(1,QTDTRIADES);
-	Intervalo i1,i2;
-	MontarTriade(n,triades[r-1],i1,i2);
-	
+	char triade=randomizarTriade();
+
+	MontarTriade(n,triade,i1,i2);
 	setTriade(i1,i2);
 }
 
@@ -111,7 +108,13 @@ void Triade::ImprimirEmTela() const{
 void Triade::ImprimirTipoTriadeEmTela() const{
 	cout << this->DeduzirTipoTriade();
 }//ImprimirTipoTriadeEmTela
- //
+
+char Triade::randomizarTriade(){
+	char triades[QTDTRIADES];
+	getTriades(triades);
+    int r=Nota::GerarInteiro(1,QTDTRIADES);
+	return triades[r-1];
+}
 
 void Triade::getTriades( char * arr ) {
 	static const char triades[QTDTRIADES]={'M','m','d','A'};
@@ -139,6 +142,8 @@ string Triade::DeduzirTipoTriade() const{
 	
 	return resp;
 }
+
+
 //---------------------------------------
 // Internals
 //---------------------------------------

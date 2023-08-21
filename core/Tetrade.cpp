@@ -22,7 +22,7 @@ void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoSeti
 	Intervalo i;
 
 	//Montar triade
-	this->setTriade(n,tipoTriade);
+	this->setTriade(n,tipoTriade);//classe pai
 
 	//Primeira nota terceiro intervalo
 	this->i3.setN1(this->getQuinta());
@@ -74,37 +74,30 @@ string Tetrade::Descricao() const{
 }//GerarDescricao
 
 void Tetrade::Randomizar(const int dificuldade){
-	int r;
 
-	//randomizar nota
-	Nota n(dificuldade);
+	Nota n(dificuldade);//randimizar nota
+	char triade = Triade::randomizarTriade();
+	char setima = randomizarSetima();
 
-	//randomizar triade 
-	char triades[QTDTRIADES];
-	getTriades(triades);
-	r=Nota::GerarInteiro(1,QTDTRIADES);
-	char triade_randomizada = triades[r-1];
-
-	//randomizar setima
-	char setimas[QTDSETIMAS];
-	getSetimas(setimas);
-	r=Nota::GerarInteiro(1,QTDSETIMAS);
-	char setima_randomizada=setimas[r-1];
-
-	this->setTetrade(n,triade_randomizada,setima_randomizada);
-
+	this->setTetrade(n,triade,setima);
 }
 
 //----------------------------------------
 // Public
 //----------------------------------------
+char Tetrade::randomizarSetima(){
+	char setimas[QTDSETIMAS];
+	getSetimas(setimas);
+	int r=Nota::GerarInteiro(1,QTDSETIMAS);
+	return setimas[r-1];
+}
+
 void Tetrade::getSetimas(char * arr){
 	static const char setimas[QTDSETIMAS]={'M','m','d'};
 
 	for (int i=0; i<QTDSETIMAS; i++)
 		arr[i]=setimas[i];
 }
-
 
 //----------------------------------------
 // Private

@@ -8,7 +8,6 @@ string iDescricao( int, int, int);
 bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
 bool SegundaMaior(int, int , int , int , int , int );
-void todasNotas( const char ** , int );
 
 //---------------------------------------
 // construtores
@@ -63,7 +62,7 @@ void Nota::setNota(const int o, const int g, const int a )
 void Nota::setNota(string str){
 
 	if (!strEhNota(str)){
-		throw invalid_argument("formatação de Nota invalid("+str+")");
+		throw invalid_argument("formatação de Nota invalida("+str+")");
 	}
 
 
