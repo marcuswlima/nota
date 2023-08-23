@@ -36,20 +36,31 @@ Nota::Nota(const Nota &n)
 //---------------------------------------
 // Sets
 //---------------------------------------
-void Nota::setOitava(const int o){
-	if (oitavaValida(o))
+void Nota::setOitava(const int o)
+{
+	if (oitavaValida(o)){
 		oitava = o;
-	else
-		throw invalid_argument("oitava invalida o:" + to_string(o));
+	}else{
+		throw invalid_argument("setOitava() oitava invalida o:" + to_string(o));
+	}
 
 }
 
-void Nota::setGrau(const int g){
-    grau = g;
+void Nota::setGrau(const int g)
+{
+	if (grauValido(g)){
+		grau = g;
+	}else{
+		throw invalid_argument("setGrau() grau invalido g:" + to_string(g));
+	}
 }
 
 void Nota::setAcidente(const int a){
-    acidente = a;
+	if (acidenteValido(a)){
+		acidente = a;
+	}else{
+		throw invalid_argument("setAcidente() acidente invalido g:" + to_string(a));
+	}
 }
 
 void Nota::setNota(const int o, const int g, const int a )
@@ -60,7 +71,7 @@ void Nota::setNota(const int o, const int g, const int a )
         setAcidente(a);
     }
     else{
-		throw invalid_argument("valores de nota invalidos: o:" + to_string(o)+ ", g: "+to_string(g) + " ou a: "+to_string(a));
+		throw invalid_argument("setnota() valores de nota invalidos: o:" + to_string(o)+ ", g: "+to_string(g) + " ou a: "+to_string(a));
 	}
 
 }
@@ -399,7 +410,7 @@ bool grauValido( int g ){
 }
 
 bool acidenteValido( int a ){
-	return a >= 1 and a <= 8;
+	return a >= -2 and a <= 2;
 }
 
 bool notaValida( int o, int g, int a ){

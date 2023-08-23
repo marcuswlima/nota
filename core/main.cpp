@@ -17,12 +17,17 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 //	ToShowParameters(argc, argv);
-//	TodosIntervalos();
+	Nota n(3,1,0);
+	cout << n << endl;
+	Intervalo i;
+	i.setN1(n);
+	i.setN2("8J",-1);
+	cout << i << endl;
+	TodosIntervalos();
 //	TodasTriades();
 //	TestarTetrade();
 	cout << endl;
 
-	Nota n(3,1,0);
 	cout << n;
 /*
 	int qtd=Nota::QTDNOTAS;
@@ -171,24 +176,26 @@ void TodosIntervalos(){
     Nota n1,n2;
     Intervalo i;
 
-//	string intervalos[17];
-//	i.getTiposIntervalo(intervalos);
-	tRecDadosIntervalo intervalos[Intervalo::QTDINTERVALOS];
+	static const int qtdIntervalos = Intervalo::QTDINTERVALOS;
+	static const int qtdTeclas     = 12;
+
+	tRecDadosIntervalo intervalos[qtdIntervalos];
 	Intervalo::getIntervalos(intervalos);
 
-
+	//titulo
 	cout << "Nota\t";
-	for(int i=0; i<17; i++)
+	for(int i=0; i<qtdIntervalos; i++)
 		cout << intervalos[i].tipoIntervalo <<'\t';
 	cout << '\n';
 
+	cout << "de Do a Si ascendente todos 17 intervalos" << endl;
 	n1.setNota(3,1,0);
-    for (int ii=1; ii<=12; ii++){
+    for (int ii=1; ii<=qtdTeclas; ii++){
 		i.setN1(n1);
 		cout << n1;
 		cout << '\t' ;
 
-		for (int iii=0;iii<17;iii++){
+		for (int iii=0;iii<qtdIntervalos;iii++){
 			i.setN2(intervalos[iii].tipoIntervalo);
 			cout << i.getN2();
 			cout << '\t' ;
@@ -198,13 +205,14 @@ void TodosIntervalos(){
 	}
 
 	cout<<endl;
+	cout << "de Si a Do ascendente todos 17 intervalos" << endl;
 	n1.setNota(3,7,0);
-    for (int ii=1; ii<=12; ii++){
+    for (int ii=1; ii<=qtdTeclas; ii++){
 		i.setN1(n1);
 		cout << n1;
 		cout << '\t' ;
 
-		for (int iii=0; iii<17; iii++){
+		for (int iii=0; iii<qtdIntervalos; iii++){
 			i.setN2(intervalos[iii].tipoIntervalo);
 			cout << i.getN2();
 			cout << '\t' ;
@@ -213,10 +221,28 @@ void TodosIntervalos(){
 		n1.down1SemiTom();
 	}
 
+	cout<<endl;
+	cout << "de Si a Do descendente todos 17 intervalos" << endl;
+	n1.setNota(3,1,0);
+    for (int ii=1; ii<=qtdTeclas; ii++){
+		i.setN1(n1);
+		cout << n1;
+		cout << '\t' ;
+
+		for (int iii=0;iii<qtdIntervalos;iii++){
+			i.setN2(intervalos[iii].tipoIntervalo,-1);
+			cout << i.getN2();
+			cout << '\t' ;
+		}
+		cout << endl;
+		n1.up1SemiTom();
+	}
+
+/*
 
 	cout<<endl;
-	n1.setNota(3,1,0);
-    for (int ii=1; ii<=12; ii++){
+	n1.setNota(3,7,0);
+	for (int ii=1; ii<=12; ii++){
 		i.setN1(n1);
 		cout << n1;
 		cout << '\t' ;
@@ -227,23 +253,8 @@ void TodosIntervalos(){
 			cout << '\t' ;
 		}
 		cout << endl;
-		n1.up1SemiTom();
-	}
-
-	cout<<endl;
-	n1.setNota(3,7,0);
-    for (int ii=1; ii<=12; ii++){
-		i.setN1(n1);
-		cout << n1;
-		cout << '\t' ;
-
-		for (int iii=0;iii<17;iii++){
-			i.setN2(intervalos[iii].tipoIntervalo,-1);
-			cout << i.getN2();
-			cout << '\t' ;
-		}
-		cout << endl;
 		n1.down1SemiTom();
 	}
+	*/
 
 }
