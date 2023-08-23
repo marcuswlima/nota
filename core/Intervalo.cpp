@@ -5,7 +5,7 @@
 //---------------------------------------
 int distanciaEmSemiTons(Nota,Nota);
 void SimplificarIntervalo(Nota, Nota &);
-
+string iDescricao( Nota, Nota );
 //---------------------------------------
 // Constructors
 //---------------------------------------
@@ -83,37 +83,21 @@ Nota Intervalo::getN2() const{
 // Padrao
 //---------------------------------------
 void Intervalo::Randomizar(const int dificuldade){
-    Nota n;
+	//randimizar nota
+    Nota n(dificuldade);
+
+	//randomizar intervalo
 	tRecDadosIntervalo intervalos[QTDINTERVALOS];
 	getIntervalos(intervalos);
 	int aleatorio = Nota::GerarInteiro(1,QTDINTERVALOS);
 
-
-    n.Randomizar(dificuldade);
     this->setN1(n);
     this->setN2(intervalos[aleatorio-1].tipoIntervalo);
 }
 
 string Intervalo::Descricao() const{
-    string resposta="";
-
-    if (this->getN1().Descricao()!=""){
-        resposta += this->getN1().Descricao();
-        resposta += ":";
-        resposta += this->getN2().Descricao() + " ";
-    }
-    else
-        resposta += "Primeira nota em branco";
-
-    return resposta;
-
-}//Intervalo::Descricao
-
-
-void Intervalo::ImprimirEmTela() const{
-    cout << this->Descricao() << " ";
+	return iDescricao(this->getN1(),this->getN2());
 }
-
 
 //---------------------------------------
 // Operacoes
@@ -124,6 +108,14 @@ void Intervalo::operator=(Intervalo const& other){
 	
 	this->n1 = other.n1;
 	this->n2 = other.n2;
+}
+
+// non-menber friend funcion
+ostream &operator<<( ostream &output, const Intervalo &i ){
+	output << iDescricao(i.getN1()
+			            ,i.getN2()
+						); 
+	return output;
 }
 
 //---------------------------------------
@@ -352,4 +344,14 @@ int distanciaEmSemiTons(Nota n1,Nota n2){
     return resp;
 
 }//distanciaEmSemitons
+
+string iDescricao( const Nota n1 , const Nota n2){
+    string resposta="";
+
+	resposta += n1.Descricao();
+	resposta += ":";
+	resposta += n2.Descricao() + " ";
+
+    return resposta;
+}
 

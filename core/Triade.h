@@ -19,6 +19,8 @@ public:
 	Nota getFundamental() const;
 	Nota getTerca() const;
 	Nota getQuinta() const;
+// Operacoes
+	friend ostream &operator<<( ostream &, const Triade & );
 // Padrao
 	void Randomizar(const int dificuldade=1);
 	string Descricao() const;

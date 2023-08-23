@@ -3,6 +3,7 @@
 //---------------------------------------
 // Prototipations
 //---------------------------------------
+string iDescricao( Intervalo, Intervalo );
 void MontarTriade(Nota, char, Intervalo &, Intervalo &);
 
 //---------------------------------------
@@ -67,6 +68,17 @@ Nota Triade::getQuinta()const{
 }
 
 //---------------------------------------
+// operadores
+//---------------------------------------
+// non-menber friend funcion
+ostream &operator<<( ostream &output, const Triade &tri ){
+	output << iDescricao(tri.getInt1()
+			            ,tri.getInt2()
+						); 
+	return output;
+}
+
+//---------------------------------------
 // Padrao
 //---------------------------------------
 void Triade::Randomizar(const int dificuldade){
@@ -82,32 +94,23 @@ void Triade::Randomizar(const int dificuldade){
 }
 
 string Triade::Descricao() const{
-    string resposta="[", temp; 
-
-	temp = this->getFundamental().Descricao() + "\t";
-    if (temp!="") resposta+=temp;
-
-    temp = this->getTerca().Descricao() + "\t";
-    if (temp!="") resposta+=temp;
-
-    temp = this->getQuinta().Descricao();
-    if (temp!="") resposta+=temp;
-	
-	resposta+="]";
-
-    return resposta;
+	return iDescricao(this->getInt1(), this->getInt2());
 }//GerarDescricao
 
+/*
 void Triade::ImprimirEmTela() const{
     cout << this->Descricao();
 }
+*/
 
 //---------------------------------------
 // Publics
 //---------------------------------------
+
 void Triade::ImprimirTipoTriadeEmTela() const{
 	cout << this->DeduzirTipoTriade();
 }//ImprimirTipoTriadeEmTela
+
 
 char Triade::randomizarTriade(){
 	char triades[QTDTRIADES];
@@ -166,5 +169,22 @@ void MontarTriade(Nota n, char tipoTriade, Intervalo &i1, Intervalo &i2){
 	else if (tipoTriade=='M' || tipoTriade=='d')
 		i2.setN2("3m");
 
+}
+
+string iDescricao( Intervalo i1, Intervalo i2){
+    string resposta="[", temp; 
+
+	temp = i1.getN1().Descricao() + "\t";
+    if (temp!="") resposta+=temp;
+
+    temp = i1.getN2().Descricao() + "\t";
+    if (temp!="") resposta+=temp;
+
+    temp = i2.getN2().Descricao();
+    if (temp!="") resposta+=temp;
+	
+	resposta+="]";
+
+    return resposta;
 }
 

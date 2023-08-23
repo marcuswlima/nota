@@ -17,11 +17,14 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 //	ToShowParameters(argc, argv);
-	TodosIntervalos();
+//	TodosIntervalos();
 //	TodasTriades();
 //	TestarTetrade();
 	cout << endl;
 
+	Nota n(3,1,0);
+	cout << n;
+/*
 	int qtd=Nota::QTDNOTAS;
 	const char * nota[qtd];
 	Nota::getNotas(nota);
@@ -41,7 +44,7 @@ int main(int argc, char *argv[] ){
 		cout << intervalos[i].qtdNotasNaturais << ' '; 
 		cout << intervalos[i].qtdSemiTons << ' '; 
 	}
-
+*/
 	return 0; //indica o fim do programa2
 
 }//main
@@ -123,7 +126,7 @@ void TestarTriade(){
 
 		for (int tt=1; tt<=4; tt++){
 			t.setTriade(n,tt);
-			t.ImprimirEmTela();
+			cout << t;
 			t.ImprimirTipoTriadeEmTela();
 			cout << "\t\t";
 		}
@@ -136,7 +139,7 @@ void TestarTriade(){
 
 		for (int tt=1; tt<=4; tt++){
 			t.setTriade(n,tt);
-			t.ImprimirEmTela();
+			cout << t;
 			t.ImprimirTipoTriadeEmTela();
 			cout << "\t\t";
 		}
@@ -160,7 +163,7 @@ void TestarIntervalo(){
 	n1.setNota(3,1,0);
 	i.setN1(n1);
 	i.setN2("5D");
-	i.getN2().ImprimirEmTela();
+	cout << i.getN2();
 }
 
 
@@ -182,12 +185,12 @@ void TodosIntervalos(){
 	n1.setNota(3,1,0);
     for (int ii=1; ii<=12; ii++){
 		i.setN1(n1);
-		n1.ImprimirEmTela();
+		cout << n1;
 		cout << '\t' ;
 
 		for (int iii=0;iii<17;iii++){
 			i.setN2(intervalos[iii].tipoIntervalo);
-			i.getN2().ImprimirEmTela();
+			cout << i.getN2();
 			cout << '\t' ;
 		}
 		cout << endl;
@@ -198,12 +201,12 @@ void TodosIntervalos(){
 	n1.setNota(3,7,0);
     for (int ii=1; ii<=12; ii++){
 		i.setN1(n1);
-		n1.ImprimirEmTela();
+		cout << n1;
 		cout << '\t' ;
 
 		for (int iii=0; iii<17; iii++){
 			i.setN2(intervalos[iii].tipoIntervalo);
-			i.getN2().ImprimirEmTela();
+			cout << i.getN2();
 			cout << '\t' ;
 		}
 		cout << endl;
@@ -215,12 +218,12 @@ void TodosIntervalos(){
 	n1.setNota(3,1,0);
     for (int ii=1; ii<=12; ii++){
 		i.setN1(n1);
-		n1.ImprimirEmTela();
+		cout << n1;
 		cout << '\t' ;
 
 		for (int iii=0;iii<17;iii++){
 			i.setN2(intervalos[iii].tipoIntervalo,-1);
-			i.getN2().ImprimirEmTela();
+			cout << i.getN2();
 			cout << '\t' ;
 		}
 		cout << endl;
@@ -231,12 +234,12 @@ void TodosIntervalos(){
 	n1.setNota(3,7,0);
     for (int ii=1; ii<=12; ii++){
 		i.setN1(n1);
-		n1.ImprimirEmTela();
+		cout << n1;
 		cout << '\t' ;
 
 		for (int iii=0;iii<17;iii++){
 			i.setN2(intervalos[iii].tipoIntervalo,-1);
-			i.getN2().ImprimirEmTela();
+			cout << i.getN2();
 			cout << '\t' ;
 		}
 		cout << endl;

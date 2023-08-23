@@ -27,10 +27,10 @@ public:
 	bool operator>(const Nota &)const;
 	bool operator<(const Nota &)const;
 	void operator=(const Nota &);
+	friend ostream &operator<<( ostream &, const Nota & );
 // Padrao
 	void Randomizar(const int =1);
 	string Descricao() const;
-	void ImprimirEmTela() const;
 // Public
 	Nota qualRelativa(const int, const int =1);
 	void up1SemiTom();

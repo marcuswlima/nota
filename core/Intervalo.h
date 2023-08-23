@@ -23,10 +23,10 @@ public:
     Nota getN2() const;
 // Operacoes
 	void operator=(Intervalo const&);
+	friend ostream &operator<<( ostream &, const Intervalo & );
 // Padrao
     void Randomizar(const int =1);
     string Descricao() const;
-    void ImprimirEmTela() const;
 //public	
 	string DeduzirTipoIntervalo() ;
 	bool strEhIntervalo(string);

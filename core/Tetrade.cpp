@@ -1,23 +1,31 @@
 #include "Tetrade.h"
 
 //----------------------------------------
+// prototipacoes
+//----------------------------------------
+string iDescricao(Nota , Nota , Nota , Nota );
+//----------------------------------------
 // construtores
 //----------------------------------------
-Tetrade::Tetrade(){
+Tetrade::Tetrade()
+{
 }
 
-Tetrade::Tetrade(const int dificuldade){
+Tetrade::Tetrade(const int dificuldade)
+{
 	this->Randomizar(dificuldade);
 }
 
-Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima){
+Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima)
+{
 	this->setTetrade(n,tipoTriade, tipoSetima);
 }
 
 //----------------------------------------
 // Sets
 //----------------------------------------
-void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoSetima){
+void Tetrade::setTetrade(const Nota n,const char tipoTriade,const char tipoSetima)
+{
 
 	Intervalo i;
 
@@ -46,31 +54,34 @@ void Tetrade::setTetrade(const Nota n,const char tipoTriade, const char tipoSeti
 //----------------------------------------
 // Gets
 //----------------------------------------
-Intervalo Tetrade::getInt3() const{
+Intervalo Tetrade::getInt3() const
+{
 	return this->i3;
+}
+
+//----------------------------------------
+// operacoes
+//----------------------------------------
+ostream &operator<<(ostream &output, const Tetrade &t)
+{
+	output << iDescricao(t.getFundamental()
+		                ,t.getTerca()
+					    ,t.getQuinta()
+					    ,t.getInt3().getN2()
+						);
+	return output;
 }
 
 //----------------------------------------
 // padrao
 //----------------------------------------
-string Tetrade::Descricao() const{
-    string resposta="[", saida; 
-
-	saida = this->getFundamental().Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-
-    saida = this->getTerca().Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-
-    saida = this->getQuinta().Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-	
-    saida = this->getInt3().getN2().Descricao() ;
-    if (saida!="") resposta+=saida;
-	
-	resposta+="]";
-
-    return resposta;
+string Tetrade::Descricao() const
+{
+    return iDescricao(this->getFundamental()
+			         ,this->getTerca()
+					 ,this->getQuinta()
+					 ,this->getInt3().getN2()
+					 );
 }//GerarDescricao
 
 void Tetrade::Randomizar(const int dificuldade){
@@ -106,3 +117,23 @@ void Tetrade::getSetimas(char * arr){
 //----------------------------------------
 // Internals
 //----------------------------------------
+string iDescricao(Nota nf, Nota n3, Nota n5, Nota n7) 
+{
+    string resposta="[", saida; 
+
+	saida = nf.Descricao() + '\t';
+    if (saida!="") resposta+=saida;
+
+    saida = n3.Descricao() + '\t';
+    if (saida!="") resposta+=saida;
+
+    saida = n5.Descricao() + '\t';
+    if (saida!="") resposta+=saida;
+	
+    saida = n7.Descricao() ;
+    if (saida!="") resposta+=saida;
+	
+	resposta+="]";
+
+    return resposta;
+}//GerarDescricao

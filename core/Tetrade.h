@@ -14,10 +14,11 @@ public:
     void setTetrade(const Nota ,const char, const char);
 //gets
 	Intervalo getInt3() const;
+// Operacoes
+	friend ostream &operator<<(ostream &, const Tetrade&);
 // Padrao
 	void Randomizar(const int =1);
 	string Descricao() const;
-	void ImprimirEmTela() const;
 //Public
 	static char randomizarSetima();
 	static void getSetimas(char *);

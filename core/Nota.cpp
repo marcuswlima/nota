@@ -3,6 +3,9 @@
 //---------------------------------------
 // Prototipacoes
 //---------------------------------------
+bool oitavaValida( int );
+bool grauValido( int );
+bool acidenteValido( int );
 bool notaValida( int, int, int);
 string iDescricao( int, int, int);
 bool NotaIgual(int , int , int , int , int , int );
@@ -34,7 +37,11 @@ Nota::Nota(const Nota &n)
 // Sets
 //---------------------------------------
 void Nota::setOitava(const int o){
-    oitava = o;
+	if (oitavaValida(o))
+		oitava = o;
+	else
+		throw invalid_argument("oitava invalida o:" + to_string(o));
+
 }
 
 void Nota::setGrau(const int g){
@@ -209,6 +216,17 @@ void Nota::operator=(const Nota & other){
 }
 
 //---------------------------------------
+// non-menber friend funcion
+//---------------------------------------
+ostream &operator<<( ostream &output, const Nota &n ){
+	output << iDescricao(n.getOitava()
+			            ,n.getGrau()
+						,n.getAcidente()
+						); 
+	return output;
+}
+
+//---------------------------------------
 // Padrao
 //---------------------------------------
 void Nota::Randomizar(const int in_dificuldade){
@@ -236,23 +254,10 @@ void Nota::Randomizar(const int in_dificuldade){
 }
 
 string Nota::Descricao() const{
-    string strNota;
-    int o = this->getOitava();
-    int g = this->getGrau();
-    int a = this->getAcidente();
-    if (notaValida(o,g,a)){
-        strNota = iDescricao(o,g,a);
-	}
-    else {
-		strNota=to_string(o)+ "/"+to_string(g) + "/"+to_string(a);
-	}
-
-    return strNota;
-
-}
-
-void Nota::ImprimirEmTela() const{
-    cout << this->Descricao()<< " ";
+	return iDescricao(this->getOitava()
+	                 ,this->getGrau()
+					 ,this->getAcidente()
+					); 
 }
 
 //---------------------------------------
@@ -385,6 +390,18 @@ void Nota::getNotas( const char ** arr ){
 //---------------------------------------
 // Internals
 //---------------------------------------
+bool oitavaValida( int o ){
+	return o >= 1 and o <= 8;
+}
+
+bool grauValido( int g ){
+	return g >= 1 and g <= 7;
+}
+
+bool acidenteValido( int a ){
+	return a >= 1 and a <= 8;
+}
+
 bool notaValida( int o, int g, int a ){
 
     /* 
@@ -395,7 +412,7 @@ bool notaValida( int o, int g, int a ){
 
     bool bValido=true;
 
-    if ( o < 1 || o > 8 ) //oitava
+    if ( !oitavaValida(o) ) //oitava
         bValido = false;
     else 
         if ( g < 1 || g > 7 )    //grau

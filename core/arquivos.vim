@@ -2,11 +2,11 @@
 :tabedit Nota.cpp
 :69vsplit Nota.h
 :tabedit Intervalo.cpp
-:65vsplit Intervalo.h
+:69vsplit Intervalo.h
 :tabedit Triade.cpp
-:60vsplit Triade.h
+:69vsplit Triade.h
 :tabedit Tetrade.cpp
-:61vsplit Tetrade.h
+:63vsplit Tetrade.h
 :tabedit main.cpp
 :tabfirst
 
