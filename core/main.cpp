@@ -21,7 +21,7 @@ int main(int argc, char *argv[] ){
 	cout << n << endl;
 	Intervalo i;
 	i.setN1(n);
-	i.setN2("8J",-1);
+	i.setN2("8J",1);
 	cout << i << endl;
 	TodosIntervalos();
 //	TodasTriades();

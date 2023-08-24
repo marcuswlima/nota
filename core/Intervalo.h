@@ -21,6 +21,7 @@ public:
 // Gets
     Nota getN1() const;
     Nota getN2() const;
+	string getTipoIntervalo() const;
 // Operacoes
 	void operator=(Intervalo const&);
 	friend ostream &operator<<( ostream &, const Intervalo & );
@@ -29,21 +30,16 @@ public:
     string Descricao() const;
 //public	
 	bool intervaloValido() const;
-	string DeduzirTipoIntervalo() ;
-	bool strEhIntervalo(string);
-	string OrientacaoEmString();
+	bool strEhIntervalo(const string)const;
+	string OrientacaoEmString()const;
 	static void getIntervalos( tRecDadosIntervalo * const );
 // ---------------------------------------
 	static const int QTDINTERVALOS=17;
 private:
-    int DeduzirQdtTons() ;
-    int DeduzirQtdSemiTons();
-    int DeduzirOrientacao();
-    void ImprimirQdtTonsEmTela();
-    void ImprimirQtdSemiTonsEmTela();
-	void ImprimirOrientacaoEmTela();
-    void ImprimirTipoIntervaloEmTela();
-	void QuantidadesIntervalo(const string, int &, int &);
+	int getQtdTons() const;
+	int getQtdSemiTons() const;
+	int getOrientacao()const;
+	void QuantidadesIntervalo(const string, int &, int &)const;
 // ---------------------------------------
     Nota n1;
     Nota n2;

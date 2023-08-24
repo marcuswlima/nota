@@ -6,9 +6,11 @@
 bool oitavaValida( int );
 bool grauValido( int );
 bool acidenteValido( int );
+bool atributosValidos( const int, const int, const int);
+bool diffValida(const int);
 string iDescricao( int, int, int);
-bool NotaIgual(int , int , int , int , int , int );
-bool PrimeiraMaior(int, int , int , int , int , int );
+bool NotaIgual(Nota, Nota);
+bool PrimeiraMaior(Nota, Nota);
 
 //---------------------------------------
 // construtores
@@ -19,6 +21,10 @@ Nota::Nota()
 
 Nota::Nota(const int dificuldade)
 {
+	string program="Nota::Nota(int)"; 
+	if (!diffValida(dificuldade)){
+		throw invalid_argument(program+" / dificuldade invalida / " + to_string(dificuldade));
+	}
 	this->Randomizar(dificuldade);
 } 
 
@@ -152,66 +158,20 @@ int Nota::getId() const{
 bool Nota::operator==(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
-	return NotaIgual(
-			         this->getOitava(),
-			         this->getGrau(),
-					 this->getAcidente(),
-					 other.oitava,
-					 other.grau,
-					 other.acidente
-					 );
-
+	return NotaIgual(*this,other);
 }
 
 bool Nota::operator>(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
-
-	return PrimeiraMaior
-			(
-				 this->getOitava(),
-				 this->getGrau(),
-				 this->getAcidente(),
-				 other.oitava,
-				 other.grau,
-				 other.acidente
-			)&&
-		   !NotaIgual
-			(
-				this->getOitava(),
-				this->getGrau(),
-				this->getAcidente(),
-				other.oitava,
-				other.grau,
-				other.acidente
-			);
-
+	return PrimeiraMaior(*this,other)&&!NotaIgual(*this,other);
 }
 
 
 bool Nota::operator<(const Nota & other)const{
 	// this->  operador1
 	// other.  operador2
-
-	return !PrimeiraMaior
-			(
-				 this->getOitava(),
-				 this->getGrau(),
-				 this->getAcidente(),
-				 other.oitava,
-				 other.grau,
-				 other.acidente
-			)&&
-		   !NotaIgual
-			(
-				this->getOitava(),
-				this->getGrau(),
-				this->getAcidente(),
-				other.oitava,
-				other.grau,
-				other.acidente
-			);
-	
+	return !PrimeiraMaior(*this,other)&&!NotaIgual(*this,other);
 }
 
 void Nota::operator=(const Nota & other){
@@ -364,29 +324,9 @@ void Nota::down1Tom(){
 
 bool Nota::notaValida() const 
 {
-
-    int o=this->getOitava()
-       ,g=this->getGrau()
-       ,a=this->getAcidente();
-
-    /* 
-       1) Sete oitavas completas em um piano [1:7]
-       2) graus validos [1:7]
-       3) acidentes válidos[-2:2]
-    */
-
-    bool bValido=true;
-
-    if ( !oitavaValida(o) ) //oitava
-        bValido = false;
-    else 
-        if ( !grauValido(g) )    //grau
-            bValido = false;
-        else
-            if ( !acidenteValido(a) )  //acidente
-                bValido = false;
-
-    return bValido;
+    return oitavaValida(this->getOitava()) &&
+		   grauValido(this->getGrau()) &&
+		   acidenteValido(this->getAcidente());
 }
 
 bool Nota::strEhNota(string nota){
@@ -422,15 +362,26 @@ void Nota::getNotas( const char ** arr ){
 //---------------------------------------
 // Internals
 //---------------------------------------
+bool diffValida(const int diff){
+	return diff >= -2 and diff <= 2;
+}
+
+bool atributosValidos( const int o, const int g, const int a){
+	return oitavaValida(o) && grauValido(g) && acidenteValido(a);
+}
+
 bool oitavaValida( int o ){
+	// Sete oitavas completas em um piano [1:8]
 	return o >= 1 and o <= 8;
 }
 
 bool grauValido( int g ){
+    //graus validos [1:7]
 	return g >= 1 and g <= 7;
 }
 
 bool acidenteValido( int a ){
+	//acidentes validos [-2:2]
 	return a >= -2 and a <= 2;
 }
 
@@ -466,24 +417,23 @@ string iDescricao( int o, int g, int a ){
 
 }
 
-bool NotaIgual(int o1, int g1, int a1, int o2, int g2, int a2){
-	return (o1==o2)&&(g1==g2)&&(a1==a2);
-}
-
 bool NotaIgual(Nota n1, Nota n2){
 	return ( n1.getOitava()   == n2.getOitava()   ) &&
 		   ( n1.getGrau()     == n2.getGrau()     ) &&
 		   ( n1.getAcidente() == n2.getAcidente() );
 }
 
-bool PrimeiraMaior(int o1, int g1, int a1, int o2, int g2, int a2){
-
+bool PrimeiraMaior(Nota n1, Nota n2){
 	bool resposta=false;
-
-	if (!NotaIgual(o1, g1, a1, o2, g2, a2)){
-		if      (o1 != o2) resposta = o1 > o2;
-		else if (g1 != g2) resposta = g1 > g2;
-		else if (a1 != a2) resposta = a1 > a2;
+	if (!NotaIgual(n1,n2)){
+		if (n1.getOitava() != n2.getOitava()) {
+			resposta = n1.getOitava() > n2.getOitava();
+		}else if (n1.getGrau() != n2.getGrau()) {
+			resposta = n1.getGrau() > n2.getGrau();
+		}else if (n1.getAcidente() != n2.getAcidente()) {
+			resposta = n1.getAcidente() > n2.getAcidente();
+		}
 	}
     return resposta;
 }
+

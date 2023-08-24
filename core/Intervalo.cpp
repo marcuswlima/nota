@@ -6,6 +6,7 @@
 int distanciaEmSemiTons(Nota,Nota);
 void SimplificarIntervalo(Nota, Nota &);
 string iDescricao( Nota, Nota );
+bool validarOrientacao(const int);
 //---------------------------------------
 // Constructors
 //---------------------------------------
@@ -19,10 +20,6 @@ Intervalo::Intervalo(const int dificuldade){
 
 Intervalo::Intervalo(const Nota n, const char * tipoIntervalo){
 	string program="Intervalo::Intervalo(Nota,const char *)"; 
-	//validar nota
-	if (!n.notaValida()){
-		throw invalid_argument(program+" / Nota invalida / " + n.Descricao());
-	}
 	
 	//validar tipo intervalo
 	if (!this->strEhIntervalo(tipoIntervalo)){
@@ -60,13 +57,21 @@ void Intervalo::setN2(Nota p_n2){
 
 void Intervalo::setN2(const string descIntervalo, const int orientacao){
 
-	//validar tipo intervalo
-	string program="Intervalo::setN2(string,int)"; 
-	if (!this->strEhIntervalo(descIntervalo)){
-		throw invalid_argument(program+" / intervalo invalido / " + descIntervalo);
+	{//validacoes
+		string program="Intervalo::setN2(string,int)"; 
+		//tipo intervalo
+		if (!this->strEhIntervalo(descIntervalo)){
+			throw invalid_argument(program+" / intervalo invalido / " + descIntervalo);
+		}
+		
+		//orientacao
+		if (!validarOrientacao(orientacao)){
+			throw invalid_argument(program+" / orientacao invalida / " + to_string(orientacao));
+		}
+
 	}
-	
-    Nota n1,n2;
+
+	Nota n1,n2;
     int qdtNotasDoIntervaloDesejado=0, 
 		qtdSemiTonsDoIntervaloDesejado=0,
 		qtdSemiTonsEntreAsDuasNotas, 
@@ -106,6 +111,28 @@ Nota Intervalo::getN1() const{
 
 Nota Intervalo::getN2() const{
     return n2;
+}
+
+string Intervalo::getTipoIntervalo() const
+{
+    string resposta="er";
+    int qtdNotas = this->getQtdTons();
+    int qtdSemiTons = this->getQtdSemiTons();
+
+//	cout << endl;
+//	cout << "qtdNotas->"<< qtdNotas<< endl;
+//	cout << "qdtSemitons->"<< qtdSemiTons<< endl;
+//
+	tRecDadosIntervalo intervalos[QTDINTERVALOS];
+	getIntervalos(intervalos);
+
+    for (int i=0; i<QTDINTERVALOS; i++){
+        if ((intervalos[i].qtdNotasNaturais==qtdNotas) && (intervalos[i].qtdSemiTons==qtdSemiTons)){
+            resposta = intervalos[i].tipoIntervalo;
+            break; 
+        }
+    }
+    return resposta;
 }
 
 //---------------------------------------
@@ -155,39 +182,20 @@ bool Intervalo::intervaloValido()const
 	return getN1().notaValida() && getN2().notaValida();
 }
 
-string Intervalo::DeduzirTipoIntervalo() {
-    string resposta="er";
-    int qtdNotas = this->DeduzirQdtTons();
-    int qtdSemiTons = this->DeduzirQtdSemiTons();
-
-//	cout << endl;
-//	cout << "qtdNotas->"<< qtdNotas<< endl;
-//	cout << "qdtSemitons->"<< qtdSemiTons<< endl;
-//
-	tRecDadosIntervalo intervalos[QTDINTERVALOS];
-	getIntervalos(intervalos);
-
-    for (int i=0; i<QTDINTERVALOS; i++){
-        if ((intervalos[i].qtdNotasNaturais==qtdNotas) && (intervalos[i].qtdSemiTons==qtdSemiTons)){
-            resposta = intervalos[i].tipoIntervalo;
-            break; 
-        }
-    }
-    return resposta;
-}
-
-bool Intervalo::strEhIntervalo(string str){
+bool Intervalo::strEhIntervalo(const string str)const
+{
 	regex regra("^[1-8](J|M|m|A|d)$");
 	smatch match;
 	return regex_search(str, match, regra);
 }
 
-string Intervalo::OrientacaoEmString(){
+string Intervalo::OrientacaoEmString()const
+{
 	string resposta;
     if (this->getN1()==this->getN2()){
 		resposta = "Unissono";
     }else{
-		(this->DeduzirOrientacao()==1) ? 
+		(this->getOrientacao()==1) ? 
 			resposta = "Asc"           : 
 			resposta = "Desc"          ;
     }
@@ -227,13 +235,8 @@ void Intervalo::getIntervalos( tRecDadosIntervalo * const arr){
 //---------------------------------------
 // Privates
 //---------------------------------------
-int Intervalo::DeduzirOrientacao(){
-	return (this->getN1() < this->getN2())
-                 ? 1
-                 : -1;
-}
-
-int Intervalo::DeduzirQdtTons() {
+int Intervalo::getQtdTons() const
+{
     int resposta=0,
 		g1 = this->getN1().getGrau(),
 		g2 = this->getN2().getGrau()
@@ -262,7 +265,8 @@ int Intervalo::DeduzirQdtTons() {
     return resposta;
 }
 
-int Intervalo::DeduzirQtdSemiTons(){
+int Intervalo::getQtdSemiTons() const
+{
 
 	Nota n1,n2;
 
@@ -271,24 +275,15 @@ int Intervalo::DeduzirQtdSemiTons(){
 	return distanciaEmSemiTons(n1,n2);
 }
 
-
-void Intervalo::ImprimirOrientacaoEmTela(){
-	cout << this->OrientacaoEmString();
+int Intervalo::getOrientacao()const
+{
+	return (this->getN1() < this->getN2())
+                 ? 1
+                 : -1;
 }
 
-void Intervalo::ImprimirTipoIntervaloEmTela(){
-	cout << this->DeduzirTipoIntervalo() ;
-}
-
-void Intervalo::ImprimirQdtTonsEmTela(){
-    cout << this->DeduzirQdtTons() << " ";
-}
-
-void Intervalo::ImprimirQtdSemiTonsEmTela(){
-    cout << this->DeduzirQtdSemiTons() << " ";
-}
-
-void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNaturais, int &qtdSemiTons){
+void Intervalo::QuantidadesIntervalo(const string descricao, int &qdtNotasNaturais, int &qtdSemiTons)const
+{
     
 	tRecDadosIntervalo intervalos[QTDINTERVALOS];
 	getIntervalos(intervalos);
@@ -389,3 +384,7 @@ string iDescricao( const Nota n1 , const Nota n2){
     return resposta;
 }
 
+bool validarOrientacao(const int o )
+{
+	return o == -1 || o == 1;
+}

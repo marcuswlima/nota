@@ -91,8 +91,8 @@ string Triade::getTipoTriade()const
 {
 	string resp;
 
-	resp += this->getInt1().DeduzirTipoIntervalo();
-	resp += this->getInt2().DeduzirTipoIntervalo();
+	resp += this->getInt1().getTipoIntervalo();
+	resp += this->getInt2().getTipoIntervalo();
 
 	if      (resp=="3M3m") resp = "M";
 	else if (resp=="3m3M") resp = "m";
@@ -168,10 +168,6 @@ void Triade::getTriades( char * arr ) {
 //---------------------------------------
 // Privates
 //---------------------------------------
-void Triade::ImprimirFundamentalEmTela() const{
-    cout << this->getFundamental().Descricao();
-}
-
 //---------------------------------------
 // Internals
 //---------------------------------------

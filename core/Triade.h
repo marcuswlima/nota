@@ -32,8 +32,6 @@ public:
 // ------------------------------------
 	static const int QTDTRIADES=4;
 private:
-	void ImprimirFundamentalEmTela() const;
-// ------------------------------------
 	Intervalo i1;
 	Intervalo i2;
 };
