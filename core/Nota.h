@@ -37,6 +37,7 @@ public:
 	void up1Tom();
 	void down1SemiTom();
 	void down1Tom();
+	bool notaValida() const;
 	static bool strEhNota( string );//analisa 3 itens
 	static int GerarInteiro( const int menor, const int maior );
 	static void getNotas( const char ** );

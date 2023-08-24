@@ -6,7 +6,6 @@
 bool oitavaValida( int );
 bool grauValido( int );
 bool acidenteValido( int );
-bool notaValida( int, int, int);
 string iDescricao( int, int, int);
 bool NotaIgual(int , int , int , int , int , int );
 bool PrimeiraMaior(int, int , int , int , int , int );
@@ -41,7 +40,7 @@ void Nota::setOitava(const int o)
 	if (oitavaValida(o)){
 		oitava = o;
 	}else{
-		throw invalid_argument("setOitava() oitava invalida o:" + to_string(o));
+		throw invalid_argument("setOitava()-> oitava invalida o:" + to_string(o));
 	}
 
 }
@@ -51,7 +50,7 @@ void Nota::setGrau(const int g)
 	if (grauValido(g)){
 		grau = g;
 	}else{
-		throw invalid_argument("setGrau() grau invalido g:" + to_string(g));
+		throw invalid_argument("setGrau()-> grau invalido g:" + to_string(g));
 	}
 }
 
@@ -59,27 +58,21 @@ void Nota::setAcidente(const int a){
 	if (acidenteValido(a)){
 		acidente = a;
 	}else{
-		throw invalid_argument("setAcidente() acidente invalido g:" + to_string(a));
+		throw invalid_argument("setAcidente()-> acidente invalido g:" + to_string(a));
 	}
 }
 
 void Nota::setNota(const int o, const int g, const int a )
 {
-    if (notaValida(o,g,a)){
-        setOitava(o);
-        setGrau(g);
-        setAcidente(a);
-    }
-    else{
-		throw invalid_argument("setnota() valores de nota invalidos: o:" + to_string(o)+ ", g: "+to_string(g) + " ou a: "+to_string(a));
-	}
-
+	setOitava(o);
+	setGrau(g);
+	setAcidente(a);
 }
 
 void Nota::setNota(string str){
 
 	if (!strEhNota(str)){
-		throw invalid_argument("formatação de Nota invalida("+str+")");
+		throw invalid_argument("strEhNota()->formatação de Nota invalida("+str+")");
 	}
 
 
@@ -129,7 +122,7 @@ void Nota::setNota(string str){
 
 
 //---------------------------------------
-// Sets
+// Gets
 //---------------------------------------
 int Nota::getOitava() const{
     return oitava;
@@ -226,9 +219,7 @@ void Nota::operator=(const Nota & other){
 	this->setAcidente(other.getAcidente());
 }
 
-//---------------------------------------
 // non-menber friend funcion
-//---------------------------------------
 ostream &operator<<( ostream &output, const Nota &n ){
 	output << iDescricao(n.getOitava()
 			            ,n.getGrau()
@@ -256,11 +247,11 @@ void Nota::Randomizar(const int in_dificuldade){
 			default:break;
 		}
 
-	}while(!notaValida(oitava, grau, acidente));
+		this->setOitava(oitava);
+		this->setGrau(grau);
+		this->setAcidente(acidente);
 
-	this->setOitava(oitava);
-	this->setGrau(grau);
-	this->setAcidente(acidente);
+	}while(!this->notaValida());
 
 }
 
@@ -368,6 +359,33 @@ void Nota::down1Tom(){
     this->down1SemiTom();
 }
 
+bool Nota::notaValida() const 
+{
+
+    int o=this->getOitava()
+       ,g=this->getGrau()
+       ,a=this->getAcidente();
+
+    /* 
+       1) Sete oitavas completas em um piano [1:7]
+       2) graus validos [1:7]
+       3) acidentes válidos[-2:2]
+    */
+
+    bool bValido=true;
+
+    if ( !oitavaValida(o) ) //oitava
+        bValido = false;
+    else 
+        if ( !grauValido(g) )    //grau
+            bValido = false;
+        else
+            if ( !acidenteValido(a) )  //acidente
+                bValido = false;
+
+    return bValido;
+}
+
 bool Nota::strEhNota(string nota){
 	regex regra("^[1-7](DO|RE|MI|FA|SOL|LA|SI)(#?|B?|BB?|\\*?)$");
 	smatch match;
@@ -411,28 +429,6 @@ bool grauValido( int g ){
 
 bool acidenteValido( int a ){
 	return a >= -2 and a <= 2;
-}
-
-bool notaValida( int o, int g, int a ){
-
-    /* 
-       1) Sete oitavas completas em um piano [1:7]
-       2) graus validos [1:7]
-       3) acidentes válidos[-2:2]
-    */
-
-    bool bValido=true;
-
-    if ( !oitavaValida(o) ) //oitava
-        bValido = false;
-    else 
-        if ( g < 1 || g > 7 )    //grau
-            bValido = false;
-        else
-            if ( a < -2 || a > 2 )  //acidente
-                bValido = false;
-
-    return bValido;
 }
 
 string iDescricao( int o, int g, int a ){

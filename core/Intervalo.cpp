@@ -18,6 +18,17 @@ Intervalo::Intervalo(const int dificuldade){
 }
 
 Intervalo::Intervalo(const Nota n, const char * tipoIntervalo){
+	string program="Intervalo::Intervalo(Nota,const char *)"; 
+	//validar nota
+	if (!n.notaValida()){
+		throw invalid_argument(program+"/Nota invalida/" + n.Descricao());
+	}
+	
+	//validar tipo intervalo
+	if (!this->strEhIntervalo(tipoIntervalo)){
+		throw invalid_argument(program+"/intervalo invalida/" + tipoIntervalo);
+	}
+	
 	setN1(n);
 	setN2(tipoIntervalo,1); //1=ascendente
 }
@@ -27,11 +38,23 @@ Intervalo::Intervalo(const Nota n, const char * tipoIntervalo){
 // Sets
 //---------------------------------------
 void Intervalo::setN1(const Nota n){
-    this->n1 = n;
+	string program="Intervalo::setN1(Nota)"; 
+	//validar nota
+	if (!n.notaValida()){
+		throw invalid_argument(program+"Nota invalida" + n.Descricao());
+	}
+    
+	this->n1 = n;
 }
 
 void Intervalo::setN2(Nota p_n2){
-    SimplificarIntervalo(this->n1,p_n2);
+	string program="Intervalo::setN2(Nota)"; 
+	//validar nota
+	if (!p_n2.notaValida()){
+		throw invalid_argument(program+"Nota invalida" + p_n2.Descricao());
+	}
+
+	SimplificarIntervalo(this->n1,p_n2);
     this->n2 = p_n2;
 }
 
