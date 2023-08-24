@@ -19,21 +19,20 @@ public:
 	Nota getFundamental() const;
 	Nota getTerca() const;
 	Nota getQuinta() const;
+	string getTipoTriade() const;
 // Operacoes
 	friend ostream &operator<<( ostream &, const Triade & );
 // Padrao
 	void Randomizar(const int dificuldade=1);
 	string Descricao() const;
-	void ImprimirEmTela() const;
 // Public
-	void ImprimirTipoTriadeEmTela() const;
 	static char randomizarTriade();
+	static bool tipoTriadeValido(char const);
 	static void getTriades( char *);
 // ------------------------------------
 	static const int QTDTRIADES=4;
 private:
 	void ImprimirFundamentalEmTela() const;
-	string DeduzirTipoTriade() const;
 // ------------------------------------
 	Intervalo i1;
 	Intervalo i2;

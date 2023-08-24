@@ -27,15 +27,29 @@ Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima)
 void Tetrade::setTetrade(const Nota n,const char tipoTriade,const char tipoSetima)
 {
 
+	string program="Tetrade::setTetrade(Nota, char, char)"; 
+	//validar nota
+	if (!n.notaValida()){
+		throw invalid_argument(program+" / Nota invalida / " + n.Descricao());
+	}
+
+	//validar tipoIntervalo
+	if (!this->tipoTriadeValido(tipoTriade)){
+		throw invalid_argument(program+" / tipo traide invalido / " + tipoTriade);
+	}
+
+	//validar tipoSetima
+	if (!this->setimaValida(tipoTriade)){
+		throw invalid_argument(program+" / tipo traide invalido / " + tipoSetima);
+	}
+
 	Intervalo i;
 
 	//Montar triade
 	this->setTriade(n,tipoTriade);//classe pai
 
-	//Primeira nota terceiro intervalo
+	//Montar setima
 	this->i3.setN1(this->getQuinta());
-
-	//Segunda nota terceiro intervalo
 	i.setN1(n);
 	switch (tipoSetima){
 		case 'M':
@@ -96,6 +110,21 @@ void Tetrade::Randomizar(const int dificuldade){
 //----------------------------------------
 // Public
 //----------------------------------------
+bool Tetrade::setimaValida(const char setima){
+	bool bAchou=false;
+	char setimas[QTDSETIMAS];
+	getSetimas(setimas);
+
+	for (int i=0; i<QTDSETIMAS; i++){
+		if (setima == setimas[i]){
+			bAchou=true;
+			break;
+		}
+	}
+
+	return bAchou;
+}
+
 char Tetrade::randomizarSetima(){
 	char setimas[QTDSETIMAS];
 	getSetimas(setimas);

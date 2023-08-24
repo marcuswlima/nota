@@ -37,29 +37,31 @@ Nota::Nota(const Nota &n)
 //---------------------------------------
 void Nota::setOitava(const int o)
 {
-	if (oitavaValida(o)){
-		oitava = o;
-	}else{
-		throw invalid_argument("setOitava()-> oitava invalida o:" + to_string(o));
+	string program="Nota::setOitava(int)"; 
+	if (!oitavaValida(o)){
+		throw invalid_argument(program+"/ oitava invalida /" + to_string(o));
 	}
+
+	oitava = o;
 
 }
 
 void Nota::setGrau(const int g)
 {
-	if (grauValido(g)){
-		grau = g;
-	}else{
-		throw invalid_argument("setGrau()-> grau invalido g:" + to_string(g));
+	string program="Nota::setGrau(int)"; 
+	if (!grauValido(g)){
+		throw invalid_argument(program+"/ grau invalido /" + to_string(g));
 	}
+
+	grau = g;
 }
 
 void Nota::setAcidente(const int a){
-	if (acidenteValido(a)){
-		acidente = a;
-	}else{
-		throw invalid_argument("setAcidente()-> acidente invalido g:" + to_string(a));
+	string program="Nota::setAcidente(int)"; 
+	if (!acidenteValido(a)){
+		throw invalid_argument(program+"/ grau acidente /" + to_string(a));
 	}
+	acidente = a;
 }
 
 void Nota::setNota(const int o, const int g, const int a )
@@ -71,8 +73,9 @@ void Nota::setNota(const int o, const int g, const int a )
 
 void Nota::setNota(string str){
 
+	string program="Nota::setNota(string)"; 
 	if (!strEhNota(str)){
-		throw invalid_argument("strEhNota()->formatação de Nota invalida("+str+")");
+		throw invalid_argument(program+" / formatação de Nota invalida / "+str);
 	}
 
 

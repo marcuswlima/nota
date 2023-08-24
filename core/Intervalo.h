@@ -28,6 +28,7 @@ public:
     void Randomizar(const int =1);
     string Descricao() const;
 //public	
+	bool intervaloValido() const;
 	string DeduzirTipoIntervalo() ;
 	bool strEhIntervalo(string);
 	string OrientacaoEmString();

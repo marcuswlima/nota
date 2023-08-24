@@ -20,6 +20,7 @@ public:
 	void Randomizar(const int =1);
 	string Descricao() const;
 //Public
+	bool setimaValida(const char);
 	static char randomizarSetima();
 	static void getSetimas(char *);
 //---------------------------

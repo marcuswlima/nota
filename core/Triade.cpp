@@ -16,25 +16,45 @@ Triade::Triade(const int dificuldade){
 	this->Randomizar(dificuldade);
 }
 
-Triade::Triade(const Nota n,const char tipoTriade){
-	this->setTriade(n,tipoTriade);
+Triade::Triade(const Nota n,const char tt){
+	this->setTriade(n,tt);
 }
 
 //---------------------------------------
 // Sets
 //---------------------------------------
 void Triade::setInt1(const Intervalo i){
+	string program="Triade::setN1(Intervalo)"; 
+	if (!i.intervaloValido()){
+		throw invalid_argument(program+" / intervalo invalido / " + i.Descricao());
+	}
+
     i1 = i;
 }
 
 void Triade::setInt2(const Intervalo i){
-    i2 = i;
+	string program="Triade::setN2(Intervalo)"; 
+	if (!i.intervaloValido()){
+		throw invalid_argument(program+" / intervalo invalido / " + i.Descricao());
+	}
+    
+	i2 = i;
 }
 
 void Triade::setTriade(const Nota n,const char tipoTriade){
+	string program="Triade::setTriade(Nota, const char)"; 
+	//validar nota
+	if (!n.notaValida()){
+		throw invalid_argument(program+" / Nota invalida / " + n.Descricao());
+	}
+
+	//validar tipoIntervalo
+	if (!this->tipoTriadeValido(tipoTriade)){
+		throw invalid_argument(program+" / tipo traide invalido / " + tipoTriade);
+	}
+
 	Intervalo i1, i2;
 	MontarTriade(n,tipoTriade,i1,i2);
-
 	setTriade(i1,i2);
 }
 
@@ -67,6 +87,21 @@ Nota Triade::getQuinta()const{
     return this->getInt2().getN2();
 }
 
+string Triade::getTipoTriade()const
+{
+	string resp;
+
+	resp += this->getInt1().DeduzirTipoIntervalo();
+	resp += this->getInt2().DeduzirTipoIntervalo();
+
+	if      (resp=="3M3m") resp = "M";
+	else if (resp=="3m3M") resp = "m";
+	else if (resp=="3M3M") resp = "A";
+	else if (resp=="3m3m") resp = "d";
+	
+	return resp;
+}
+
 //---------------------------------------
 // operadores
 //---------------------------------------
@@ -95,22 +130,27 @@ void Triade::Randomizar(const int dificuldade){
 
 string Triade::Descricao() const{
 	return iDescricao(this->getInt1(), this->getInt2());
-}//GerarDescricao
-
-/*
-void Triade::ImprimirEmTela() const{
-    cout << this->Descricao();
 }
-*/
 
 //---------------------------------------
 // Publics
 //---------------------------------------
 
-void Triade::ImprimirTipoTriadeEmTela() const{
-	cout << this->DeduzirTipoTriade();
-}//ImprimirTipoTriadeEmTela
+bool Triade::tipoTriadeValido(const char tt)
+{
+	bool bAchou=false;
+	char triades[QTDTRIADES];
+	getTriades(triades);
 
+	for (int i=0; i<QTDTRIADES; i++){
+		if (tt == triades[i]){
+			bAchou=true;
+			break;
+		}
+	}
+
+	return bAchou;
+}
 
 char Triade::randomizarTriade(){
 	char triades[QTDTRIADES];
@@ -131,21 +171,6 @@ void Triade::getTriades( char * arr ) {
 void Triade::ImprimirFundamentalEmTela() const{
     cout << this->getFundamental().Descricao();
 }
-
-string Triade::DeduzirTipoTriade() const{
-	string resp="";
-
-	resp += this->getInt1().DeduzirTipoIntervalo();
-	resp += this->getInt2().DeduzirTipoIntervalo();
-
-	if      (resp=="3M3m") resp = "M";
-	else if (resp=="3m3M") resp = "m";
-	else if (resp=="3M3M") resp = "A";
-	else if (resp=="3m3m") resp = "d";
-	
-	return resp;
-}
-
 
 //---------------------------------------
 // Internals

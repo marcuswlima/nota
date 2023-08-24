@@ -21,12 +21,12 @@ Intervalo::Intervalo(const Nota n, const char * tipoIntervalo){
 	string program="Intervalo::Intervalo(Nota,const char *)"; 
 	//validar nota
 	if (!n.notaValida()){
-		throw invalid_argument(program+"/Nota invalida/" + n.Descricao());
+		throw invalid_argument(program+" / Nota invalida / " + n.Descricao());
 	}
 	
 	//validar tipo intervalo
 	if (!this->strEhIntervalo(tipoIntervalo)){
-		throw invalid_argument(program+"/intervalo invalida/" + tipoIntervalo);
+		throw invalid_argument(program+" / intervalo invalida / " + tipoIntervalo);
 	}
 	
 	setN1(n);
@@ -41,7 +41,7 @@ void Intervalo::setN1(const Nota n){
 	string program="Intervalo::setN1(Nota)"; 
 	//validar nota
 	if (!n.notaValida()){
-		throw invalid_argument(program+"Nota invalida" + n.Descricao());
+		throw invalid_argument(program+" / Nota invalida / " + n.Descricao());
 	}
     
 	this->n1 = n;
@@ -51,7 +51,7 @@ void Intervalo::setN2(Nota p_n2){
 	string program="Intervalo::setN2(Nota)"; 
 	//validar nota
 	if (!p_n2.notaValida()){
-		throw invalid_argument(program+"Nota invalida" + p_n2.Descricao());
+		throw invalid_argument(program+" / Nota invalida / " + p_n2.Descricao());
 	}
 
 	SimplificarIntervalo(this->n1,p_n2);
@@ -60,6 +60,12 @@ void Intervalo::setN2(Nota p_n2){
 
 void Intervalo::setN2(const string descIntervalo, const int orientacao){
 
+	//validar tipo intervalo
+	string program="Intervalo::setN2(string,int)"; 
+	if (!this->strEhIntervalo(descIntervalo)){
+		throw invalid_argument(program+" / intervalo invalido / " + descIntervalo);
+	}
+	
     Nota n1,n2;
     int qdtNotasDoIntervaloDesejado=0, 
 		qtdSemiTonsDoIntervaloDesejado=0,
@@ -144,6 +150,11 @@ ostream &operator<<( ostream &output, const Intervalo &i ){
 //---------------------------------------
 // Publics
 //---------------------------------------
+bool Intervalo::intervaloValido()const
+{
+	return getN1().notaValida() && getN2().notaValida();
+}
+
 string Intervalo::DeduzirTipoIntervalo() {
     string resposta="er";
     int qtdNotas = this->DeduzirQdtTons();

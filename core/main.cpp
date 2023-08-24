@@ -132,7 +132,7 @@ void TestarTriade(){
 		for (int tt=1; tt<=4; tt++){
 			t.setTriade(n,tt);
 			cout << t;
-			t.ImprimirTipoTriadeEmTela();
+			//t.ImprimirTipoTriadeEmTela();
 			cout << "\t\t";
 		}
 		n.up1SemiTom();
@@ -145,7 +145,7 @@ void TestarTriade(){
 		for (int tt=1; tt<=4; tt++){
 			t.setTriade(n,tt);
 			cout << t;
-			t.ImprimirTipoTriadeEmTela();
+			//t.ImprimirTipoTriadeEmTela();
 			cout << "\t\t";
 		}
 		n.down1SemiTom();
