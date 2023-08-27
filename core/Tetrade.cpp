@@ -13,6 +13,10 @@ Tetrade::Tetrade()
 
 Tetrade::Tetrade(const int dificuldade)
 {
+	string program="Tetrade::Tetradee(int)"; 
+	if (!Nota::dificuldadeValida(dificuldade)){
+		throw invalid_argument(program+" / dificuldade invalida / " + to_string(dificuldade));
+	}
 	this->Randomizar(dificuldade);
 }
 

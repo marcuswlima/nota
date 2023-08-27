@@ -13,11 +13,15 @@ Triade::Triade(){
 }
 
 Triade::Triade(const int dificuldade){
+	string program="Triade::Tridade(int)"; 
+	if (!Nota::dificuldadeValida(dificuldade)){
+		throw invalid_argument(program+" / dificuldade invalida / " + to_string(dificuldade));
+	}
 	this->Randomizar(dificuldade);
 }
 
-Triade::Triade(const Nota n,const char tt){
-	this->setTriade(n,tt);
+Triade::Triade(const Nota n,const char tipoTriade){
+	this->setTriade(n,tipoTriade);
 }
 
 //---------------------------------------
@@ -59,6 +63,19 @@ void Triade::setTriade(const Nota n,const char tipoTriade){
 }
 
 void Triade::setTriade(const Intervalo i1, const Intervalo i2){
+	string program="Triade::setTriade(Intervalo, Intervalo)"; 
+	if (!(i1.getN2() == i2.getN1())){
+		throw invalid_argument(program+" / intarvalos não contiguos / " + i1.Descricao() + i2.Descricao());
+	}
+
+	if (i1.getQtdTons()!=3) {
+		throw invalid_argument(program+" / primeiro intervalo não é uma terça / " + i1.Descricao());
+	}
+
+	if (i2.getQtdTons()!=3) {
+		throw invalid_argument(program+" / segundo intervalo não é uma terça / " + i2.Descricao());
+	}
+
 	this->setInt1(i1);
     this->setInt2(i2);
 }

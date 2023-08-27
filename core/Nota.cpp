@@ -22,7 +22,7 @@ Nota::Nota()
 Nota::Nota(const int dificuldade)
 {
 	string program="Nota::Nota(int)"; 
-	if (!diffValida(dificuldade)){
+	if (!dificuldadeValida(dificuldade)){
 		throw invalid_argument(program+" / dificuldade invalida / " + to_string(dificuldade));
 	}
 	this->Randomizar(dificuldade);
@@ -56,7 +56,7 @@ void Nota::setGrau(const int g)
 {
 	string program="Nota::setGrau(int)"; 
 	if (!grauValido(g)){
-		throw invalid_argument(program+"/ grau invalido /" + to_string(g));
+		throw invalid_argument(program+" / grau invalido /" + to_string(g));
 	}
 
 	grau = g;
@@ -65,7 +65,7 @@ void Nota::setGrau(const int g)
 void Nota::setAcidente(const int a){
 	string program="Nota::setAcidente(int)"; 
 	if (!acidenteValido(a)){
-		throw invalid_argument(program+"/ grau acidente /" + to_string(a));
+		throw invalid_argument(program+" / acidente invalido /" + to_string(a));
 	}
 	acidente = a;
 }
@@ -329,6 +329,10 @@ bool Nota::notaValida() const
 		   acidenteValido(this->getAcidente());
 }
 
+bool Nota::dificuldadeValida(const int diff){
+	return diff >= -2 and diff <= 2;
+}
+
 bool Nota::strEhNota(string nota){
 	regex regra("^[1-7](DO|RE|MI|FA|SOL|LA|SI)(#?|B?|BB?|\\*?)$");
 	smatch match;
@@ -362,10 +366,6 @@ void Nota::getNotas( const char ** arr ){
 //---------------------------------------
 // Internals
 //---------------------------------------
-bool diffValida(const int diff){
-	return diff >= -2 and diff <= 2;
-}
-
 bool atributosValidos( const int o, const int g, const int a){
 	return oitavaValida(o) && grauValido(g) && acidenteValido(a);
 }

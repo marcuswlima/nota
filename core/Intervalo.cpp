@@ -15,6 +15,10 @@ Intervalo::Intervalo()
 }
 
 Intervalo::Intervalo(const int dificuldade){
+	string program="Intervalor::Intervalo(int)"; 
+	if (!Nota::dificuldadeValida(dificuldade)){
+		throw invalid_argument(program+" / dificuldade invalida / " + to_string(dificuldade));
+	}
 	this->Randomizar(dificuldade);
 }
 
@@ -135,6 +139,36 @@ string Intervalo::getTipoIntervalo() const
     return resposta;
 }
 
+int Intervalo::getQtdTons() const
+{
+    int resposta=0,
+		g1 = this->getN1().getGrau(),
+		g2 = this->getN2().getGrau()
+		;
+
+	bool bAscendente = (n1 < n2) ,
+		 bMesmaOitava = this->getN1().getOitava() == this->getN2().getOitava()
+		 ;
+
+
+	if      ( (bAscendente) && (bMesmaOitava) ){
+		resposta = g2 - g1 + 1;
+	}else if( (bAscendente) &&!(bMesmaOitava) ){
+		if (g1==g2){
+			resposta = 8;
+		}
+		else{
+			resposta = (7 - g1) +  g2 +1 ;
+		}
+	}else if(!(bAscendente) && (bMesmaOitava) ){
+		resposta = g1 - g2 + 1;
+	}else if(!(bAscendente) &&!(bMesmaOitava) ){
+		resposta = (7 - g2) +  g1 + 1;
+	}
+
+    return resposta;
+}
+
 //---------------------------------------
 // Padrao
 //---------------------------------------
@@ -235,36 +269,6 @@ void Intervalo::getIntervalos( tRecDadosIntervalo * const arr){
 //---------------------------------------
 // Privates
 //---------------------------------------
-int Intervalo::getQtdTons() const
-{
-    int resposta=0,
-		g1 = this->getN1().getGrau(),
-		g2 = this->getN2().getGrau()
-		;
-
-	bool bAscendente = (n1 < n2) ,
-		 bMesmaOitava = this->getN1().getOitava() == this->getN2().getOitava()
-		 ;
-
-
-	if      ( (bAscendente) && (bMesmaOitava) ){
-		resposta = g2 - g1 + 1;
-	}else if( (bAscendente) &&!(bMesmaOitava) ){
-		if (g1==g2){
-			resposta = 8;
-		}
-		else{
-			resposta = (7 - g1) +  g2 +1 ;
-		}
-	}else if(!(bAscendente) && (bMesmaOitava) ){
-		resposta = g1 - g2 + 1;
-	}else if(!(bAscendente) &&!(bMesmaOitava) ){
-		resposta = (7 - g2) +  g1 + 1;
-	}
-
-    return resposta;
-}
-
 int Intervalo::getQtdSemiTons() const
 {
 

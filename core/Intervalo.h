@@ -22,6 +22,7 @@ public:
     Nota getN1() const;
     Nota getN2() const;
 	string getTipoIntervalo() const;
+	int getQtdTons() const;
 // Operacoes
 	void operator=(Intervalo const&);
 	friend ostream &operator<<( ostream &, const Intervalo & );
@@ -36,7 +37,6 @@ public:
 // ---------------------------------------
 	static const int QTDINTERVALOS=17;
 private:
-	int getQtdTons() const;
 	int getQtdSemiTons() const;
 	int getOrientacao()const;
 	void QuantidadesIntervalo(const string, int &, int &)const;
