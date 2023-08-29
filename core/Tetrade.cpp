@@ -22,7 +22,7 @@ Tetrade::Tetrade(const int dificuldade)
 
 Tetrade::Tetrade(const Nota n,const char tipoTriade, const char tipoSetima)
 {
-	this->setTetrade(n,tipoTriade, tipoSetima);
+	this->setTetrade(n, tipoTriade, tipoSetima);
 }
 
 //----------------------------------------
@@ -44,28 +44,18 @@ void Tetrade::setTetrade(const Nota n,const char tipoTriade,const char tipoSetim
 
 	//validar tipoSetima
 	if (!this->setimaValida(tipoTriade)){
-		throw invalid_argument(program+" / tipo traide invalido / " + tipoSetima);
+		throw invalid_argument(program+" / tipo tetrade invalida / " + tipoSetima);
 	}
-
-	Intervalo i;
 
 	//Montar triade
 	this->setTriade(n,tipoTriade);//classe pai
 
-	//Montar setima
+	//Montar setima temporaria
+	const char intervaloSetima[2] = {'7',tipoSetima};
+	Intervalo i(n,intervaloSetima);
+	
+	//montar ultimo intervalo
 	this->i3.setN1(this->getQuinta());
-	i.setN1(n);
-	switch (tipoSetima){
-		case 'M':
-			i.setN2("7M");
-			break;
-		case 'm':
-			i.setN2("7m");
-			break;
-		case 'd':
-			i.setN2("7d");
-			break;
-	}
 	this->i3.setN2(i.getN2());
 }
 
