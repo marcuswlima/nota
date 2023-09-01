@@ -16,3 +16,4 @@ a.out
 obj/
 .metadata/
 build/
+.vscode/

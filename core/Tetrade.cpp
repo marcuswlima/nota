@@ -43,7 +43,7 @@ void Tetrade::setTetrade(const Nota n,const char tipoTriade,const char tipoSetim
 	}
 
 	//validar tipoSetima
-	if (!this->setimaValida(tipoTriade)){
+	if (!this->setimaValida(tipoSetima)){
 		throw invalid_argument(program+" / tipo tetrade invalida / " + tipoSetima);
 	}
 

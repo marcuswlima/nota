@@ -16,40 +16,35 @@ void ToShowParameters(int , char *[]);
 //--------------------------------------
 int main(int argc, char *argv[] ){
     srand( time(0) );
-//	ToShowParameters(argc, argv);
-	Nota n(3,1,0);
-	cout << n << endl;
-	Intervalo i;
-	i.setN1(n);
-	i.setN2("8J",1);
-	cout << i << endl;
-	TodosIntervalos();
-//	TodasTriades();
-//	TestarTetrade();
-	cout << endl;
 
-	cout << n;
-/*
-	int qtd=Nota::QTDNOTAS;
-	const char * nota[qtd];
-	Nota::getNotas(nota);
-	for (int i=0; i<qtd; i++){
-		cout << nota[i] << ' ';
-	}
-	cout << '\n';
+	//Testar Nota
+	cout << endl << "Nota...."<< endl;
+	Nota n1(3,1,0); //terceira oitava, Dó, sem acidente
+	Nota n2(1);//nota randomizada
+	cout << n1 << endl;
+	cout << n2 << endl;
 
-	if ( Nota::strEhNota("MI") )
-		cout << "acertou";
+	//Testar Intervalo
+	cout << endl << "Intervalo...."<< endl;
+	Intervalo i1(n1,"3M"); //Nota fundamental e terceira Maior
+	Intervalo i2(1); // Randomizar fundamental e tipoIntervalo
+	cout << i1 << endl;
+	cout << i2 << endl;
 
-	cout << '\n';
-	tRecDadosIntervalo intervalos[Intervalo::QTDINTERVALOS]; 
-	Intervalo::getIntervalos(intervalos);
-	for (int i=0; i<Intervalo::QTDINTERVALOS; i++){
-		cout << intervalos[i].tipoIntervalo << ' '; 
-		cout << intervalos[i].qtdNotasNaturais << ' '; 
-		cout << intervalos[i].qtdSemiTons << ' '; 
-	}
-*/
+	//Triade
+	cout << endl << "Triade...."<< endl;
+	Triade tr1(n1,'M');//Fundamental e tipoTriade
+	Triade tr2(1); //Randomizar fundamental e tipoTriade
+	cout << tr1 << endl;
+	cout << tr2 << endl;
+	
+	//Tetrade
+	cout << endl << "Tetrade...."<< endl;
+	Tetrade te1(n1,'M','m');//fundamental, tipoTriade, tipoSetima
+	Tetrade te2(1);//randomizar fundamental, tipoTriade, tipoSetima
+	cout << te1 << endl;
+	cout << te2 << endl;
+	
 	return 0; //indica o fim do programa2
 
 }//main
