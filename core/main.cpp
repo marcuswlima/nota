@@ -17,16 +17,16 @@ void ToShowParameters(int , char *[]);
 int main(int argc, char *argv[] ){
     srand( time(0) );
 
-	//Testar Nota
+	//Nota
 	cout << endl << "Nota...."<< endl;
-	Nota n1(3,1,0); //terceira oitava, Dó, sem acidente
+	Nota n1(3,4,0); //terceira oitava, Dó, sem acidente
 	Nota n2(1);//nota randomizada
 	cout << n1 << endl;
 	cout << n2 << endl;
 
-	//Testar Intervalo
+	//Intervalo
 	cout << endl << "Intervalo...."<< endl;
-	Intervalo i1(n1,"3M"); //Nota fundamental e terceira Maior
+	Intervalo i1(n1,"7M"); //Nota fundamental e terceira Maior
 	Intervalo i2(1); // Randomizar fundamental e tipoIntervalo
 	cout << i1 << endl;
 	cout << i2 << endl;

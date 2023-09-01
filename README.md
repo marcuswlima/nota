@@ -1,3 +1,7 @@
+# Arquitetura
+
+![Arquitetura](documentation/arquitetura.png)
+
 # Compilação
 
 ## Makefile
