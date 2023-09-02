@@ -1,10 +1,6 @@
 #include "Tetrade.h"
 
 //----------------------------------------
-// prototipacoes
-//----------------------------------------
-string iDescricao(Nota , Nota , Nota , Nota );
-//----------------------------------------
 // construtores
 //----------------------------------------
 Tetrade::Tetrade()
@@ -72,11 +68,7 @@ Intervalo Tetrade::getInt3() const
 //----------------------------------------
 ostream &operator<<(ostream &output, const Tetrade &t)
 {
-	output << iDescricao(t.getFundamental()
-		                ,t.getTerca()
-					    ,t.getQuinta()
-					    ,t.getInt3().getN2()
-						);
+	output << t.Descricao();
 	return output;
 }
 
@@ -85,11 +77,23 @@ ostream &operator<<(ostream &output, const Tetrade &t)
 //----------------------------------------
 string Tetrade::Descricao() const
 {
-    return iDescricao(this->getFundamental()
-			         ,this->getTerca()
-					 ,this->getQuinta()
-					 ,this->getInt3().getN2()
-					 );
+    string resposta="[", saida; 
+
+	saida = this->getFundamental().Descricao() + '\t';
+    if (saida!="") resposta+=saida;
+
+    saida = this->getTerca().Descricao()  + '\t';
+    if (saida!="") resposta+=saida;
+
+    saida = this->getQuinta().Descricao() + '\t';
+    if (saida!="") resposta+=saida;
+	
+    saida = this->getInt3().getN2().Descricao()  ;
+    if (saida!="") resposta+=saida;
+	
+	resposta+="]";
+
+    return resposta;
 }//GerarDescricao
 
 void Tetrade::Randomizar(const int dificuldade){
@@ -140,23 +144,3 @@ void Tetrade::getSetimas(char * arr){
 //----------------------------------------
 // Internals
 //----------------------------------------
-string iDescricao(Nota nf, Nota n3, Nota n5, Nota n7) 
-{
-    string resposta="[", saida; 
-
-	saida = nf.Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-
-    saida = n3.Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-
-    saida = n5.Descricao() + '\t';
-    if (saida!="") resposta+=saida;
-	
-    saida = n7.Descricao() ;
-    if (saida!="") resposta+=saida;
-	
-	resposta+="]";
-
-    return resposta;
-}//GerarDescricao

@@ -8,7 +8,6 @@ bool grauValido( int );
 bool acidenteValido( int );
 bool atributosValidos( const int, const int, const int);
 bool diffValida(const int);
-string iDescricao( int, int, int);
 bool NotaIgual(Nota, Nota);
 bool PrimeiraMaior(Nota, Nota);
 
@@ -184,10 +183,7 @@ void Nota::operator=(const Nota & other){
 
 // non-menber friend funcion
 ostream &operator<<( ostream &output, const Nota &n ){
-	output << iDescricao(n.getOitava()
-			            ,n.getGrau()
-						,n.getAcidente()
-						); 
+	output << n.Descricao();
 	return output;
 }
 
@@ -219,10 +215,35 @@ void Nota::Randomizar(const int in_dificuldade){
 }
 
 string Nota::Descricao() const{
-	return iDescricao(this->getOitava()
-	                 ,this->getGrau()
-					 ,this->getAcidente()
-					); 
+    string strNota;
+
+    strNota = to_string(this->getOitava());
+
+    switch (this->getGrau())
+    {
+        case 1:strNota+="Do" ;break;
+        case 2:strNota+="Re" ;break;
+        case 3:strNota+="Mi" ;break;
+        case 4:strNota+="Fa" ;break;
+        case 5:strNota+="Sol";break;
+        case 6:strNota+="La" ;break;
+        case 7:strNota+="Si" ;break;
+    default:
+        break;
+    }
+
+    switch (this->getAcidente())
+    {
+        case -2:strNota += "bb";break;
+        case -1:strNota += "b";break;
+        case  1:strNota += "#";break;
+        case  2:strNota += "*";break;
+    default:
+        break;
+    }
+
+    return strNota;
+
 }
 
 //---------------------------------------
@@ -383,38 +404,6 @@ bool grauValido( int g ){
 bool acidenteValido( int a ){
 	//acidentes validos [-2:2]
 	return a >= -2 and a <= 2;
-}
-
-string iDescricao( int o, int g, int a ){
-    string strNota;
-
-    strNota = to_string(o);
-
-    switch (g)
-    {
-        case 1:strNota+="Do" ;break;
-        case 2:strNota+="Re" ;break;
-        case 3:strNota+="Mi" ;break;
-        case 4:strNota+="Fa" ;break;
-        case 5:strNota+="Sol";break;
-        case 6:strNota+="La" ;break;
-        case 7:strNota+="Si" ;break;
-    default:
-        break;
-    }
-
-    switch (a)
-    {
-        case -2:strNota += "bb";break;
-        case -1:strNota += "b";break;
-        case  1:strNota += "#";break;
-        case  2:strNota += "*";break;
-    default:
-        break;
-    }
-
-    return strNota;
-
 }
 
 bool NotaIgual(Nota n1, Nota n2){

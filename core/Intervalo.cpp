@@ -5,7 +5,6 @@
 //---------------------------------------
 int distanciaEmSemiTons(Nota,Nota);
 void SimplificarIntervalo(Nota, Nota &);
-string iDescricao( Nota, Nota );
 bool validarOrientacao(const int);
 //---------------------------------------
 // Constructors
@@ -186,7 +185,13 @@ void Intervalo::Randomizar(const int dificuldade){
 }
 
 string Intervalo::Descricao() const{
-	return iDescricao(this->getN1(),this->getN2());
+    string resposta="";
+
+	resposta += getN1().Descricao();
+	resposta += ":";
+	resposta += getN2().Descricao() + " ";
+
+    return resposta;
 }
 
 //---------------------------------------
@@ -202,9 +207,7 @@ void Intervalo::operator=(Intervalo const& other){
 
 // non-menber friend funcion
 ostream &operator<<( ostream &output, const Intervalo &i ){
-	output << iDescricao(i.getN1()
-			            ,i.getN2()
-						); 
+	output << i.Descricao();
 	return output;
 }
 
@@ -236,7 +239,7 @@ string Intervalo::OrientacaoEmString()const
 	return resposta;
 }
 
-void Intervalo::getIntervalos( tRecDadosIntervalo * const arr){
+void Intervalo::getIntervalos(tRecDadosIntervalo * const arr){
 
 	static const tRecDadosIntervalo intervalos[QTDINTERVALOS]={
                                {"1J",1, 1},
@@ -377,16 +380,6 @@ int distanciaEmSemiTons(Nota n1,Nota n2){
     return resp;
 
 }//distanciaEmSemitons
-
-string iDescricao( const Nota n1 , const Nota n2){
-    string resposta="";
-
-	resposta += n1.Descricao();
-	resposta += ":";
-	resposta += n2.Descricao() + " ";
-
-    return resposta;
-}
 
 bool validarOrientacao(const int o )
 {
